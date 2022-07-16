@@ -1,114 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/07/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>搭建博客的第二天</title>
+      <link href="/2022/07/16/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/"/>
+      <url>/2022/07/16/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/</url>
+      
+        <content type="html"><![CDATA[<p>搭建博客的第一天只是创建了这么一个博客网站并且绑定了购买的域名。</p><p>今天改用Next主题的Gemini模式，在这个基础上完善了自己的界面，今天主要记录完善的过程。</p><p><strong>一.    添加搜索功能</strong></p><p><code>$ npm install hexo-generator-searchdb --save</code></p><p><strong>二.    添加关于、标签、分类模块</strong></p><p>​    1.创建标签、分类的页面</p><p>​    在根目录下输入：    <code>$ hexo new page about/tags/categories</code></p><p>​    在source文件夹下有了对应的页面</p><p>​    2.在每个页面对应的文件夹下有一个index.md文件，打开并编辑</p><p>​    <code>title: 关于/标签/分类</code></p><p>​    添加一行内容：    <code>type: &quot;about/tags/categories&quot;</code></p><p>​    这样新的页面就关联上了这些模块</p><p>​    3.前往主题配置文件_config.yml中，把menu中对应的注释去掉</p><p>​    4.在文章的开头部分加上</p><p>​    </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - tag1</span><br><span class="line">  - tag2</span><br><span class="line">  ...</span><br><span class="line">categories:</span><br><span class="line">  - cat1</span><br><span class="line">  - cat2</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure><p>​    即可。</p><p><strong>三.主题配置修改之后，本地有效但是网络端无效的解决</strong></p><p>​    1.找到next主题文件夹下Source文件夹下的lib文件夹，重命名为ywl</p><p>​    2.在主题配置文件_config.yml中找到Vendors，修改内容为：</p><p>​    <code>_internal: ywl</code>即可。</p><p>​    </p>]]></content>
+      
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建博客的第二天</title>
-    <url>/2022/07/16/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/</url>
-    <content><![CDATA[<p>搭建博客的第一天只是创建了这么一个博客网站并且绑定了购买的域名。</p>
-<p>今天改用Next主题的Gemini模式，在这个基础上完善了自己的界面，今天主要记录完善的过程。</p>
-<p><strong>一.    添加搜索功能</strong></p>
-<p><code>$ npm install hexo-generator-searchdb --save</code></p>
-<p><strong>二.    添加关于、标签、分类模块</strong></p>
-<p>​    1.创建标签、分类的页面</p>
-<p>​    在根目录下输入：    <code>$ hexo new page about/tags/categories</code></p>
-<p>​    在source文件夹下有了对应的页面</p>
-<p>​    2.在每个页面对应的文件夹下有一个index.md文件，打开并编辑</p>
-<p>​    <code>title: 关于/标签/分类</code></p>
-<p>​    添加一行内容：    <code>type: &quot;about/tags/categories&quot;</code></p>
-<p>​    这样新的页面就关联上了这些模块</p>
-<p>​    3.前往主题配置文件_config.yml中，把menu中对应的注释去掉</p>
-<p>​    4.在文章的开头部分加上</p>
-<p>​    </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - tag1</span><br><span class="line">  - tag2</span><br><span class="line">  ...</span><br><span class="line">categories:</span><br><span class="line">  - cat1</span><br><span class="line">  - cat2</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
-
-<p>​    即可。</p>
-<p><strong>三.主题配置修改之后，本地有效但是网络端无效的解决</strong></p>
-<p>​    1.找到next主题文件夹下Source文件夹下的lib文件夹，重命名为ywl</p>
-<p>​    2.在主题配置文件_config.yml中找到Vendors，修改内容为：</p>
-<p>​    <code>_internal: ywl</code>即可。</p>
-<p>​    </p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2022/7/15 日记</title>
+      <link href="/2022/07/15/2022-7-15-%E6%97%A5%E8%AE%B0/"/>
+      <url>/2022/07/15/2022-7-15-%E6%97%A5%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>​        在博客写下第一篇日记。</p><p>​        上次坚持一段时间写日记还是2017年的夏天，和小刘交换着日记本，不知不觉都过去五年了，时间真快啊。</p><p>​        时间不多，随便记记流水账罢。</p><p>​        今天的学习任务是暑期学校项目的一部分，用tensorflow2.x完成字符识别的卷积神经网络（详见博客<strong>《第一个成熟的卷积神经网络——字符识别》</strong>，上午下午的时间就这样流逝，解决了许多bug，正确率最后也在98%左右，很开心、很满足。</p><p>​        晚上和小刘去了醉得意，还是觉得贵，两个人吃了￥120，不过菜挺好吃的。</p><p>​        <strong>晚上和小刘放了烟花！</strong></p><p>​        今天没有运动，生病了还没好，希望快点好起来！</p>]]></content>
+      
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 生活的点点滴滴 </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>欢迎来到我的博客</title>
-    <url>/2022/07/14/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="欢迎来到我的博客！"><a href="#欢迎来到我的博客！" class="headerlink" title="欢迎来到我的博客！"></a>欢迎来到我的博客！</h1><p>​        你好呀，我的朋友，欢迎来到我的博客！</p>
-<p>​        想自己写博客已经很久了，一方面觉得把自己平时学习的心得、笔记梳理记录下来，对自己的学习大有裨益（对于一个准程序猿来说，拥有自己的学习、技术博客似乎十分必要）；另一方面是受樊一鸣同学（个人博客地址<strong>fanyiming.life</strong>)的影响，在一个属于自己的天地当中记录下自己平时的感受，对自己的所作所为复盘，多年后看来也是一笔宝贵的财富。</p>
-<p>​        虽然想写博客的想法比较强烈，但是似乎也没有战胜自己的懒惰。学期内总感觉学业繁重，忙活完课内学习似乎不再有精力探索个人博客的搭建；放假之后又打不起学习的劲头。本学期看了一鸣哥的博客之后感触颇深，现在又是暑期学校（要保持学习的状态却又不像学期当中那么忙），值此机会就开始了个人博客的搭建之旅。</p>
-<p>​        创建个人博客的原因如上所述有学习、生活两方面，因此关于博客的开放性也有两种态度。于生活的角度，想记录自己的心里的各种想法和生活点滴，以我的性格自然是不希望有过多的人看到，更希望这是我自己的一片小天地；于学习的角度，作为程序猿，我认为应该有开源的观念，学习的技术应该分享给大家，同时以后参加面试，个人技术博客自然是要给”老板“看的，这又必须保持博客的开放性。多少纠结了一段时间。</p>
-<p>​        最后想到了两全的解决方案，这个博客作为个人的隐私空间，学习和生活中的内容都在此记录，再把学习帖copy到其他博客网站上即可，两全其美。</p>
-<p>​        所以，我的朋友，你能来到我的小天地，实在说明我很信任你，愿意向你敞开胸怀。</p>
-<p>​        等我正式建立起了我的学习博客，再把地址放在这里吧。</p>
-<p>​        希望博客的搭建能促使我的生活更加规律、向上吧。</p>
-<p>​        <strong>欢迎常来！</strong></p>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>第一个成熟的卷积神经网络——字符识别</title>
+      <link href="/2022/07/15/%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%88%90%E7%86%9F%E7%9A%84%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/"/>
+      <url>/2022/07/15/%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%88%90%E7%86%9F%E7%9A%84%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/</url>
+      
+        <content type="html"><![CDATA[<p>​        总算是开始了自己的第一篇技术博客。</p><p>​        也总算是大概弄懂了一些深度学习、神经网络、卷积神经网络的知识，能靠自己实现识别字符的卷积神经网络了。</p><p>​        今天时间所剩不多，可能写不完，写到哪算哪吧。</p><p>​        在大二下的《人工智能导论》这门课开始接触深度学习，学得一知半解都算不上，啥都没弄明白，甚至还要做神经网络的实验，本是作为启蒙课的目的也没有达到，反而起到了揠苗助长的效果，让人觉得深度学习、神经网络特别难。就我目前的理解而言，我绝不敢说深度学习、神经网络简单，毕竟现在科技前沿都还没将之完全征服。但是我可以说，理解深度学习、神经网络的基本概念绝对不难。实际上我到目前为止也只是看了吴恩达老师不到半小时的讲解就入门了神经网络，实训课李伟老师一上午左右的讲解也让我掌握了数字图像基本概念和卷积神经网络的思路。不得不抨击一下这门课的设立，我被老师和实验弄迷糊的时间完全可以入门深度学习了，况且还让我很长一段时间对深度学习、神经网络有些畏惧，如今看来，似乎”不过如此“（bushi）。</p><p>​        好吧，啰嗦了半天，好像都没时间写技术性的东西了。</p><p>​        这次的任务是把老师已经用tensorflow1.x写好的识别字符的卷积神经网络改成用tensorflow2.x实现<strong>（封装的特性）</strong>。关于深度学习和神经网络的知识梳理有空再写吧。</p><p>​        先到这里。</p><p>​        ——————————————————————————————2022/7/15  23：28</p>]]></content>
+      
+      
       <categories>
-        <category>漫无目的的思考</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>2022/7/15 日记</title>
-    <url>/2022/07/15/2022-7-15-%E6%97%A5%E8%AE%B0/</url>
-    <content><![CDATA[<p>​        在博客写下第一篇日记。</p>
-<p>​        上次坚持一段时间写日记还是2017年的夏天，和小刘交换着日记本，不知不觉都过去五年了，时间真快啊。</p>
-<p>​        时间不多，随便记记流水账罢。</p>
-<p>​        今天的学习任务是暑期学校项目的一部分，用tensorflow2.x完成字符识别的卷积神经网络（详见博客<strong>《第一个成熟的卷积神经网络——字符识别》</strong>，上午下午的时间就这样流逝，解决了许多bug，正确率最后也在98%左右，很开心、很满足。</p>
-<p>​        晚上和小刘去了醉得意，还是觉得贵，两个人吃了￥120，不过菜挺好吃的。</p>
-<p>​        <strong>晚上和小刘放了烟花！</strong></p>
-<p>​        今天没有运动，生病了还没好，希望快点好起来！</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> 神经网络 </tag>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>欢迎来到我的博客</title>
+      <link href="/2022/07/14/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2022/07/14/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="欢迎来到我的博客！"><a href="#欢迎来到我的博客！" class="headerlink" title="欢迎来到我的博客！"></a>欢迎来到我的博客！</h1><p>​        你好呀，我的朋友，欢迎来到我的博客！</p><p>​        想自己写博客已经很久了，一方面觉得把自己平时学习的心得、笔记梳理记录下来，对自己的学习大有裨益（对于一个准程序猿来说，拥有自己的学习、技术博客似乎十分必要）；另一方面是受樊一鸣同学（个人博客地址<strong>fanyiming.life</strong>)的影响，在一个属于自己的天地当中记录下自己平时的感受，对自己的所作所为复盘，多年后看来也是一笔宝贵的财富。</p><p>​        虽然想写博客的想法比较强烈，但是似乎也没有战胜自己的懒惰。学期内总感觉学业繁重，忙活完课内学习似乎不再有精力探索个人博客的搭建；放假之后又打不起学习的劲头。本学期看了一鸣哥的博客之后感触颇深，现在又是暑期学校（要保持学习的状态却又不像学期当中那么忙），值此机会就开始了个人博客的搭建之旅。</p><p>​        创建个人博客的原因如上所述有学习、生活两方面，因此关于博客的开放性也有两种态度。于生活的角度，想记录自己的心里的各种想法和生活点滴，以我的性格自然是不希望有过多的人看到，更希望这是我自己的一片小天地；于学习的角度，作为程序猿，我认为应该有开源的观念，学习的技术应该分享给大家，同时以后参加面试，个人技术博客自然是要给”老板“看的，这又必须保持博客的开放性。多少纠结了一段时间。</p><p>​        最后想到了两全的解决方案，这个博客作为个人的隐私空间，学习和生活中的内容都在此记录，再把学习帖copy到其他博客网站上即可，两全其美。</p><p>​        所以，我的朋友，你能来到我的小天地，实在说明我很信任你，愿意向你敞开胸怀。</p><p>​        等我正式建立起了我的学习博客，再把地址放在这里吧。</p><p>​        希望博客的搭建能促使我的生活更加规律、向上吧。</p><p>​        <strong>欢迎常来！</strong></p>]]></content>
+      
+      
       <categories>
-        <category>生活的点点滴滴</category>
+          
+          <category> 漫无目的的思考 </category>
+          
       </categories>
-  </entry>
-  <entry>
-    <title>第一个成熟的卷积神经网络——字符识别</title>
-    <url>/2022/07/15/%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%88%90%E7%86%9F%E7%9A%84%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB/</url>
-    <content><![CDATA[<p>​        总算是开始了自己的第一篇技术博客。</p>
-<p>​        也总算是大概弄懂了一些深度学习、神经网络、卷积神经网络的知识，能靠自己实现识别字符的卷积神经网络了。</p>
-<p>​        今天时间所剩不多，可能写不完，写到哪算哪吧。</p>
-<p>​        在大二下的《人工智能导论》这门课开始接触深度学习，学得一知半解都算不上，啥都没弄明白，甚至还要做神经网络的实验，本是作为启蒙课的目的也没有达到，反而起到了揠苗助长的效果，让人觉得深度学习、神经网络特别难。就我目前的理解而言，我绝不敢说深度学习、神经网络简单，毕竟现在科技前沿都还没将之完全征服。但是我可以说，理解深度学习、神经网络的基本概念绝对不难。实际上我到目前为止也只是看了吴恩达老师不到半小时的讲解就入门了神经网络，实训课李伟老师一上午左右的讲解也让我掌握了数字图像基本概念和卷积神经网络的思路。不得不抨击一下这门课的设立，我被老师和实验弄迷糊的时间完全可以入门深度学习了，况且还让我很长一段时间对深度学习、神经网络有些畏惧，如今看来，似乎”不过如此“（bushi）。</p>
-<p>​        好吧，啰嗦了半天，好像都没时间写技术性的东西了。</p>
-<p>​        这次的任务是把老师已经用tensorflow1.x写好的识别字符的卷积神经网络改成用tensorflow2.x实现<strong>（封装的特性）</strong>。关于深度学习和神经网络的知识梳理有空再写吧。</p>
-<p>​        先到这里。</p>
-<p>​        ——————————————————————————————2022/7/15  23：28</p>
-]]></content>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/07/14/hello-world/"/>
+      <url>/2022/07/14/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
       <categories>
-        <category>技术</category>
+          
+          <category> 技术 </category>
+          
       </categories>
-      <tags>
-        <tag>深度学习</tag>
-        <tag>神经网络</tag>
-        <tag>Python</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
