@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>搭建博客的第二天</title>
+      <link href="/2022/07/16/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/"/>
+      <url>/2022/07/16/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9/</url>
+      
+        <content type="html"><![CDATA[<p>搭建博客的第一天只是创建了这么一个博客网站并且绑定了购买的域名。</p><p>今天改用Next主题的Gemini模式，在这个基础上完善了自己的界面，今天主要记录完善的过程。</p><p><strong>一.    添加搜索功能</strong></p><p><code>$ npm install hexo-generator-searchdb --save</code></p><p><strong>二.    添加关于、标签、分类模块</strong></p><p>​    1.创建标签、分类的页面</p><p>​    在根目录下输入：    <code>$ hexo new page about/tags/categories</code></p><p>​    在source文件夹下有了对应的页面</p><p>​    2.在每个页面对应的文件夹下有一个index.md文件，打开并编辑</p><p>​    <code>title: 关于/标签/分类</code></p><p>​    添加一行内容：    <code>type: &quot;about/tags/categories&quot;</code></p><p>​    这样新的页面就关联上了这些模块</p><p>​    3.前往主题配置文件_config.yml中，把menu中对应的注释去掉</p><p>​    4.在文章的开头部分加上</p><p>​    </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - tag1</span><br><span class="line">  - tag2</span><br><span class="line">  ...</span><br><span class="line">categories:</span><br><span class="line">  - cat1</span><br><span class="line">  - cat2</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure><p>​    即可。</p><p><strong>三.主题配置修改之后，本地有效但是网络端无效的解决</strong></p><p>​    1.找到next主题文件夹下Source文件夹下的lib文件夹，重命名为ywl</p><p>​    2.在主题配置文件_config.yml中找到Vendors，修改内容为：</p><p>​    <code>_internal: ywl</code>即可。</p><p>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2022/7/15 日记</title>
       <link href="/2022/07/15/2022-7-15-%E6%97%A5%E8%AE%B0/"/>
       <url>/2022/07/15/2022-7-15-%E6%97%A5%E8%AE%B0/</url>
