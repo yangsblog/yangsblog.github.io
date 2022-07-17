@@ -211,4 +211,25 @@
         <tag>Hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>hexo上设置文章加密</title>
+    <url>/2022/07/17/hexo%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<p>之前在创建博客的想法中有说到：由于我想在本博客记录我的学习和生活，学习需要开源、生活需要隐私，导致我对这个博客的定位和开放性一直很纠结。现在新的技术——文章加密的引入解决了我面临问题。下面直接说如何设置文章加密。</p>
+<p>1.安装插件</p>
+<p><code>$ npm install hexo-blog-encrypt --save</code></p>
+<p>2.在站点配置文件最后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文章加密</span><br><span class="line">encrypt:</span><br><span class="line">  enable: true</span><br><span class="line">  abstract: （例）这是一篇加密文章，内容可能是个人情感宣泄或者收费技术。如果你非常好奇，请与我联系。</span><br><span class="line">  message: （例）输入密码，查看文章。</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了站点的配置要求。</p>
+<p>3.对于要加密的文章，在Front-matter中单独添加信息，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">password: 123456</span><br><span class="line">message: 看不到吧，hhhh，不告诉你密码是123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>（这样不同文章的密码可以不一样）</p>
+<p>4.后续还可以设置浏览数、评论、作者信息的隐藏，但是我没有这方面需求，不再额外拓展啦。</p>
+<p>ps：一开始想的是隐藏文章而不是文章加密，但是实际上文章加密更符合我的小心思，这样博客文章显得很多，但是又不会都被看到。就不给你们看，猜密码去吧~</p>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
 </search>

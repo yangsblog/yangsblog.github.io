@@ -190,6 +190,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yangyy.top/2022/07/17/hexo%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="yangyy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yangyy's Life">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/17/hexo%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" class="post-title-link" itemprop="url">hexo上设置文章加密</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-17 23:01:09 / 修改时间：23:11:22" itemprop="dateCreated datePublished" datetime="2022-07-17T23:01:09+08:00">2022-07-17</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/07/17/hexo%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/17/hexo%E4%B8%8A%E8%AE%BE%E7%BD%AE%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>之前在创建博客的想法中有说到：由于我想在本博客记录我的学习和生活，学习需要开源、生活需要隐私，导致我对这个博客的定位和开放性一直很纠结。现在新的技术——文章加密的引入解决了我面临问题。下面直接说如何设置文章加密。</p>
+<p>1.安装插件</p>
+<p><code>$ npm install hexo-blog-encrypt --save</code></p>
+<p>2.在站点配置文件最后添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 文章加密</span><br><span class="line">encrypt:</span><br><span class="line">  enable: true</span><br><span class="line">  abstract: （例）这是一篇加密文章，内容可能是个人情感宣泄或者收费技术。如果你非常好奇，请与我联系。</span><br><span class="line">  message: （例）输入密码，查看文章。</span><br></pre></td></tr></table></figure>
+
+<p>这样就完成了站点的配置要求。</p>
+<p>3.对于要加密的文章，在Front-matter中单独添加信息，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">password: 123456</span><br><span class="line">message: 看不到吧，hhhh，不告诉你密码是123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>（这样不同文章的密码可以不一样）</p>
+<p>4.后续还可以设置浏览数、评论、作者信息的隐藏，但是我没有这方面需求，不再额外拓展啦。</p>
+<p>ps：一开始想的是隐藏文章而不是文章加密，但是实际上文章加密更符合我的小心思，这样博客文章显得很多，但是又不会都被看到。就不给你们看，猜密码去吧~</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yangyy.top/2022/07/17/%E5%A6%82%E4%BD%95%E5%9C%A8hexo%E7%9A%84%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -907,7 +992,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
