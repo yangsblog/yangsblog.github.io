@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"yangyy.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="车牌识别项目Web端的搭建">
-<meta property="og:url" content="http://yangyy.top/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/index.html">
+  <meta name="description" content="简简单单的阅读次数统计折腾了半天，所幸最后做好了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计阅读次数的瞎折腾&amp;终于成功了">
+<meta property="og:url" content="http://yangyy.top/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/index.html">
 <meta property="og:site_name" content="Yangyy&#39;s Life">
+<meta property="og:description" content="简简单单的阅读次数统计折腾了半天，所幸最后做好了。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-18T07:36:21.000Z">
-<meta property="article:modified_time" content="2022-07-18T07:36:21.959Z">
+<meta property="article:published_time" content="2022-07-19T01:21:50.000Z">
+<meta property="article:modified_time" content="2022-07-19T01:36:38.755Z">
 <meta property="article:author" content="yangyy">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yangyy.top/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/">
+<link rel="canonical" href="http://yangyy.top/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/">
 
 
 <script id="page-configurations">
@@ -43,7 +46,7 @@
   };
 </script>
 
-  <title>车牌识别项目Web端的搭建 | Yangyy's Life</title>
+  <title>统计阅读次数的瞎折腾&终于成功了 | Yangyy's Life</title>
   
 
 
@@ -193,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yangyy.top/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="http://yangyy.top/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -206,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          车牌识别项目Web端的搭建
+          统计阅读次数的瞎折腾&终于成功了
         </h1>
 
         <div class="post-meta">
@@ -215,12 +218,22 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-07-18 15:36:21" itemprop="dateCreated datePublished" datetime="2022-07-18T15:36:21+08:00">2022-07-18</time>
+              <time title="创建时间：2022-07-19 09:21:50 / 修改时间：09:36:38" itemprop="dateCreated datePublished" datetime="2022-07-19T09:21:50+08:00">2022-07-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
             </span>
 
           
-            <span id="/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/" class="post-meta-item leancloud_visitors" data-flag-title="车牌识别项目Web端的搭建" title="阅读次数">
+            <span id="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/" class="post-meta-item leancloud_visitors" data-flag-title="统计阅读次数的瞎折腾&终于成功了" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -235,12 +248,13 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
+            <div class="post-description">简简单单的阅读次数统计折腾了半天，所幸最后做好了。</div>
 
         </div>
       </header>
@@ -251,7 +265,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>因为此前学习了给文章加密的技术，所以打算此后将博客完全开放，故想给博客增加文章阅读次数统计的功能，折腾了半天，绕了许多弯路，其实本身并不复杂。</p>
+<p>一开始直接搜索浏览次数统计，网上推荐最多的是 <strong>busuanzi|不蒜子</strong>（这个名字挺有趣的，我一开始以为是卜算子），直接照搬吧（过程不赘述了，无非是安装插件、更改配置文件罢），确实也统计出来文章阅读次数，但是只能点开文章才能看到，这并不如我意，我希望在文章外部显示。此时我以为是出了bug（现在来看并不是，实际上不蒜子的功能就是这样的，不包括在文章外部显示）。</p>
+<p>于是去求助一鸣哥，因为他的博客文章阅读次数是外部可见。一鸣哥和我说不蒜子可以的，但是他用的是waline评论系统，系统自带了统计功能，于是开始折腾waline评论系统。又是注册LeanCloud国际版又是改配置文件，最后还是出问题了，hexo g不成功。</p>
+<p>————————————————————————</p>
+<p>手动分割线，这里文字无法完全表达我的情感，很有必要给博客文章添加表情，我去搞定这个再说。</p>
+
     </div>
 
     
@@ -259,6 +278,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
 
         
 
@@ -266,13 +288,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/07/17/2022-7-17%E6%97%A5%E8%AE%B0/" rel="prev" title="2022-7-17日记">
-      <i class="fa fa-chevron-left"></i> 2022-7-17日记
+    <a href="/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="prev" title="车牌识别项目Web端的搭建">
+      <i class="fa fa-chevron-left"></i> 车牌识别项目Web端的搭建
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/" rel="next" title="统计阅读次数的瞎折腾&终于成功了">
-      统计阅读次数的瞎折腾&终于成功了 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
