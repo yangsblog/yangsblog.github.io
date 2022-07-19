@@ -6,7 +6,7 @@
   <link href="http://yangyy.top/atom.xml" rel="self"/>
   
   <link href="http://yangyy.top/"/>
-  <updated>2022-07-19T01:36:38.755Z</updated>
+  <updated>2022-07-19T02:07:43.449Z</updated>
   <id>http://yangyy.top/</id>
   
   <author>
@@ -17,13 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>emoji汇总</title>
+    <link href="http://yangyy.top/2022/07/19/emoji%E6%B1%87%E6%80%BB/"/>
+    <id>http://yangyy.top/2022/07/19/emoji%E6%B1%87%E6%80%BB/</id>
+    <published>2022-07-19T02:02:12.000Z</published>
+    <updated>2022-07-19T02:07:43.449Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2022/07/19/emoji%E6%B1%87%E6%80%BB/i1.png" alt="image"></p><p><img src="/2022/07/19/emoji%E6%B1%87%E6%80%BB/i2.png" alt="image"></p><p><img src="/2022/07/19/emoji%E6%B1%87%E6%80%BB/i3.png" alt="image"></p>]]></content>
+    
+    
+    <summary type="html">记录一下常用的emoji编码。</summary>
+    
+    
+    
+    <category term="技术" scheme="http://yangyy.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Hexo" scheme="http://yangyy.top/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>统计阅读次数的瞎折腾&amp;终于成功了</title>
     <link href="http://yangyy.top/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/"/>
     <id>http://yangyy.top/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/</id>
     <published>2022-07-19T01:21:50.000Z</published>
-    <updated>2022-07-19T01:36:38.755Z</updated>
+    <updated>2022-07-19T02:01:03.240Z</updated>
     
-    <content type="html"><![CDATA[<p>因为此前学习了给文章加密的技术，所以打算此后将博客完全开放，故想给博客增加文章阅读次数统计的功能，折腾了半天，绕了许多弯路，其实本身并不复杂。</p><p>一开始直接搜索浏览次数统计，网上推荐最多的是 <strong>busuanzi|不蒜子</strong>（这个名字挺有趣的，我一开始以为是卜算子），直接照搬吧（过程不赘述了，无非是安装插件、更改配置文件罢），确实也统计出来文章阅读次数，但是只能点开文章才能看到，这并不如我意，我希望在文章外部显示。此时我以为是出了bug（现在来看并不是，实际上不蒜子的功能就是这样的，不包括在文章外部显示）。</p><p>于是去求助一鸣哥，因为他的博客文章阅读次数是外部可见。一鸣哥和我说不蒜子可以的，但是他用的是waline评论系统，系统自带了统计功能，于是开始折腾waline评论系统。又是注册LeanCloud国际版又是改配置文件，最后还是出问题了，hexo g不成功。</p><p>————————————————————————</p><p>手动分割线，这里文字无法完全表达我的情感，很有必要给博客文章添加表情，我去搞定这个再说。</p>]]></content>
+    <content type="html"><![CDATA[<p>因为此前学习了给文章加密的技术，所以打算此后将博客完全开放，故想给博客增加文章阅读次数统计的功能，折腾了半天，绕了许多弯路，其实本身并不复杂。</p><p>一开始直接搜索浏览次数统计，网上推荐最多的是 <strong>busuanzi|不蒜子</strong>（这个名字挺有趣的，我一开始以为是卜算子），直接照搬吧（过程不赘述了，无非是安装插件、更改配置文件罢），确实也统计出来文章阅读次数，但是只能点开文章才能看到，这并不如我意，我希望在文章外部显示。此时我以为是出了bug（现在来看并不是，实际上不蒜子的功能就是这样的，不包括在文章外部显示）。</p><p>于是去求助一鸣哥，因为他的博客文章阅读次数是外部可见。一鸣哥和我说不蒜子可以的，但是他用的是waline评论系统，系统自带了统计功能，于是开始折腾waline评论系统。又是注册LeanCloud国际版又是改配置文件，最后还是出问题了，hexo g不成功。</p><p>————————————————————————</p><p>手动分割线，这里文字无法完全表达我的情感，很有必要给博客文章添加表情，我去搞定这个再说。</p><p>————————————————————————我回来了。</p><p>话接当时hexo g不成功，心态大崩:sob::sob::sob:，没效果也比出bug强啊。还好参照的博主说了，next主题版本低可能导致generate不成功，于是寻求next主题升级的办法。</p><p>看了一些帖子，似乎都很麻烦，我太懒了:sleeping:，所以放弃了，心想能统计就行了，外面显示不了就算了，但是评论系统还是valine和waline并存呢，不知道是不是因为博客关联了两个LeanCloud（国内版和国际版）应用，评论系统直接崩了。于是干脆把waline和valine的应用全删了，插件留着问题也不大，waline的配置信息也全删了，重新创建valine在LeanCloud的应用，重新设置valine的配置信息。</p><p>这时候注意到了</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">Srx46WYtgI2COUqAi761ccR8-gzGzoHsz</span> <span class="comment"># Your leancloud application appid</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">bNpdyeUlKIvb6bUb42mYvy0h</span> <span class="comment"># Your leancloud application appkey</span></span><br><span class="line">  <span class="attr">notify:</span> <span class="literal">false</span> <span class="comment"># Mail notifier</span></span><br><span class="line">  <span class="attr">verify:</span> <span class="literal">false</span> <span class="comment"># Verification code</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">Just</span> <span class="string">go</span> <span class="string">go</span> <span class="comment"># Comment box placeholder</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># Gravatar style</span></span><br><span class="line">  <span class="attr">guest_info:</span> <span class="string">nick,mail,link</span> <span class="comment"># Custom comment header</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># Pagination size</span></span><br><span class="line">  <span class="attr">language:</span> <span class="comment"># Language, available values: en, zh-CN</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">true</span> <span class="comment"># Article reading statistic</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># If false, comment count will only be displayed in post page, not in home page</span></span><br><span class="line">  <span class="attr">recordIP:</span> <span class="literal">false</span> <span class="comment"># Whether to record the commenter IP</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span></span><br><span class="line">  <span class="comment">#post_meta_order: 0</span></span><br></pre></td></tr></table></figure><p>visitors这一项，原本是false，这不就是浏览次数统计嘛，于是改为true，看看效果。</p><p>:grinning:可以在文章外部显示阅读次数了，但是点进去居然有两个阅读次数，而且还不一样。:disappointed:</p><p>到底是什么问题呢？（此时已经忘记最早是用不蒜子了）</p><p>重新梳理添加阅读次数的思路才发现用了busuanzi_count，马上在配置文件把enable改成false。</p><p>hexo g，成功！完美！:satisfied::satisfied::satisfied:</p><p>其实本身是很简单的事情，因为valine评论系统自带统计阅读次数和评论次数功能，直接在配置文件改一行就行了，结果搞了这么半天还差点把自己的网站评论系统搞崩了，以后要好好看配置信息！</p>]]></content>
     
     
     <summary type="html">简简单单的阅读次数统计折腾了半天，所幸最后做好了。</summary>
