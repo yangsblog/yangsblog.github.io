@@ -6,7 +6,7 @@
   <link href="http://yangyy.top/atom.xml" rel="self"/>
   
   <link href="http://yangyy.top/"/>
-  <updated>2022-07-26T02:07:56.358Z</updated>
+  <updated>2022-07-26T16:08:04.107Z</updated>
   <id>http://yangyy.top/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2022-7-26日记</title>
+    <link href="http://yangyy.top/2022/07/26/2022-7-26%E6%97%A5%E8%AE%B0/"/>
+    <id>http://yangyy.top/2022/07/26/2022-7-26%E6%97%A5%E8%AE%B0/</id>
+    <published>2022-07-26T15:14:45.000Z</published>
+    <updated>2022-07-26T16:08:04.107Z</updated>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="12ef93a81de1abfa6cecc7ce65ec86db67a52bdd145ca605472f3041aed49d19">234a6d57fbb3824af3dca7dfa731ee0c5a2b027993cd3f9a988c34243577360853981175527ddfdac957ed1589d504547c147e0fc4ad17194e18b2534bee1ff9b68eb2cfb06dd02ef55637bdea914c9da3b50e91f7196a8129464f8c967f6061ef50eca5fc7df50f3abfa82365b85cd59eeef4265f19d89ce9b982b1d3b2db0fd3373a0e5152b6ffc740508d3ef66570b16df4cc97b6b7e392da4257b708c026e4f43ddff4e3295cb6cea2fe758e33195e593f2e0932e5362d1e344cf56f41c5d9c33e0b337093dc947746c4a7ae540e6a5440136a4b8561dd6c158b5ef2f857dd1d7daf0f3d002fbbc234f5aaac1c02198eb3e364fdb633a9040ebc52600bb2def568021fd5c8e8ca9ec61e10f94f2c6bb052317f0ffa29ebc75fc694ca217fe06b69ce95c28bf412f44a9183755a8b95962ca647f939f578df874a18d5187d33992d590c15717df00e5e3ee2bcf4b2a44f3e0592cae0f98ba153566a97155c41077876e8851fddcd2bd948a42d6bde77f0f8b80cc336338eff1a82458377e41c57fc5e94d91121d0e866bd3d1952782dc95d8aa707732ae3770dd573da399da6120c76f59fed3677e626d1034c4bb7630bc28dc2839d36e74d48994cc6f97989d234205b75207271e94ff57b0f83a9d8627656a83504644b1f36d2152b6c284e069d7b2a3bbc45daf869c89fde7d3218d38579c500e7a11cde5f0beaeb236a99c53fc51faff364e7050f4ba2ec3693ce6ac7bd9a5db2370acea20ce39719e82fc5e28ab7946ed053b0b64c985e7e58ca75bf187c187c76192f5a16b525706b185db19344f8cd30daae1316687d2ac0091381b9807feb36b742b4c06d076ce3f597e6e0b3314ed87554880b2109e1a1</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这是我的日记，不能给你看哦，不过你要是猜对了密码，那就看叭~</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <summary type="html">不好意思哦，这是一篇加密文章，逛逛博客的其他文章叭。</summary>
+    
+    
+    
+    <category term="生活的点点滴滴" scheme="http://yangyy.top/categories/%E7%94%9F%E6%B4%BB%E7%9A%84%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>隐藏文章过程中的一些反思</title>
@@ -406,25 +425,6 @@
     <category term="Python" scheme="http://yangyy.top/tags/Python/"/>
     
     <category term="车牌识别项目" scheme="http://yangyy.top/tags/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>欢迎来到我的博客</title>
-    <link href="http://yangyy.top/2022/07/14/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yangyy.top/2022/07/14/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</id>
-    <published>2022-07-14T07:41:44.000Z</published>
-    <updated>2022-07-16T07:58:40.974Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="欢迎来到我的博客！"><a href="#欢迎来到我的博客！" class="headerlink" title="欢迎来到我的博客！"></a>欢迎来到我的博客！</h1><p>​        你好呀，我的朋友，欢迎来到我的博客！</p><p>​        想自己写博客已经很久了，一方面觉得把自己平时学习的心得、笔记梳理记录下来，对自己的学习大有裨益（对于一个准程序猿来说，拥有自己的学习、技术博客似乎十分必要）；另一方面是受樊一鸣同学（个人博客地址<strong>fanyiming.life</strong>)的影响，在一个属于自己的天地当中记录下自己平时的感受，对自己的所作所为复盘，多年后看来也是一笔宝贵的财富。</p><p>​        虽然想写博客的想法比较强烈，但是似乎也没有战胜自己的懒惰。学期内总感觉学业繁重，忙活完课内学习似乎不再有精力探索个人博客的搭建；放假之后又打不起学习的劲头。本学期看了一鸣哥的博客之后感触颇深，现在又是暑期学校（要保持学习的状态却又不像学期当中那么忙），值此机会就开始了个人博客的搭建之旅。</p><p>​        创建个人博客的原因如上所述有学习、生活两方面，因此关于博客的开放性也有两种态度。于生活的角度，想记录自己的心里的各种想法和生活点滴，以我的性格自然是不希望有过多的人看到，更希望这是我自己的一片小天地；于学习的角度，作为程序猿，我认为应该有开源的观念，学习的技术应该分享给大家，同时以后参加面试，个人技术博客自然是要给”老板“看的，这又必须保持博客的开放性。多少纠结了一段时间。</p><p>​        最后想到了两全的解决方案，这个博客作为个人的隐私空间，学习和生活中的内容都在此记录，再把学习帖copy到其他博客网站上即可，两全其美。</p><p>​        所以，我的朋友，你能来到我的小天地，实在说明我很信任你，愿意向你敞开胸怀。</p><p>​        等我正式建立起了我的学习博客，再把地址放在这里吧。</p><p>​        希望博客的搭建能促使我的生活更加规律、向上吧。</p><p>​        <strong>欢迎常来！</strong></p>]]></content>
-    
-    
-    <summary type="html">开通博客的一些想法</summary>
-    
-    
-    
-    <category term="漫无目的的思考" scheme="http://yangyy.top/categories/%E6%BC%AB%E6%97%A0%E7%9B%AE%E7%9A%84%E7%9A%84%E6%80%9D%E8%80%83/"/>
-    
     
   </entry>
   
