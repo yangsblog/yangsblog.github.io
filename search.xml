@@ -885,4 +885,32 @@
         <tag>Linux</tag>
       </tags>
   </entry>
+  <entry>
+    <title>调整Ubuntu显示界面</title>
+    <url>/2022/09/24/%E8%B0%83%E6%95%B4Ubuntu%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>先声明本人的VMWare是16pro，Ubuntu版本22.04。</p>
+<p>大家安装Ubutu虚拟机经常会遇到的第一个问题就是显示界面太小。通常查找到的解决方案就是安装增强功能（VirtualBox）和VMWare tools（VMWare）。</p>
+<p>但是我这么做之后，只是显示界面全屏了，图标和文字还是不够大。</p>
+<p>第二次尝试是调节分辨率，在settings的display中，调节分辨率到合适的大小，会改善很多，但是还是不够。</p>
+<p>第三个尝试就是调节缩放比例，但是settings的display中只支持100%、200%、300%，试了200%，发现图标文字变大很多，但是太大了。最好是1.5这样，但是settings里面不支持调节（Ubuntu22.04是这样，之前的版本好像还可以）。</p>
+<p>这一步的解决方案是：在 /usr/share/glib-2.0/schemas目录下</p>
+<p>修改文件 org.gnome.desktop.interface.gschema.<a href="https://so.csdn.net/so/search?q=xml&amp;spm=1001.2101.3001.7020">xml</a><br>
+找到text-scaling-factor定义, default的数值改为1.65（缩放比例，根据自己电脑调节）</p>
+<p>修改文件 com.<a href="https://so.csdn.net/so/search?q=ubuntu&amp;spm=1001.2101.3001.7020">ubuntu</a>.user-interface.gschema.xml<br>
+找到text-scaling-factor定义, default的数值改为1.65（缩放比例，根据自己电脑调节）</p>
+<p>然后执行命令"glib-compile-schemas /usr/share/glib-2.0/schemas/"，重启后缩放比例生效。</p>
+<p>这一步参考了CSDN博主「旨酒当歌」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：<a href="https://blog.csdn.net/qq_16056397/article/details/114253446">https://blog.csdn.net/qq_16056397/article/details/114253446</a></p>
+<p>这里面有一些细节：首先是usr直接在资源管理器当中搜索不到，在命令行cd /usr即可；其次修改这两个文件需要sudo权限，不然改不了。</p>
+<p>经过三种方法的尝试，最终效果如下图所示，挺满意的了，也不用像老年机一样吧（强迫症自语）</p>
+<p><img src="/2022/09/24/%E8%B0%83%E6%95%B4Ubuntu%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2/%E8%B0%83%E6%95%B4%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2.png" alt="image"></p>
+<p>和主机基本一致。done！</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>

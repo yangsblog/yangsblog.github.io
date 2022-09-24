@@ -6,7 +6,7 @@
   <link href="http://yangyy.top/atom.xml" rel="self"/>
   
   <link href="http://yangyy.top/"/>
-  <updated>2022-09-24T08:58:51.438Z</updated>
+  <updated>2022-09-24T12:58:58.174Z</updated>
   <id>http://yangyy.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>调整Ubuntu显示界面</title>
+    <link href="http://yangyy.top/2022/09/24/%E8%B0%83%E6%95%B4Ubuntu%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2/"/>
+    <id>http://yangyy.top/2022/09/24/%E8%B0%83%E6%95%B4Ubuntu%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2/</id>
+    <published>2022-09-24T12:46:57.000Z</published>
+    <updated>2022-09-24T12:58:58.174Z</updated>
+    
+    <content type="html"><![CDATA[<p>先声明本人的VMWare是16pro，Ubuntu版本22.04。</p><p>大家安装Ubutu虚拟机经常会遇到的第一个问题就是显示界面太小。通常查找到的解决方案就是安装增强功能（VirtualBox）和VMWare tools（VMWare）。</p><p>但是我这么做之后，只是显示界面全屏了，图标和文字还是不够大。</p><p>第二次尝试是调节分辨率，在settings的display中，调节分辨率到合适的大小，会改善很多，但是还是不够。</p><p>第三个尝试就是调节缩放比例，但是settings的display中只支持100%、200%、300%，试了200%，发现图标文字变大很多，但是太大了。最好是1.5这样，但是settings里面不支持调节（Ubuntu22.04是这样，之前的版本好像还可以）。</p><p>这一步的解决方案是：在 /usr/share/glib-2.0/schemas目录下</p><p>修改文件 org.gnome.desktop.interface.gschema.<a href="https://so.csdn.net/so/search?q=xml&amp;spm=1001.2101.3001.7020">xml</a><br>找到text-scaling-factor定义, default的数值改为1.65（缩放比例，根据自己电脑调节）</p><p>修改文件 com.<a href="https://so.csdn.net/so/search?q=ubuntu&amp;spm=1001.2101.3001.7020">ubuntu</a>.user-interface.gschema.xml<br>找到text-scaling-factor定义, default的数值改为1.65（缩放比例，根据自己电脑调节）</p><p>然后执行命令"glib-compile-schemas /usr/share/glib-2.0/schemas/"，重启后缩放比例生效。</p><p>这一步参考了CSDN博主「旨酒当歌」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_16056397/article/details/114253446">https://blog.csdn.net/qq_16056397/article/details/114253446</a></p><p>这里面有一些细节：首先是usr直接在资源管理器当中搜索不到，在命令行cd /usr即可；其次修改这两个文件需要sudo权限，不然改不了。</p><p>经过三种方法的尝试，最终效果如下图所示，挺满意的了，也不用像老年机一样吧（强迫症自语）</p><p><img src="/2022/09/24/%E8%B0%83%E6%95%B4Ubuntu%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2/%E8%B0%83%E6%95%B4%E6%98%BE%E7%A4%BA%E7%95%8C%E9%9D%A2.png" alt="image"></p><p>和主机基本一致。done！</p>]]></content>
+    
+    
+    <summary type="html">调整Ubuntu显示界面有哪些方法？</summary>
+    
+    
+    
+    <category term="技术" scheme="http://yangyy.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Linux" scheme="http://yangyy.top/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux当中判断两个文件夹是否相同</title>
@@ -394,25 +415,6 @@
     
     
     <category term="Hexo" scheme="http://yangyy.top/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022-7-19日记</title>
-    <link href="http://yangyy.top/2022/07/19/2022-7-19%E6%97%A5%E8%AE%B0/"/>
-    <id>http://yangyy.top/2022/07/19/2022-7-19%E6%97%A5%E8%AE%B0/</id>
-    <published>2022-07-19T15:22:07.000Z</published>
-    <updated>2022-07-24T03:00:29.143Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="1bdee5727b386e0a26125fc405a7fa4596bb3c0ab18343ca276dc07b9e2586c4">d361d61c52df07d9e0bf0afb5b4e2d2e1fcfbde3d99e04359b12aa9419ff0b11904bced5ce3bef80b4ed2df249bd34d6b81b3b49818d099bb6c203302d27a880711b434f07ad1389c8adc8f3400ed6e9c740bceea030eefd4d0aad3ca0712e861eef85060f00dc5b105f231cc2f9e2b8bfbeaafff2774b3d687fa0d54cbfc0a9f4aac45b97d66ba71cff42663019fc64092bf80b643bc98488bfea81d497472475089bdb7c8aee39eb5d6bb64251ae7d0df43e5e33c97edb592e044de455ef2e55d02f3fea5c8514661a59388cd6752906d16201d8122d172ab36a7d1ee7d58c87c674dd2dea554acaaf5a0e93bb730e572db3a117cf06e1b8e530194a94de7442fd94c4439872112e4bf700f24add6aa11dacd886840b72cd88117272c90c60e2cc341a6ed73e47f92655af733f21b34ca387a0fe4f80858fe3632fe8df5955c499882166d9221dc752891f4e706191a0664437017148cfe0ae6d9bc32f971d11f285130e346aed55ddf1903aa19dbee1715aeff8b82644bc004b0056c7bf41dd0ea53ee73fb39ff03246eb1a4b5ae86b1c00882673c8572e9bfd2bcc6cf52f184e687151d4e3a7727d8d07d3d8704fd89bf496ba9fee2bcbdcd9552fd297381cde077bf0937e97ffdbe61d721bf5f304154fc26d76dd95d3f146eebf39ed121c90e2586693ac0749ea28c367a992d60fbaa79dd514b570917eb3355a300f876a215ab70c9165576f2382cccbbedd62d69663e0c5932c56c445a0b68444dc28739da7b5b5e3f15db1126b0993d9db19e07fe1b9e623181e9007719e380d8abb1b1720f01ff706c64828f33efbd42a91de1e44f2b62d2c4e29f8b5fd0830036dfbe952f681ca9de31a7428f844ffce8f113a638da5f524002f6805ceda151c9b2115e8e60e54e7dea9da057685b724699ccd081ab79fb56746bf48a9cde519c5ad4982b6622dc3082911a283dbec16428f624ecfdd9db2cebdcdbac28b7e99ca08679852a79ff9093086bd3254c1c6c791f506ec032ce5d1920fd11abf23728abf50556a87dfcb01a4b5646f253d6dff87f88216515cd1a4c794d6c70b31e1e15ca411dc1277ae67ed67fbfbf44c093efea5c999a2bee6e2206bd5a888c0961f802d669543b0e80791b338c84b4cf5bc7f93dff78edacdafbc5e13152677f0d51d0d20b1501a9d982c1065413d4692f2e4a8b3e6ca5d6442370a24412892188acb6c4592b6709b9bb94a2e5982ff799ff6e3bddaa0beab062e630b47173d5f5b451ecdbf18e1af8363813c7654f4c545989829efc1a1ea02491a21005d3606012a6103728bd4dc2420b6dbf768489adf9e63ae9b6b5842c96bc7da38ffb6b9daadac534dc737fb000e2c3d0afcd39b4e61b98eae92993c226fbc51c3d3ce8139ed8a3d53417d4fb25cc901267645a3055b0aba74f0281ba84816fc19a245cd207a986c720dd18db05587770ca3cd822188062c899d9eaae907d9f35110c3e7aba0115a4eca4f0cc539d0b2cbcc7aa552d177e253f96e76a568411d22edf35a0e810c1daaca32530f29a147f7d943ed6ce802eb42d64a432429a4ce830321660c6fd86671016eb2792db02acc9a2b18515d2f77589ef2db377639907ad3d2ebbc5383ce5298f9095250ca11fe312b6fd1c3ea892dea6425a55399e6fedf25f28dcddde8a8aaa564979322bec51d39e69eb8d89da0300852a24cc4200b8f321584603afdd1d9e6e77d32a417972ece5b34eb3f776fc0cb7afca52b869f3f0e16ad097a4b7cd4bd8602885cc33cc1bf1e99010a3d2887cf181389811b1771f58da069799630c483b165f48dd20cf9c35dd253e417d15d372e7c30f27a4a3f8ccc247d491d7a65d8d14a8bdb408aafc3e239796f44f9a0285a91915422a660a1660d949bf17716d5a0a05b4a55366220a3744609e7d3b983c4d1d7ec5f361d1e70f37a477a294bc8f26b0ec97977f8ea4bf29445b13f6231dbd847ac87df5c0230a5bd46c8160c1e195c6ea651d4bfcd1e4284750ae6aac109b690dc94afa6a58c30e68e2be80254d9ed0806aeb9af0918cf1c97d0b17087c44cf8fc1fc6de8271272140fc5e2b7a7b21e29de11c232c15f869fe36aa9223e10e62f46dafd7540ac569db93f57921986ab2d73422dae920bf9fa7a13b2acbb80ee3760c37686944da26327e5f2ebbacef963c171c1db7a64985ac411ee27aeda9deebe917f74c0577</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这是我的日记，不能给你看哦，不过你要是猜对了密码，那就看叭~</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">不好意思哦，这是一篇加密文章，逛逛博客的其他文章叭。</summary>
-    
-    
-    
-    <category term="生活的点点滴滴" scheme="http://yangyy.top/categories/%E7%94%9F%E6%B4%BB%E7%9A%84%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4/"/>
-    
     
   </entry>
   
