@@ -869,4 +869,20 @@
         <tag>虚拟机</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux当中判断两个文件夹是否相同</title>
+    <url>/2022/09/24/Linux%E5%BD%93%E4%B8%AD%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E5%90%A6%E7%9B%B8%E5%90%8C/</url>
+    <content><![CDATA[<p>作业中遇到的问题：怎么判断Linux当中两个文件夹是否完全相同？</p>
+<figure class="highlight livecodeserver"><table><tbody><tr><td class="code"><pre><span class="line">$ diff -u/-r/-N/-<span class="keyword">a</span> dir1 dir2</span><br><span class="line">　　-<span class="keyword">a</span> Treat all <span class="built_in">files</span> <span class="keyword">as</span> <span class="keyword">text</span> <span class="keyword">and</span> compare them <span class="built_in">line</span>-<span class="keyword">by</span>-<span class="built_in">line</span>, even <span class="keyword">if</span> they <span class="built_in">do</span> <span class="keyword">not</span> seem <span class="built_in">to</span> be <span class="keyword">text</span>.</span><br><span class="line">　　-N, <span class="comment">--new-file</span></span><br><span class="line">　　　　In <span class="built_in">directory</span> comparison, <span class="keyword">if</span> <span class="keyword">a</span> <span class="built_in">file</span> is found <span class="keyword">in</span> only <span class="literal">one</span> <span class="built_in">directory</span>, treat <span class="keyword">it</span> <span class="keyword">as</span> present but <span class="literal">empty</span> <span class="keyword">in</span> <span class="keyword">the</span> other <span class="built_in">directory</span>.</span><br><span class="line">　　-r When comparing <span class="built_in">directories</span>, recursively compare <span class="keyword">any</span> subdirectories found.</span><br><span class="line">　　-u Use <span class="keyword">the</span> unified output <span class="built_in">format</span>.</span><br></pre></td></tr></tbody></table></figure>
+<p>建议使用-r，比较符合逻辑。</p>
+<p>效果如图。</p>
+<p><img src="/2022/09/24/Linux%E5%BD%93%E4%B8%AD%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E5%90%A6%E7%9B%B8%E5%90%8C/image.png" alt="image"></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
