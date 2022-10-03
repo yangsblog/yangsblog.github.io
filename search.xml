@@ -948,4 +948,23 @@
         <tag>自语</tag>
       </tags>
   </entry>
+  <entry>
+    <title>《用自监督的对比预测编码进行时间序列变化点检测》个人笔记</title>
+    <url>/2022/10/03/%E3%80%8A%E7%94%A8%E8%87%AA%E7%9B%91%E7%9D%A3%E7%9A%84%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81%E8%BF%9B%E8%A1%8C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>该论文原名《Time Series Change Point Detection with Self-Supervised Contrastive Predictive Coding》，是CCF A类论文。译作《用自监督的对比预测编码进行时间序列变化点检测》。个人阅读主要是为了了解<strong>异常检测</strong>的相关方法。</p>
+<p>ps：</p>
+<p>​	顺便在这里记录一下，hexo上传pdf文件很简单，和图片上传一个原理：先下载插件；在同名文件夹下放pdf文件；再按制定的格式引用该文件即可。</p>
+<p>由于担心侵权问题，不能展示原文，大家若有需要，直接利用Google学术搜索即可，很容易获取。</p>
+<p>以下为个人笔记，欢迎交流和指正。</p>
+<div class="pdfobject-container" data-target="./TimeSeriesChangePointDetectionwithSelf-SupervisedContrastivePredictiveCoding(2021).pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>自监督</tag>
+        <tag>异常检测</tag>
+        <tag>对比预测编码</tag>
+      </tags>
+  </entry>
 </search>
