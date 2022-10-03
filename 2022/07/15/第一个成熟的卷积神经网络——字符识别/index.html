@@ -87,9 +87,9 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="Yangyy's Life" type="application/atom+xml">
 
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Yangyy's Life" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -304,7 +304,7 @@
 <p>直接上代码。</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">network = tf.keras.models.Sequential([</span><br><span class="line">    <span class="comment"># 正式操作之前先进行正则化，专门的正则化层</span></span><br><span class="line">    tf.keras.layers.BatchNormalization(),</span><br><span class="line">    <span class="comment"># 第一层卷积层，32个卷积核，大小5*5，自动初始化，relu激活，输入形状固定</span></span><br><span class="line">    tf.keras.layers.Conv2D(filters=<span class="number">32</span>, kernel_size=<span class="number">5</span>, activation=<span class="string">'relu'</span>, input_shape=(IMAGE_WIDTH, IMAGE_HEIGHT, <span class="number">1</span>), padding=<span class="string">'same'</span>),</span><br><span class="line">    <span class="comment"># 第一层池化层</span></span><br><span class="line">    tf.keras.layers.MaxPool2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>),  <span class="comment"># 20=&gt;10，步长应该取2</span></span><br><span class="line">    <span class="comment"># 第二层卷积层</span></span><br><span class="line">    tf.keras.layers.Conv2D(filters=<span class="number">64</span>, kernel_size=<span class="number">5</span>, activation=<span class="string">'relu'</span>, input_shape=(<span class="number">10</span>, <span class="number">10</span>, <span class="number">32</span>), padding=<span class="string">'same'</span>),</span><br><span class="line">    <span class="comment"># 第二层池化层</span></span><br><span class="line">    tf.keras.layers.MaxPool2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>),  <span class="comment"># 10=&gt;5</span></span><br><span class="line">    <span class="comment"># 把二维矩阵展平成向量</span></span><br><span class="line">    tf.keras.layers.Flatten(),</span><br><span class="line">    <span class="comment"># 全连接层</span></span><br><span class="line">    tf.keras.layers.Dense(<span class="number">1024</span>, activation=<span class="string">'relu'</span>),</span><br><span class="line">    <span class="comment"># 全连接之后会导致参数爆炸，需要dropout一些数据</span></span><br><span class="line">    tf.keras.layers.Dropout(<span class="number">0.3</span>),</span><br><span class="line">    <span class="comment"># 仿射函数</span></span><br><span class="line">    tf.keras.layers.Dense(CLASSIFICATION_COUNT, activation=<span class="string">'softmax'</span>)</span><br><span class="line">])</span><br></pre></td></tr></tbody></table></figure>
 <p>这只是前向传播的代码，交叉熵损失函数和反向传播算法如下。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">network.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),	# 反向传播算法&amp;学习率设置</span><br><span class="line">    loss=tf.keras.losses.BinaryCrossentropy(),	# 交叉熵损失函数</span><br><span class="line">    metrics=['accuracy'])</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight nix"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">network.compile(<span class="attr">optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),</span>	<span class="comment"># 反向传播算法&amp;学习率设置</span></span><br><span class="line">    <span class="attr">loss=tf.keras.losses.BinaryCrossentropy(),</span>	<span class="comment"># 交叉熵损失函数</span></span><br><span class="line">    <span class="attr">metrics=['accuracy'])</span></span><br></pre></td></tr></tbody></table></figure>
 <p><strong>三.训练模型、评估准确率、保存模型</strong></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">network.fit(train_data, train_labels, batch_size=<span class="number">50</span>, epochs=<span class="number">30</span>, validation_split=<span class="number">0.02</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">直接指定batch_size和epochs即可，很方便</span></span><br><span class="line"><span class="string">validation_split这个参数就是每次训练时，把训练集中一定比例的数据不参与训练，用来测算正确率等参数，测出来也不改变参数</span></span><br><span class="line"><span class="string">最开始validation_split=0.1的时候，训练当中算出来的正确率很高，98/99%甚至100%。但是测试集效果不好，正确率89%左右。我估计是因为直接削减了10%的数据，泛化能力不强。</span></span><br><span class="line"><span class="string">但是如果设置validation_split=0.0，训练和测试效果很好，98~99%，但是实际检测效果反而不如前者，说明可能过拟合了</span></span><br><span class="line"><span class="string">所以设置validation_split=0.02，这样中庸的策略既保证了正确率，泛化能力又不错</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 评估准确率</span></span><br><span class="line">test_loss, test_acc = network.evaluate(test_data, test_labels)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">'\n测试准确率：'</span>, test_acc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line">network.save_weights(MODEL_PATH)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">保存模型可以直接保存模型。也可以保存模型的权重（参数），预测的时候，构造一个同架构的网络，直接加载参数即可。</span></span><br><span class="line"><span class="string">前者比较友好，很简单，但是队友用了后者就用后者吧，我觉得后者会更快，因为直接加载参数显然比直接加载模型要更简单</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></tbody></table></figure>
 <p><strong>四.实战预测</strong></p>
@@ -532,6 +532,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/ywl/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
