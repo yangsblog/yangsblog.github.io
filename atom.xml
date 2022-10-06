@@ -6,7 +6,7 @@
   <link href="http://yangyy.top/atom.xml" rel="self"/>
   
   <link href="http://yangyy.top/"/>
-  <updated>2022-10-03T11:32:13.801Z</updated>
+  <updated>2022-10-06T08:12:20.793Z</updated>
   <id>http://yangyy.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《云系统的跨数据集时间序列异常检测》个人笔记</title>
+    <link href="http://yangyy.top/2022/10/06/%E3%80%8A%E4%BA%91%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yangyy.top/2022/10/06/%E3%80%8A%E4%BA%91%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%B7%A8%E6%95%B0%E6%8D%AE%E9%9B%86%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</id>
+    <published>2022-10-06T07:39:51.000Z</published>
+    <updated>2022-10-06T08:12:20.793Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近读的这篇论文原名《Cross-dataset Time Series Anomaly Detection for Cloud Systems》，也是一篇CCF A类论文。译作《云系统的跨数据集时间序列异常检测》，应用对象是云系统上的大规模数据集，目标是<strong>时间序列异常检测</strong>，提出的最有价值的思想是<strong>跨数据集检测</strong>。</p><p>以下pdf是个人阅读笔记，欢迎交流指正。</p><p>注：pdf暂时只支持PC端。</p><div class="pdfobject-container" data-target="./Cross-datasetAnomalyDetection.pdf" data-height="500px"></div>]]></content>
+    
+    
+    <summary type="html">开题阶段读的第二篇论文~</summary>
+    
+    
+    
+    <category term="科研" scheme="http://yangyy.top/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+    <category term="异常检测" scheme="http://yangyy.top/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo的Next主题下为文章添加pdf文件</title>
@@ -42,7 +63,7 @@
     <link href="http://yangyy.top/2022/10/03/%E3%80%8A%E7%94%A8%E8%87%AA%E7%9B%91%E7%9D%A3%E7%9A%84%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81%E8%BF%9B%E8%A1%8C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/"/>
     <id>http://yangyy.top/2022/10/03/%E3%80%8A%E7%94%A8%E8%87%AA%E7%9B%91%E7%9D%A3%E7%9A%84%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81%E8%BF%9B%E8%A1%8C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</id>
     <published>2022-10-03T08:09:46.000Z</published>
-    <updated>2022-10-03T10:38:46.726Z</updated>
+    <updated>2022-10-06T08:15:38.095Z</updated>
     
     <content type="html"><![CDATA[<p>该论文原名《Time Series Change Point Detection with Self-Supervised Contrastive Predictive Coding》，是CCF A类论文。译作《用自监督的对比预测编码进行时间序列变化点检测》。个人阅读主要是为了了解<strong>异常检测</strong>的相关方法。</p><p>由于担心侵权问题，不能展示原文，大家若有需要，直接利用Google学术搜索即可，很容易获取。</p><p>以下为个人笔记，欢迎交流和指正。</p><div class="pdfobject-container" data-target="./TSCPD.pdf" data-height="500px"></div>]]></content>
     
@@ -392,25 +413,6 @@
     <updated>2022-07-24T03:01:33.211Z</updated>
     
     <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="a11d95bf1f72914586b69c6ffd306d88ad9750ae9a123ea083efc735e61baffc">d361d61c52df07d9e0bf0afb5b4e2d2e78ee05982adac9e3e1e3b28a21e805bf3e759866d85d696c106097cc5cd7ac128b36690422b0114fd651e3e0aee9953d2e1b58b382e355e529e2d68491aefab089ed8f0eed739a74e0100417a5ca2e0a260b6944b2a7a9c7d22bccd5c14f8fbca44b0adcfbcbcf862a14dfba6a07b7e51bd7f8c8ea67ff6c4b4de57ea6fda222276d7f1d62f994e17d7d5c64dac52762e3a0d931a09334104dabf968d5826ecd7a32bd98a3bc7bc736b5394a820f5ab65401930b8dbde88919b92a0e2abaa895e097a34afb874ec2e844f6a3cfb1c9cfa0089ceee425c49bb611b11dab88ff9061925155d4658466f896460b8236bc3ae93059192fa3e5e16f095b02dee87f596f47c70387426aea10893809459c9a7f9e35e8d9949c8cd284f00c4da0728c67e059215f280392496b22f0e52762b1ccc02b78d641b9336aa467677f59c47a43031ab7cecb208f08f13de1b7ad53178610b8b6b72f41a32796b4db048904d892f054fd3e0984557c65b5bfac9ff75c1d54111aab0f4a7f06e90fc3a8734e9de55109f723fa9603f0636523c1647b7ad1be24b540f73aeeafa736c216ab6a6e8f2673b5a7f5d87e83d943df51050e82f8595426535aefbe6e57ed9edd66ddcd260bfb09fe80a29fedbed9b7a064e9a023a44fccd69a4bf024f904edf58dd9caf9365175186560926a11d98a8630f46128aef34d70789c4fae016ef126b9ef2783125a2bb2142d395f396e51f795186ba154702788b576102f415768bad6c74be24e58fcc40b2f078c1263111fbaaf78aa83c6005dab0de3440b734ca4735b616885d22a3744d1392b9199c2d2ad93950ea29d037be4ab3f047ebaacd7fc1ae3640cfe8731a74911f0264795bf24390ef4ce5f333cb44baa4bc99a74d69b4fd27d5e79f7e7eb9882e98d3798e84c7cff530293f9055b3d4e55bc03fdfa32edd6854e23a1e154158c48382d0113924b87ab2f22a82af869414728ad2ff9dd049e148a10faa52644c99d79e7afbadcc31b88e6fe67019bed85217de65338468b03f1ec0ded2661afb8788a7033ac609547df1154f79281e20e087ad0a9e986faf6fe593a62cfb0eac04951b8d1e8a560ca8cb1c5b3b9304c0d77a12b8f6b9c1b684d1142af84e7c5d2402f7c522e9c68b29d38840f5a87a67adb8e572f90afbadc7aeff241316031b72421fbb55ef5d8067172878c7c7f38bab95ba969cbcf111d6627aa979e3b6ea0590a96e066803b8ced31927dc1185e270d5955a21cf39a76be4344286b5dc87171a1461e66f01ba41e7ae22ec04d136025307e1df1472f957815b0dd8f29e0aab7b8cf7820282968aa5f93220ec98d869f572ee2700ceed91f749fdd1351ca8a599ff36363c232e933c004ec8c3e401ebcb0d954dd14c9bdcbf99bf53e81f937e20537e4502ba2471debc74b6c570e15330865b71e362c907e5e51666a07268d99ade3b1f65a18c0df1a9aa04fd20a8791bef17dc24b8f8ac17591058c881025d3be93579729ed2d7b4b61b3d9dbb56679644dbadc5f43f76395555103d7128c791279354d004c5efdab96369a7f3c1858bb1e9a5c4ece47258db161cadedad0e29063b92febf9e5a5da16781c93dbd2f4b50b73afcaf7bf9fd1e548b43a7e39c32a0de4571d45fe88e27741a5b6cd3b67eff340fe01d14cb3c27aad35e931114cce8565d28cd5f2586b76355a3610e7886a922059a1e1a017bc8a44960cd77c5578e5959d935559eada5f5aa7aa434aa0e166e017fd5140f16a553794687d3cb4579df830c2bb9434999a06299ce7b674099a51f10f2b3c5bc8a59a7f7967d15beaac8fc5f626737bd3c115c07ed34e3f1c8700a38e5797773038d37c8813d8529a759df7c775c942768014bc32a9edc2c6e6ca99e712af1e0b6080b3724072595e632de3f7b5460e5d98e0349f64124a1ad3f937e328435d</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这是我的日记，不能给你看哦，不过你要是猜对了密码，那就看叭~</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">不好意思哦，这是一篇加密文章，逛逛博客的其他文章叭。</summary>
-    
-    
-    
-    <category term="生活的点点滴滴" scheme="http://yangyy.top/categories/%E7%94%9F%E6%B4%BB%E7%9A%84%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2022-7-22日记</title>
-    <link href="http://yangyy.top/2022/07/22/2022-7-22%E6%97%A5%E8%AE%B0/"/>
-    <id>http://yangyy.top/2022/07/22/2022-7-22%E6%97%A5%E8%AE%B0/</id>
-    <published>2022-07-22T15:19:25.000Z</published>
-    <updated>2022-07-24T03:01:19.130Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="e3e57f6be94a21c15ffb62c47fe876b24db79112d153af15993106a288f0a75f">d361d61c52df07d9e0bf0afb5b4e2d2ee486021818387608f880affb29c208666618b608a7d69ee9e01ce8f5d6a475c42e8adaf6202096c3751ef92b588913b98422cceababd5cfaaf8546458e7e6f6044f82b52e691ab09aa6dd56918542910eb48e728bad230755a81b0ea5f5db79996a463b62d00fee30300ea2ed0e82e79009fd9ca48886cd9f2857192222e2ed99c01bdabe232c4605dd96cdbf276544955dd5f6744087a882ea4dea08b3d0504793ca0f96e16a8c60002435af8ffeb8536093f30615c9519fde50119fbc986d00b3c7c896ba444ccc2213c58208b729fd6a5f77b3db6616e158edcf4a23d43830f6d9d4e90c2393bb04a8a14b3a34cf41d77c0726ebc847cf4ce59155d779d346de30d735115d336894beabc510cf995a01888ef07bd714abea6779b31b916a3d04f4f6b9cb4e73ffb2223781860c8328b10b2008d64285af7ae11fde26cc6c2781db5529f7a075b86208564440568919af919e1f2e36278bb9aa7afbbc7d35c32b9b0e4e175417d68edf87ec9a69bcdbdf908d2ecce102da77184ddb93ec24b4b04172e3e4f4b599a367b09bab115f08a82674124fceb0df8e03517113dde64d6ed3f5e0669fc42baaf338091c7079da0145889dad40d01854da63b4f8d169bb653429e776dc05cf97ef79c0134ed9c24710a17bb9fbd7cc7d10a737748bd8afdb1c8da650da7a04a3096cdb67bc9d8bac9449960f8533a04f9b73eaf51cc6e755b87dbeb02184e0a1fca4d2c7f8b558cc436e7e12c0a57b98d698e33c89abcea073605af703434fe4f6d4d97f40648485e954133ea20d0b51393a9926f8540dfbcf7f70292f3b5e7bc8370a71aa3cb3de116af707dea43c5193abab5bf7ba50a3947e47d07916ce8ec079f89e204dbaf3406fd2597507eaea08e706e2ba0ee655d43e531ce742102bdcff51b98a102a8e44f0a67aa8f82837049f7b6597629523cb3c86898d91371653f2a26a5eb41c5b528fa95a7c35b991aaec92a01fd91b5e34d231c38e5a6ad52a38da390b3a07f62e832ebb8ab6a2c51bc40339edb38df537198e7267c19fe9c4278adc14f3c006bff49b396ac9ad63d00c1abb84440034b9a7bdc2892504c9a7418d6106f4f1f838e7bac7ce58378a3eddcf99251f22909af6a0623a4f1428dd466f0336daab1012545389ee6b55b3422d3d89e60c514a965c7a16a8b559046ed771d464225df0763d645f0ed754933802dc879f18c00e64a9c877d2e8d4b2cfe5e4ddb261a3b00b0edf1c0a6253831cf6b7f03b2aee4aa5935fa4c6171fa594d82c56513c0cfc48efdb9eab21301a0d0ecf19a7aa45390fd5b4b3a85ef227b0fb4dfb04ffca65c75190d5f38d491d386533b77ff8c8f4d204bbe0de125f44428d2f0911540b5ab421850b71b743dc373c2c035170e97f568cbffd29247a30daeca4b768edb71c92c23c3a00f78407ac7eca62aa4eb5f5abaab3b5509e1e594b9d359ed43870cf36c5bc8cadc8a8d93b8c061991ea58bcbc3a1e8237f430d92ee04a106bf5db8bf45213d23f9cdd76ca6a3ceeb390c1fab9f099006dd24e3402bdabd0ce251a7dce4bc38b8a966f1cd8b2245a4d4aef85033e0e6ce8171fe82c1b7a82891c4fabc9b5b70e2cd70449815be35e86d4a</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这是我的日记，不能给你看哦，不过你要是猜对了密码，那就看叭~</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">不好意思哦，这是一篇加密文章，逛逛博客的其他文章叭。</summary>
