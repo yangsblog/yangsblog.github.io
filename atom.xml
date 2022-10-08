@@ -6,7 +6,7 @@
   <link href="http://yangyy.top/atom.xml" rel="self"/>
   
   <link href="http://yangyy.top/"/>
-  <updated>2022-10-06T08:30:16.179Z</updated>
+  <updated>2022-10-08T02:52:03.849Z</updated>
   <id>http://yangyy.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>代理出问题了</title>
+    <link href="http://yangyy.top/2022/10/08/%E4%BB%A3%E7%90%86%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86/"/>
+    <id>http://yangyy.top/2022/10/08/%E4%BB%A3%E7%90%86%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86/</id>
+    <published>2022-10-08T02:06:21.000Z</published>
+    <updated>2022-10-08T02:52:03.849Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果你也出现了“<strong>使用代理不能上网，不用代理却可以上网</strong>”的问题，也许这篇博客会对你有帮助。（<strong>本篇文章不涉及计算机网络的知识</strong>，稍微了解一些计算机概念的同学即可阅读。因为本人计算机网络课程也还没学到什么东西，我自己是可以理解的）</p><p>今天打开电脑正要写作业，打开浏览器发现网络无连接，大概显示的是代理出问题或者防火墙之类的。但是看网络连接（校园网）是正常的。于是手机搜索了这个问题。网络上的指导是设置—&gt;网络和Internet—&gt;代理中，<strong>关闭手动设置代理</strong>。这一步的原理很简单，因为我<strong>没有挂VPN，但是电脑设置却开启了代理</strong>，那我自然没法上网，因为找不到代理嘛。</p><p>于是关闭手动设置代理，<strong>开始上网，没问题</strong>。</p><p>但是这次写作业有翻墙的需要，所以就需要挂VPN，于是像往常一样<strong>挂上VPN，网络又挂了</strong>，显示无法连接。（其实最后发现原因很简单）</p><p>网络上的教学只能说也是鱼龙混杂。</p><p>有的还是教你关闭手动开启代理，这个我试了没有用，因为关闭代理设置之后虽然可以上网，但是挂上VPN之后代理会自动打开，还是出问题。</p><p>我以为是我电脑出问题了。因为有很多人说是如果没有关VPN就关闭电脑，开启电脑的时候会自动寻找代理，就会出问题。但是这不是我问题的答案。</p><p>我一开始以为：电脑设置里面的代理和我挂VPN的代理是两条路，理想状态应该是挂了VPN但是电脑没开代理设置，所以我以为我的电脑出问题了会自动打开代理，我应该想办法关闭这个设置。当然这是错误的。</p><p>更有甚者说是还要打开注册表删除一些东西，还好我够懒，没有这么做。</p><p>看到了另一条路：打开IE浏览器，打开工具栏，选择Internet选项，选择连接栏，打开局域网设置，把代理服务器那边打开。（如下图所示）</p><p><img src="/2022/10/08/%E4%BB%A3%E7%90%86%E5%87%BA%E9%97%AE%E9%A2%98%E4%BA%86/i1.png" alt="image1"></p><p>还说其他浏览器也一样，都可以通过IE浏览器设置，这里我就觉得不靠谱。凭什么IE浏览器可以设置其他浏览器。我看着Internet选项也很眼熟，想想这不是设置里面那个嘛。于是直接打开菜单栏搜索Internet选项，就能打开这个设置了。</p><p>所以说我感觉这里的笔者根本不知道为什么要这么做，实际上打开Internet选项和IE浏览器有什么关系呢？搞得评论区很多人说没有IE浏览器怎么办，误人子弟！</p><p>回归正题，这样打开设置也没用，还是不能上网。</p><p>多试了几次我发现VPN、手动代理设置、Internet选项里的局域网设置其实是一体的，打开了VPN就会打开后两者，关闭了后两者VPN自然没有用。总的来说就是<strong>你的VPN实际上和你电脑中关于代理的设置是一体的，而不是我原本以为的电脑代理是正规渠道、我的VPN是旁门左道，所以互相独立</strong>。</p><p>所以回归网络上提供的两种方案，方案一针对的就是你没有挂VPN但是电脑却开了代理设置，这肯定是不能上网的，所以需要关闭代理设置，但是这就不能翻墙了。方案二针对的是你挂了VPN，但是电脑没有开代理设置，这自然也会出现网络问题。</p><p>但是现在我是开了VPN也设置了代理，却无法上网。</p><p>这时候我觉得可能是VPN的问题，于是卸载重装了clashforwindows，想要重新配置VPN。</p><p>重装之后发现保留了配置，但是我想重新配一遍。绑定订阅地址是没什么问题。**选择代理节点这边发现问题了，我选择的代理服务器停用了！**于是换了一个节点，网络正常了！</p><p>所以我的问题是代理服务器已经挂了。所以总结一下：我如果不挂VPN、电脑不设置代理，那么我可以在国内正常上网；我如果不挂VPN、电脑设置代理，自然出bug（方案一）；我如果挂了VPN，电脑不设置代理，也出bug（方案二）；我如果挂了VPN，电脑也设置代理，但是我的代理服务器挂了，我自然也挂了，但是换成正常服务器就可以科学上网了。</p><p>通过这件事，体会到遇到问题不能盲从网络上的解决方案，实际上网络上的人水平不一定高，他们也可能只是碰巧解决了问题，但是不知道原理，这种帖子阅读是没有好处的，不懂原理的解决方案，也许只是症状一致，照着改运气不好会越改越坏。<strong>一定要有自己的判断</strong>。</p><p>当然了，也不能闭门造车，不通过网上这些帖子的指导和个人的试错，我也不可能靠自己总结出这篇博客。</p><p>也许会觉得自己真傻，要是一开始就看看代理节点就好了。但是其实这样也不坏，虽然折腾了一上午，但是对于代理也有了更深刻的认识，挺好的。</p><p>有问题欢迎评论区交流~</p>]]></content>
+    
+    
+    <summary type="html">使用代理不能上网，不用代理却可以上网？</summary>
+    
+    
+    
+    <category term="技术" scheme="http://yangyy.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="代理（科学上网）" scheme="http://yangyy.top/tags/%E4%BB%A3%E7%90%86%EF%BC%88%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%89/"/>
+    
+  </entry>
   
   <entry>
     <title>《云系统的跨数据集时间序列异常检测》个人笔记</title>
@@ -394,25 +415,6 @@
     <updated>2022-07-24T14:37:50.631Z</updated>
     
     <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="9123e688dd94a090b0c2f8d6c756d2341755d33b9f7b57625dfa74b1060145bd">d361d61c52df07d9e0bf0afb5b4e2d2e89dd1552fc6e6d5104e5bb1dee2b1ecc732969811bdf064c80278864e59ccff8c7611407223cb22124a51fade95931c9a4bd0cbdcab9752e6f2c70759a9b6f78615f12f56ea99349cebead08727ac62292109f820e80d6cb40d3e2a11150c61cd5de8779619c5930296a18e0bcaa95c923d2344b614326bd4b5b6ea9edf1785fbcd1aba9525ddfcbf94e7e2e617c9ef7c3d60a684c03ba7263fd34a14ac501d9a2897585ce16ffb1ebb6669124c06b0e3b595b00aa62d2eed62d91878543f7b7aad6eea9135706cee8dd8e4c0c1c8008c315fe8e29d1ef3cbd0f074954c4372d5c5a3be9e8c7415b20bfb1b9eeabf24b7c63a02df4cdd4ffd1f2f02d1c77f2533bbddc47e65514be1390c25997e565ac530308d0647944255f53ac362ccc827fbd99b9192510bf169b9a017fb6738fd521fa0c58eaed43f3a61c2472bb7f7a4cb6b204104066ec388d2fd044d03306202803b36c38b510830ff44ebba8247e41448a59cf753f178e82eab2886c379c675e5724401bb64b63f75d3b8d8b61eac157eb24ae52fd7f1b5f90798e51ce98a3d0666b3d8c6957d8519bc6642a2b082890342248ae8700d4a499285cd3452b1b9f88d7919de02fe0879ee9eba3f1ee4e36938c8df5f1163331cb258048ec729f3a1fb1da1266fb9dbcd64c8288ff388761a8965501406cf12f3bcab445a39149543ea4d705531a5b614ea319c85516d53474258571d8bb9ac4d5665c1c43355b27162cdeef8ea4d851e3d5cc40763c74ce206baf1edeb51a4dca5058fe060657e44a07478b92d32edc12e5422e598776</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这是我的日记，不能给你看哦，不过你要是猜对了密码，那就看叭~</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-    
-    
-    <summary type="html">不好意思哦，这是一篇加密文章，逛逛博客的其他文章叭。</summary>
-    
-    
-    
-    <category term="生活的点点滴滴" scheme="http://yangyy.top/categories/%E7%94%9F%E6%B4%BB%E7%9A%84%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>2022-7-23日记</title>
-    <link href="http://yangyy.top/2022/07/23/2022-7-23%E6%97%A5%E8%AE%B0/"/>
-    <id>http://yangyy.top/2022/07/23/2022-7-23%E6%97%A5%E8%AE%B0/</id>
-    <published>2022-07-23T15:21:23.000Z</published>
-    <updated>2022-07-24T03:01:33.211Z</updated>
-    
-    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="a11d95bf1f72914586b69c6ffd306d88ad9750ae9a123ea083efc735e61baffc">d361d61c52df07d9e0bf0afb5b4e2d2e78ee05982adac9e3e1e3b28a21e805bf3e759866d85d696c106097cc5cd7ac128b36690422b0114fd651e3e0aee9953d2e1b58b382e355e529e2d68491aefab089ed8f0eed739a74e0100417a5ca2e0a260b6944b2a7a9c7d22bccd5c14f8fbca44b0adcfbcbcf862a14dfba6a07b7e51bd7f8c8ea67ff6c4b4de57ea6fda222276d7f1d62f994e17d7d5c64dac52762e3a0d931a09334104dabf968d5826ecd7a32bd98a3bc7bc736b5394a820f5ab65401930b8dbde88919b92a0e2abaa895e097a34afb874ec2e844f6a3cfb1c9cfa0089ceee425c49bb611b11dab88ff9061925155d4658466f896460b8236bc3ae93059192fa3e5e16f095b02dee87f596f47c70387426aea10893809459c9a7f9e35e8d9949c8cd284f00c4da0728c67e059215f280392496b22f0e52762b1ccc02b78d641b9336aa467677f59c47a43031ab7cecb208f08f13de1b7ad53178610b8b6b72f41a32796b4db048904d892f054fd3e0984557c65b5bfac9ff75c1d54111aab0f4a7f06e90fc3a8734e9de55109f723fa9603f0636523c1647b7ad1be24b540f73aeeafa736c216ab6a6e8f2673b5a7f5d87e83d943df51050e82f8595426535aefbe6e57ed9edd66ddcd260bfb09fe80a29fedbed9b7a064e9a023a44fccd69a4bf024f904edf58dd9caf9365175186560926a11d98a8630f46128aef34d70789c4fae016ef126b9ef2783125a2bb2142d395f396e51f795186ba154702788b576102f415768bad6c74be24e58fcc40b2f078c1263111fbaaf78aa83c6005dab0de3440b734ca4735b616885d22a3744d1392b9199c2d2ad93950ea29d037be4ab3f047ebaacd7fc1ae3640cfe8731a74911f0264795bf24390ef4ce5f333cb44baa4bc99a74d69b4fd27d5e79f7e7eb9882e98d3798e84c7cff530293f9055b3d4e55bc03fdfa32edd6854e23a1e154158c48382d0113924b87ab2f22a82af869414728ad2ff9dd049e148a10faa52644c99d79e7afbadcc31b88e6fe67019bed85217de65338468b03f1ec0ded2661afb8788a7033ac609547df1154f79281e20e087ad0a9e986faf6fe593a62cfb0eac04951b8d1e8a560ca8cb1c5b3b9304c0d77a12b8f6b9c1b684d1142af84e7c5d2402f7c522e9c68b29d38840f5a87a67adb8e572f90afbadc7aeff241316031b72421fbb55ef5d8067172878c7c7f38bab95ba969cbcf111d6627aa979e3b6ea0590a96e066803b8ced31927dc1185e270d5955a21cf39a76be4344286b5dc87171a1461e66f01ba41e7ae22ec04d136025307e1df1472f957815b0dd8f29e0aab7b8cf7820282968aa5f93220ec98d869f572ee2700ceed91f749fdd1351ca8a599ff36363c232e933c004ec8c3e401ebcb0d954dd14c9bdcbf99bf53e81f937e20537e4502ba2471debc74b6c570e15330865b71e362c907e5e51666a07268d99ade3b1f65a18c0df1a9aa04fd20a8791bef17dc24b8f8ac17591058c881025d3be93579729ed2d7b4b61b3d9dbb56679644dbadc5f43f76395555103d7128c791279354d004c5efdab96369a7f3c1858bb1e9a5c4ece47258db161cadedad0e29063b92febf9e5a5da16781c93dbd2f4b50b73afcaf7bf9fd1e548b43a7e39c32a0de4571d45fe88e27741a5b6cd3b67eff340fe01d14cb3c27aad35e931114cce8565d28cd5f2586b76355a3610e7886a922059a1e1a017bc8a44960cd77c5578e5959d935559eada5f5aa7aa434aa0e166e017fd5140f16a553794687d3cb4579df830c2bb9434999a06299ce7b674099a51f10f2b3c5bc8a59a7f7967d15beaac8fc5f626737bd3c115c07ed34e3f1c8700a38e5797773038d37c8813d8529a759df7c775c942768014bc32a9edc2c6e6ca99e712af1e0b6080b3724072595e632de3f7b5460e5d98e0349f64124a1ad3f937e328435d</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这是我的日记，不能给你看哦，不过你要是猜对了密码，那就看叭~</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">不好意思哦，这是一篇加密文章，逛逛博客的其他文章叭。</summary>
