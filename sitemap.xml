@@ -428,6 +428,13 @@
   </url>
   
   <url>
+    <loc>http://yangyy.top/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://yangyy.top/tags/%E8%87%AA%E7%9B%91%E7%9D%A3/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -436,13 +443,6 @@
   
   <url>
     <loc>http://yangyy.top/tags/%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81/</loc>
-    <lastmod>2022-10-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://yangyy.top/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -519,14 +519,14 @@
   </url>
   
   <url>
-    <loc>http://yangyy.top/tags/%E8%87%AA%E8%AF%AD/</loc>
+    <loc>http://yangyy.top/tags/%E5%8F%8D%E6%80%9D/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://yangyy.top/tags/%E5%8F%8D%E6%80%9D/</loc>
+    <loc>http://yangyy.top/tags/%E8%87%AA%E8%AF%AD/</loc>
     <lastmod>2022-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
