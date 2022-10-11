@@ -121,9 +121,9 @@
     <category term="科研" scheme="http://yangyy.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     
-    <category term="异常检测" scheme="http://yangyy.top/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
-    
     <category term="自监督" scheme="http://yangyy.top/tags/%E8%87%AA%E7%9B%91%E7%9D%A3/"/>
+    
+    <category term="异常检测" scheme="http://yangyy.top/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
     
     <category term="对比预测编码" scheme="http://yangyy.top/tags/%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81/"/>
     
