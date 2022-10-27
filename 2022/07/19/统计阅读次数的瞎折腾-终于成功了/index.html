@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>统计阅读次数的瞎折腾&amp;终于成功了 | Yangyy's Life</title><meta name="keywords" content="Hexo"><meta name="author" content="yangyy"><meta name="copyright" content="yangyy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简简单单的阅读次数统计折腾了半天，所幸最后做好了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计阅读次数的瞎折腾&amp;终于成功了">
+<meta property="og:url" content="https://43.143.214.130/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/index.html">
+<meta property="og:site_name" content="Yangyy&#39;s Life">
+<meta property="og:description" content="简简单单的阅读次数统计折腾了半天，所幸最后做好了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg">
+<meta property="article:published_time" content="2022-07-19T01:21:50.000Z">
+<meta property="article:modified_time" content="2022-07-19T02:01:03.240Z">
+<meta property="article:author" content="yangyy">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://43.143.214.130/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '统计阅读次数的瞎折腾&终于成功了',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-07-19 10:01:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Yangyy's Life" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/header2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/10/27/xhVEB6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Yangyy's Life</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">统计阅读次数的瞎折腾&amp;终于成功了</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-19T01:21:50.000Z" title="发表于 2022-07-19 09:21:50">2022-07-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-19T02:01:03.240Z" title="更新于 2022-07-19 10:01:03">2022-07-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">861</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/" data-flag-title="统计阅读次数的瞎折腾&amp;终于成功了"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>因为此前学习了给文章加密的技术，所以打算此后将博客完全开放，故想给博客增加文章阅读次数统计的功能，折腾了半天，绕了许多弯路，其实本身并不复杂。</p>
+<p>一开始直接搜索浏览次数统计，网上推荐最多的是 <strong>busuanzi|不蒜子</strong>（这个名字挺有趣的，我一开始以为是卜算子），直接照搬吧（过程不赘述了，无非是安装插件、更改配置文件罢），确实也统计出来文章阅读次数，但是只能点开文章才能看到，这并不如我意，我希望在文章外部显示。此时我以为是出了bug（现在来看并不是，实际上不蒜子的功能就是这样的，不包括在文章外部显示）。</p>
+<p>于是去求助一鸣哥，因为他的博客文章阅读次数是外部可见。一鸣哥和我说不蒜子可以的，但是他用的是waline评论系统，系统自带了统计功能，于是开始折腾waline评论系统。又是注册LeanCloud国际版又是改配置文件，最后还是出问题了，hexo g不成功。</p>
+<p>————————————————————————</p>
+<p>手动分割线，这里文字无法完全表达我的情感，很有必要给博客文章添加表情，我去搞定这个再说。</p>
+<p>————————————————————————我回来了。</p>
+<p>话接当时hexo g不成功，心态大崩😭😭😭，没效果也比出bug强啊。还好参照的博主说了，next主题版本低可能导致generate不成功，于是寻求next主题升级的办法。</p>
+<p>看了一些帖子，似乎都很麻烦，我太懒了😴，所以放弃了，心想能统计就行了，外面显示不了就算了，但是评论系统还是valine和waline并存呢，不知道是不是因为博客关联了两个LeanCloud（国内版和国际版）应用，评论系统直接崩了。于是干脆把waline和valine的应用全删了，插件留着问题也不大，waline的配置信息也全删了，重新创建valine在LeanCloud的应用，重新设置valine的配置信息。</p>
+<p>这时候注意到了</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">Srx46WYtgI2COUqAi761ccR8-gzGzoHsz</span> <span class="comment"># Your leancloud application appid</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">bNpdyeUlKIvb6bUb42mYvy0h</span> <span class="comment"># Your leancloud application appkey</span></span><br><span class="line">  <span class="attr">notify:</span> <span class="literal">false</span> <span class="comment"># Mail notifier</span></span><br><span class="line">  <span class="attr">verify:</span> <span class="literal">false</span> <span class="comment"># Verification code</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">Just</span> <span class="string">go</span> <span class="string">go</span> <span class="comment"># Comment box placeholder</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># Gravatar style</span></span><br><span class="line">  <span class="attr">guest_info:</span> <span class="string">nick,mail,link</span> <span class="comment"># Custom comment header</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># Pagination size</span></span><br><span class="line">  <span class="attr">language:</span> <span class="comment"># Language, available values: en, zh-CN</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">true</span> <span class="comment"># Article reading statistic</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span> <span class="comment"># If false, comment count will only be displayed in post page, not in home page</span></span><br><span class="line">  <span class="attr">recordIP:</span> <span class="literal">false</span> <span class="comment"># Whether to record the commenter IP</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)</span></span><br><span class="line">  <span class="comment">#post_meta_order: 0</span></span><br></pre></td></tr></tbody></table></figure>
+<p>visitors这一项，原本是false，这不就是浏览次数统计嘛，于是改为true，看看效果。</p>
+<p>😀可以在文章外部显示阅读次数了，但是点进去居然有两个阅读次数，而且还不一样。😞</p>
+<p>到底是什么问题呢？（此时已经忘记最早是用不蒜子了）</p>
+<p>重新梳理添加阅读次数的思路才发现用了busuanzi_count，马上在配置文件把enable改成false。</p>
+<p>hexo g，成功！完美！😆😆😆</p>
+<p>其实本身是很简单的事情，因为valine评论系统自带统计阅读次数和评论次数功能，直接在配置文件改一行就行了，结果搞了这么半天还差点把自己的网站评论系统搞崩了，以后要好好看配置信息！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://43.143.214.130">yangyy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://43.143.214.130/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/">https://43.143.214.130/2022/07/19/%E7%BB%9F%E8%AE%A1%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0%E7%9A%84%E7%9E%8E%E6%8A%98%E8%85%BE-%E7%BB%88%E4%BA%8E%E6%88%90%E5%8A%9F%E4%BA%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://43.143.214.130" target="_blank">Yangyy's Life</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/07/19/emoji%E6%B1%87%E6%80%BB/"><img class="prev-cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">emoji汇总</div></div></a></div><div class="next-post pull-right"><a href="/2022/07/18/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB%E9%A1%B9%E7%9B%AEWeb%E7%AB%AF%E7%9A%84%E6%90%AD%E5%BB%BA/"><img class="next-cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">车牌识别项目Web端的搭建</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/03/Hexo%E7%9A%84Next%E4%B8%BB%E9%A2%98%E4%B8%8B%E4%B8%BA%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0pdf%E6%96%87%E4%BB%B6/" title="Hexo的Next主题下为文章添加pdf文件"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-03</div><div class="title">Hexo的Next主题下为文章添加pdf文件</div></div></a></div><div><a href="/2022/07/19/emoji%E6%B1%87%E6%80%BB/" title="emoji汇总"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-19</div><div class="title">emoji汇总</div></div></a></div><div><a href="/2022/07/14/hello-world/" title="Hello World"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-14</div><div class="title">Hello World</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/header2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yangyy</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/10/27/leetcodeT3%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%E9%A2%98%E8%A7%A3/" title="leetcodeT3无重复字符的最长子串题解">leetcodeT3无重复字符的最长子串题解</a><time datetime="2022-10-27T07:46:14.000Z" title="发表于 2022-10-27 15:46:14">2022-10-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/10/17/%E3%80%8A%E8%87%AA%E7%9B%91%E7%9D%A3%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81%E3%80%8B%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0/" title="《自监督对比预测编码》论文复现">《自监督对比预测编码》论文复现</a><time datetime="2022-10-17T11:06:22.000Z" title="发表于 2022-10-17 19:06:22">2022-10-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/10/12/%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E7%8C%AE%E7%BB%BC%E8%BF%B0-%E9%98%B6%E6%AE%B51/" title="简单的文献综述-阶段1">简单的文献综述-阶段1</a><time datetime="2022-10-12T02:23:23.000Z" title="发表于 2022-10-12 10:23:23">2022-10-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/10/12/%E3%80%8A%E5%BE%AE%E8%BD%AF%E5%85%AC%E5%8F%B8%E7%9A%84%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E6%9C%8D%E5%8A%A1%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/" title="《微软公司的时间序列异常检测服务》个人笔记">《微软公司的时间序列异常检测服务》个人笔记</a><time datetime="2022-10-12T01:51:36.000Z" title="发表于 2022-10-12 09:51:36">2022-10-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/10/11/%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E9%A1%B5%E8%84%9A%E8%AE%BE%E7%BD%AE/" title="不一样的页脚设置">不一样的页脚设置</a><time datetime="2022-10-11T02:06:35.000Z" title="发表于 2022-10-11 10:06:35">2022-10-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 <i style="color:#FF6A6A;animation: announ_animation 0.8s linear infinite;" class="fa fa-heartbeat"></i> yangyy</div><div class="framework-info"><!--span= _p('footer.framework') + ' '--><!--a(href='https://hexo.io')= 'Hexo'--><!--span.footer-separator |--><!--span= _p('footer.theme') + ' '--><!--a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'--><br>
+<img src="https://static.dy208.cn/o_1dfilp8ruo521thr1hvf18ji17soa.png">
+<a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">闽ICP备2022015544号</a></div><div class="footer_custom_text">那些看似不起波澜的日复一日，会突然在某一天让人看到坚持的意义</div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2022,07,14,11,07,28)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+31*24*3600*1000+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);	</script></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Srx46WYtgI2COUqAi761ccR8-gzGzoHsz',
+      appKey: 'bNpdyeUlKIvb6bUb42mYvy0h',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
