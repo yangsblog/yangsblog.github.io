@@ -1560,4 +1560,107 @@
         <tag>自言自语</tag>
       </tags>
   </entry>
+  <entry>
+    <title>熟悉RecBole框架</title>
+    <url>/2022/12/18/%E7%86%9F%E6%82%89RecBole%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<p>最近在争取一份科研实习工作，第一步的任务是学习Pytorch框架（因为我之前没有用过）。肝了一天半的时间之后得到了第二个任务，熟悉RecBole框架。</p>
+<p>这相对来说更难一些，因为这是老师课题组自己开发的框架，推荐算法也是我没有接触过的领域。但是继续冲吧。只是不知道什么时候可以做课内的ddl，课内的绩点也不能松懈呀。</p>
+<p>RecBole框架相应的论文是《RecBole: Towards a Unified, Comprehensive and Efficient Framework for Recommendation Algorithms》。先读这篇论文吧。</p>
+<h4 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h4>
+<p>近年来涌现了大量的推荐算法。<font color="red">志在提出一个统一、全面、高效的推荐系统库，RecBole</font>。在28个数据集上实现了73个推荐算法。该框架是基于Pytorch实现的。</p>
+<h4 id="1、简介"><a class="header-anchor" href="#1、简介">¶</a>1、简介</h4>
+<p>推荐算法飞速发展，很难以统一的方式或框架实现比较的基线方法。但是实际上推荐算法的许多通用组件是比较相似的，所以提出了这个统一的框架。</p>
+<p>RecBole库主要特点和能力如下：</p>
+<ul>
+<li>统一的推荐框架：采用PyTorch开发。三大核心部分：数据模块、模型模块、评估模块。封装通用的组件、函数或程序。</li>
+<li>通用和可扩展的数据结构：在两个层面实现了支持的数据结构。用户层面：原子文件，表征四种主流推荐任务的输入；算法层面：引入通用的数据结构Interaction。</li>
+<li>全面的基准模型和数据集：实现了73种推荐算法，纳入了28个常用的数据集来评估推荐系统。</li>
+<li>高效的GPU加速执行：暂时不用学，我也没有可用的GPU算力。</li>
+<li>广泛和标准的评估协议：…。</li>
+</ul>
+<h4 id="2、RecBole库"><a class="header-anchor" href="#2、RecBole库">¶</a>2、RecBole库</h4>
+<h5 id="2-1-数据模块"><a class="header-anchor" href="#2-1-数据模块">¶</a>2.1  数据模块</h5>
+<h6 id="2-1-1-整体数据流"><a class="header-anchor" href="#2-1-1-整体数据流">¶</a>2.1.1 整体数据流</h6>
+<p>原始输入-&gt;原子文件-&gt;Dataset-&gt;Dataloader-&gt;算法。</p>
+<p><font color="red">数据流涉及两种特殊的数据形式：用户和算法</font>。</p>
+<p>对于数据准备，定义六种原子文件类型，统一用户层面的输入。<font color="red">原子文件能描述不同推荐任务所需的大多数形式的输入数据</font>。</p>
+<p>在算法层面，引入灵活的数据结构交互，为不同的推荐算法提供了<font color="red">统一的内部数据表示</font>。</p>
+<h6 id="2-1-2-原子文件"><a class="header-anchor" href="#2-1-2-原子文件">¶</a>2.1.2 原子文件</h6>
+<p>原子文件是<strong>描述各种推荐任务的输入</strong>的基本组件。试图<strong>总结和统一主流推荐任务的最基本的输入形式</strong>。</p>
+<p>总结出四种基本数据类型：token、token sequence、float、float_sequence。前两者表示离散特征（ID、类别），后两者表示连续特征（价格）。</p>
+<ul>
+<li>.INTER是所有推荐任务中<font color="red">必须使用的文件</font>，每一行由用户ID、项目ID、用户项目评分、时间戳、评论文本组成。</li>
+<li>.USER是<font color="red">用户档案文件</font>。包含用户的分类和特征。</li>
+<li>.ITEM是项目特征文件，描述项目特征。</li>
+</ul>
+<p><strong><font color="red">语境感知的推荐一般就需要用到inter、user、item了</font></strong>。</p>
+<ul>
+<li>
+<p>.KG是知识图谱文件，用于基于知识的推荐。每一行对应一个&lt;头实体、尾实体、关联ID&gt;的三元组。</p>
+</li>
+<li>
+<p>.LINK用于基于知识的推荐。记录了推荐系统项目和知识图谱实体之间的对应关系。</p>
+</li>
+<li>
+<p>.NET是社会网络文件，用于社会推荐。</p>
+</li>
+</ul>
+<p><strong>原子文件可以覆盖大多数主流推荐任务的输入，如果不足以支持，可以以灵活的方式引入新的原子文件。</strong></p>
+<h6 id="2-1-3-推荐任务的输入文件"><a class="header-anchor" href="#2-1-3-推荐任务的输入文件">¶</a>2.1.3 推荐任务的输入文件</h6>
+<p>基于上述的原子文件，<font color="red">可以利用其<strong>组合</strong>来推进五种主流的推荐任务</font>：一般推荐、情境感知推荐、基于知识的推荐、顺序推荐和社交推荐。（目前实现前四种）</p>
+<h6 id="2-1-4-内部数据结构Interaction"><a class="header-anchor" href="#2-1-4-内部数据结构Interaction">¶</a>2.1.4 内部数据结构Interaction</h6>
+<p>Interaction被<font color="red">输入到推荐算法</font>中。</p>
+<p>为了使其统一灵活，实现为基于<strong>python.dict</strong>的新的抽象数据类型（一个键值索引的数据结构）。键值对应输入的特征；值对应张量tensor。</p>
+<h5 id="2-2-模型模块"><a class="header-anchor" href="#2-2-模型模块">¶</a>2.2 模型模块</h5>
+<p>模型模块组织推荐算法的实现。</p>
+<h6 id="2-2-1-统一的实现接口"><a class="header-anchor" href="#2-2-1-统一的实现接口">¶</a>2.2.1 统一的实现接口</h6>
+<p>实现一个新的模型，只需重新规定接口与输入和评估模块连接。利用接口函数calculate_loss()进行训练，predict用于测试。同时建立了许多损失函数作为组件。</p>
+<h6 id="2-2-2-已实现的模型"><a class="header-anchor" href="#2-2-2-已实现的模型">¶</a>2.2.2 已实现的模型</h6>
+<p>实现了73个推荐模型。</p>
+<h6 id="2-2-3-丰富的辅助功能"><a class="header-anchor" href="#2-2-3-丰富的辅助功能">¶</a>2.2.3 丰富的辅助功能</h6>
+<p>比如说自动参数调整：给一个参数集，搜索最佳性能的最佳值。还有模型保存和模型加载。支持从存储的中断点恢复模型学习。等等等等</p>
+<h5 id="2-3-评价模块"><a class="header-anchor" href="#2-3-评价模块">¶</a>2.3 评价模块</h5>
+<p>功能是实现推荐系统常用的评价协议。不同的模式可以在同一个评价模块下进行比较。</p>
+<h6 id="2-3-1-评价指标"><a class="header-anchor" href="#2-3-1-评价指标">¶</a>2.3.1 评价指标</h6>
+<p>同时支持<font color="red">基于价值和基于排名的评价指标</font>。</p>
+<p>基于价值的评价就是利用均方根误差、平均误差，衡量真实值和预测值之间的预测误差；基于排名的评价，用于top-K项目推荐，衡量算法生成的推荐名单的排名性能。</p>
+<h6 id="2-3-2-评价设置"><a class="header-anchor" href="#2-3-2-评价设置">¶</a>2.3.2 评价设置</h6>
+<p><strong><font color="red">主要分歧在于“基于排名top-K项目推荐”的评价</font></strong>。重点不是提供最合适的评价，而是提供大多数广泛采用的评价。</p>
+<p>同时，本库提供了一种可能性，就是可以比较各种模型在不同评价协议下的性能。</p>
+<p>为了方便各种评估设置，将相关函数封装成四个主要部分：Group、Split、Order、NegSample。</p>
+<h6 id="2-3-3-Top评价的加速策略"><a class="header-anchor" href="#2-3-3-Top评价的加速策略">¶</a>2.3.3 Top评价的加速策略</h6>
+<p>计算Top-K评价指标通常很耗时。原因在于，需要评估每个用户-项目对的得分。不同用户在测试集有不同数量的真实项目，所以补全，没有的就说负无穷。</p>
+<p>…</p>
+<h6 id="2-4-4-效率和可扩展性"><a class="header-anchor" href="#2-4-4-效率和可扩展性">¶</a>2.4.4 效率和可扩展性</h6>
+<h4 id="3-该库的使用实例"><a class="header-anchor" href="#3-该库的使用实例">¶</a>3. 该库的使用实例</h4>
+<h5 id="3-1-运行现有的模型"><a class="header-anchor" href="#3-1-运行现有的模型">¶</a>3.1 运行现有的模型</h5>
+<p>库中包含的模型可以用固定参数或自动调参来运行。</p>
+<h6 id="3-1-1-固定参数的模型运行"><a class="header-anchor" href="#3-1-1-固定参数的模型运行">¶</a>3.1.1 固定参数的模型运行</h6>
+<p>（i）对数据集进行格式化：首先用户选择数据集，根据脚本进行格式化，可以为不同的数据集生成所需的原子文件。代码：atomic_file=PreProcess(dataset)</p>
+<p>（ii）生成配置。可以通过不同的方式生成配置。可以写一个配置文件，在主函数当中读取这个文件；可以在命令行包含参数；可以在代码中写入参数字典。（<font color="red">这里的参数不是模型的参数，是程序的参数</font>）</p>
+<p>（iii）筛选和拆分数据集。提供丰富的辅助功能来过滤和分割数据集。</p>
+<p>（iv）加载模型。</p>
+<p>（v）训练和评估。</p>
+<h6 id="3-1-2-参数调整（-font-color-red-说是超参数调整更为合理-font-）"><a class="header-anchor" href="#3-1-2-参数调整（-font-color-red-说是超参数调整更为合理-font-）">¶</a>3.1.2 参数调整（<font color="red">说是超参数调整更为合理</font>）</h6>
+<p>可以根据所提供的超参数范围来优化一个给定的模型。</p>
+<p>（i）设置参数范围：在hyper.test文件中提供候选参数。在该文件中，每一行的格式都是参数=[value1, value2, …, valuen]</p>
+<p>（ii）设置调优方法：在库hyperopt的基础上实现的。给定一组参数值，有四种调优方法“网格搜索”、“随机搜索”…代码：hy =HyperTuning(objective, tuning_method,range_file)</p>
+<p>（iii）用户通过hy.run()启动调优进程。输出保存最优参数和相应的模型性能。</p>
+<h5 id="3-2-实现新的模型"><a class="header-anchor" href="#3-2-实现新的模型">¶</a>3.2 实现新的模型</h5>
+<p>基于RecBole，通过实例化以下三个函数实现一个新模型：</p>
+<p>（i）实现<strong>init()函数</strong>：在这个函数中，用户执行参数初始化、全局变量定义等。新的模型是提供的抽象模型类的子类，目前为止，已经实现了一般四类推荐算法的抽象类。</p>
+<p>（ii）实现<strong>calculate_loss()函数</strong>：计算新模型要优化的损失，库将自动调用不同的优化方法学习模型。</p>
+<p>（iii）<strong>predict()函数</strong>：从输入数据到输出结果。</p>
+<h4 id="4-与现有的库的比较"><a class="header-anchor" href="#4-与现有的库的比较">¶</a>4. 与现有的库的比较</h4>
+<p>其实此前也有一些推荐系统库。编程语言逐渐从C/C++/JAVA到Python/Tensorflow/PyTorch。</p>
+<p><strong><font color="red">RecBole的目标是简化新算法的开发过程。</font></strong></p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>RecBole</tag>
+        <tag>科研实习</tag>
+      </tags>
+  </entry>
 </search>
