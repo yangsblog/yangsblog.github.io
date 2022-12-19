@@ -1663,4 +1663,96 @@
         <tag>科研实习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>利用RecBole框架复现DCN-V2模型</title>
+    <url>/2022/12/19/%E5%88%A9%E7%94%A8RecBole%E6%A1%86%E6%9E%B6%E5%A4%8D%E7%8E%B0DCN-V2%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h4 id="一、-论文来源"><a class="header-anchor" href="#一、-论文来源">¶</a>一、 论文来源</h4>
+<p>本次复现的DCN-V2模型由《DCN V2: Improved Deep &amp; Cross Network and Practical Lessons for Web-scale Learning to Rank Systems》提出。</p>
+<h4 id="二、-数据集"><a class="header-anchor" href="#二、-数据集">¶</a>二、 数据集</h4>
+<p>本模型在Criteo数据集上运行。Criteo数据集通过RecBole框架提供的方法可转换为.INTER类型的原子文件。</p>
+<h4 id="三、-论文阅读-模型复现"><a class="header-anchor" href="#三、-论文阅读-模型复现">¶</a>三、 论文阅读 &amp; 模型复现</h4>
+<h5 id="1、-简介"><a class="header-anchor" href="#1、-简介">¶</a>1、 简介</h5>
+<p>学习排名（Learning to Rank，LTR）是现代机器学习和深度学习的重要问题之一。在LTR模型中，<font color="red"><strong>学习有效的特征交叉</strong></font>吸引关注。</p>
+<p>有效的特征交叉提供了超出个别特征的额外的交互信息。</p>
+<p>为了更准确地捕获有效的特征交叉，常见的补救措施是通过<font color="red">更宽或者更深的网络</font>进一步增加模型的容量。但是<font color="red">提高模型性能的同时，降低了服务速度</font>。</p>
+<p>Deep&amp;Cross Network（DCN）是有效和优雅的。</p>
+<p>DCN-V2首先通过交叉层学习内部的显性特征交互，然后与深度网络结合，学习互补的隐性交互。DCN-V2的核心是交叉层。</p>
+<h5 id="2、相关工作"><a class="header-anchor" href="#2、相关工作">¶</a>2、相关工作</h5>
+<p>（好吧，其实读到这里都没有看懂，希望后面具体描述能看懂）</p>
+<h5 id="3、DCN-V2"><a class="header-anchor" href="#3、DCN-V2">¶</a>3、DCN-V2</h5>
+<p>（感觉有必要先学习一下DCN模型）</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>RecBole</tag>
+        <tag>科研实习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习DCN模型</title>
+    <url>/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3>
+<p>DCN模型由论文《Deep &amp; Cross Network for Ad Click Predictions》提出。本次对DCN模型的学习也就是对该论文的阅读。</p>
+<h3 id="补充"><a class="header-anchor" href="#补充">¶</a>补充</h3>
+<p>阅读论文到一半突然对这两篇关于DCN模型的论文有些开窍了。不管是DCN模型还是DCN-V2模型，他们都服务于广告点击率的预测，大致的任务也就是输入一则广告的相关信息（包含各类特征信息），我们的模型应该输出对于其点击率的预测。个人认为，这种任务和输入图像、输出分类结果没什么区别。所以其实一开始也就是采用DNN（深度神经网络）这种模型，只不过效果不算好，因此改进，加入交叉网络而已。</p>
+<h3 id="论文阅读"><a class="header-anchor" href="#论文阅读">¶</a>论文阅读</h3>
+<h4 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h4>
+<p><strong>点击率（Click Through Rate，CTR）预测</strong>是一个大规模问题。</p>
+<p>在广告业中，广告商向出版商付费，<strong>流行的支付模式是每次点击的成本</strong>。因此，出版商的收入很大程度依赖于准确预测CTR的能力。</p>
+<p>**<font color="red">识别经常预测的特征同时探索少见的交叉特征</font>**是做出好的预测的关键。但是网络规模的推荐系统的数据大多是离散和分类的，导致特征空间大而稀疏。限制采用线性模型。</p>
+<p>引入一种新的神经网络结构——交叉网络。该网络以自动的方式明确应用特征交叉。</p>
+<p>联合训练交叉网络和深度神经网络。</p>
+<h4 id="深度和交叉网络DCN"><a class="header-anchor" href="#深度和交叉网络DCN">¶</a>深度和交叉网络DCN</h4>
+<p>在本节描述深度和交叉网络（DCN）模型的架构：从一个嵌入和堆叠层开始，然后是平行的交叉网络和深度网络，最后是组合层，将两个网格的输出结合起来。如下图所示：</p>
+<img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i1.png" alt="image" style="zoom: 40%;">
+<h5 id="嵌入和堆积层（Embedding-and-Stacking-Layer）"><a class="header-anchor" href="#嵌入和堆积层（Embedding-and-Stacking-Layer）">¶</a>嵌入和堆积层（Embedding and Stacking Layer）</h5>
+<p>考虑具有稀疏和密集特征的输入数据。<font color="red">输入的数据大多是分类特征</font>，例如“country=usa”，这样的特征也会变**<font color="red">编码为独热向量</font><strong>，如[0, 1, 0]，但是这样会</strong><font color="red">导致特征空间很高</font>**。</p>
+<p>为了降低维度，采用一个**<font color="red">嵌入程序，将这些二进制特征转化为密集的实值向量（嵌入向量）</font>**。</p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i2.png" alt="image"></p>
+<p>其中Xembed,i是嵌入向量，xi是第i类的二进制输入，Wembed,i是相应的嵌入矩阵，<strong>嵌入矩阵会随其他参数一起被优化</strong>。</p>
+<p>最后，嵌入向量于归一化的密集特征堆叠（stack）成一个向量x0。</p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i3.png" alt="image"></p>
+<h5 id="交叉网络"><a class="header-anchor" href="#交叉网络">¶</a>交叉网络</h5>
+<p>交叉网络的关键思想是**<font color="red">以一种有效的方式应用显示的特征交叉</font>**。</p>
+<p>交叉网络由交叉层组成，每层有以下公式：</p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i4.png" alt="image"></p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i5.png" alt="image"></p>
+<p>交叉网络的参数数量少，限制了模型的容量，为了捕捉高度非线性的相互作用，引入一个并行的深度网络。</p>
+<h5 id="深度网络"><a class="header-anchor" href="#深度网络">¶</a>深度网络</h5>
+<p>深度网络的结构相比其他的深度神经网络的结构会更简单一些，是一个**<font color="red">全连接的前馈神经网络</font>**，每层有以下公式：</p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i6.png" alt="image"></p>
+<h5 id="组合层"><a class="header-anchor" href="#组合层">¶</a>组合层</h5>
+<p>组合层将两个网络的输出连接起来，将串联的向量送人标准的logits层。</p>
+<p>以下是一个二分类概率的公式：</p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i7.png" alt="image"></p>
+<p>其中XL1是交叉网络的输出，hL2是深度网络的输出（<strong><font color="red">二者转置之后串联起来成为一个向量</font></strong>），Wlogits是组合层的权重向量，<font color="red">相当于两个一维向量点积得到一个数</font>，仍然会输入σ(x)=1/(1+exp(-x))。</p>
+<p>损失函数如下：</p>
+<p><img src="/2022/12/19/%E5%AD%A6%E4%B9%A0DCN%E6%A8%A1%E5%9E%8B/i8.png" alt="image"></p>
+<p>yi是真实标签，pi是计算出的概率。</p>
+<p><strong><font color="red">但是为什么输出的是概率？不是应该是点击率吗？还是说点击率也按区间转化成了标签？</font></strong></p>
+<h4 id="交叉网络的分析"><a class="header-anchor" href="#交叉网络的分析">¶</a>交叉网络的分析</h4>
+<p>主要就是分析DCN当中，交叉网络的有效性。</p>
+<p>这里暂时也不太看得懂。</p>
+<h4 id="实验结果"><a class="header-anchor" href="#实验结果">¶</a>实验结果</h4>
+<p>这一节主要是评估DCN的性能。</p>
+<h5 id="Criteo数据集"><a class="header-anchor" href="#Criteo数据集">¶</a>Criteo数据集</h5>
+<p>Criteo数据集是为了预测广告的点击率，有13个整数特征和26个分类特征，每个类别都有很高的cardinality。因此对于这个数据集而言，0.001的logloss都是很有意义的。</p>
+<p>该数据集包含7天（约4100万条记录），使用前6天的数据用于训练，第七天的数据随机拆分为同等大小的验证集和测试集。</p>
+<h5 id="实施细节"><a class="header-anchor" href="#实施细节">¶</a>实施细节</h5>
+<p>官方的代码是用TensorFlow实现的。</p>
+<h4 id="结语"><a class="header-anchor" href="#结语">¶</a>结语</h4>
+<p>论文的大致阅读就到这里了，对于复现模型而言，性能测试和基线方法的比较可以暂时不谈，毕竟支撑的知识还是太少太少。接下来开始具体的复现这个DCN模型吧。</p>
+<h3 id="复现DCN模型"><a class="header-anchor" href="#复现DCN模型">¶</a>复现DCN模型</h3>
+<h4 id="学习他人的复现："><a class="header-anchor" href="#学习他人的复现：">¶</a>学习他人的复现：</h4>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>RecBole</tag>
+        <tag>科研实习</tag>
+      </tags>
+  </entry>
 </search>
