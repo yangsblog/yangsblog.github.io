@@ -6,7 +6,7 @@
   <link href="https://43.143.214.130/atom.xml" rel="self"/>
   
   <link href="https://43.143.214.130/"/>
-  <updated>2023-01-06T10:57:22.464Z</updated>
+  <updated>2023-01-10T02:59:58.032Z</updated>
   <id>https://43.143.214.130/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过论文学习DAGFM模型</title>
+    <link href="https://43.143.214.130/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://43.143.214.130/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/</id>
+    <published>2023-01-10T00:56:02.000Z</published>
+    <updated>2023-01-10T02:59:58.032Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h3><p>本次科研实习的任务是利用RecBole框架复现论文《Directed Acyclic Graph Factorization Machines for CTR Prediction via Knowledge Distillation》中的DAGFM模型，因此第一要务是把论文学习明白，把模型熟悉清楚。再开始琢磨如何利用RecBole进行复现。</p><h3 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h3><p>译作《用于点击率预测的利用知识蒸馏的有向无环图分解机》</p><h4 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h4><p>网络规模的推荐系统中<strong>高维稀疏数据增长</strong>，在CTR预测任务中<strong>学习高阶特征交互</strong>的计算成本大大增加。</p><p>一些基于<font color="red">知识蒸馏</font>的方法将知识从复杂的教师模型转换成浅层的学生模型，<font color="red">加速模型推理</font>。但是知识蒸馏会导致模型<font color="red">精度下降</font>。如何<font color="red">平衡浅层学生模型的效率和效果</font>是一个挑战。</p><p>为了解决这个问题，我们提出一个有向无环图分解机（DAGFM），通过知识蒸馏从现有的复杂交互模型当中学习高阶特征交互，用于CTR预测。提出的轻量级学生模型DAGFM可以从教师网络当中学习任意明确的特征交互，实现<font color="red">近似无损的性能</font>，通过动态编程算法得到证明。改进的模型DAGFM+可以有效地从任何复杂的教师模型中提炼出显性和隐性特征的相互作用。效果甚佳。</p><h4 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h4><p>点击率（CTR）预测的目的是预测用户点击某个项目的概率。CTR预测中实现良好性能的<strong>关键</strong>是<font color="red">学习有效的高阶特征交互</font>。最大的挑战之一是<font color="red">原始特征的高阶交互</font>建模的高计算成本：原始特征数量增加之后，特征组合的数量会指数增长。<font color="red">原始特征本身通常都是高度稀疏</font>的（标识符特征被编码为one-hot向量之后很稀疏、从上游任务（视觉信息）建立的多文件向量也是），再在此上计算高阶特征交互非常耗时。</p><p>需要一种轻量级的CTR预测的推荐算法简化在线推理过程，从而避免实际行业中计算成本爆炸。</p><p>目前有一些努力，利用<font color="red">知识蒸馏（KD）技术</font>将知识从复杂的教师模型转移到学习参数减少的浅层的学生模型，加快<font color="red">模型推理速度</font>。但是降低学习参数的KD模型的代价是<font color="red">模型精度下降</font>。</p><p>提出一个轻量级的基于知识蒸馏的DAGFM预测CTR。设计一个具有<font color="red">较少学习参数</font>的影子学生模型，但是<font color="red">保持</font>现有的复杂交互模型<font color="red">提取高阶特征交互的能力</font>。</p><p>具体地说，有向无环图当中每一个<font color="red">节点代表一个特征域</font>，不同节点通过不成环的有向边连接。<font color="red">节点间的连接，代表特征的交互</font>，用DAG中的边的<font color="red">可学习权重</font>（毕竟不同的特征交互作用是不一样的）来模拟。通过特定的交互学习函数（内部、外部、内核），DAG上的特征交互作用可以转化为明确的任意顺序的交互。</p><p>为了从<font color="red">隐性特征交互</font>模型（AutoInt、FibiNet）中提炼知识，进一步改进DAGFM，多层感知机（MLP）被集成进去，因此DAGFM+可以学习任何显性和隐性的特征交互。</p><h4 id="Preliminary（初步的？知识预备？）"><a class="header-anchor" href="#Preliminary（初步的？知识预备？）">¶</a>Preliminary（初步的？知识预备？）</h4><p>首先介绍CTR预测任务，然后介绍其中的显性高阶特征交互和交互学习函数。</p><h5 id="CTR预测"><a class="header-anchor" href="#CTR预测">¶</a>CTR预测</h5><p>点击率预测就是预测用户点击某个项目的概率（给你用户信息和项目信息）。具体说，就是给定m个特征字段，用x={x1,x2,…,xm}表示<font color="red">用户和项目特征</font>。标签y∈{0，1}代表是否点击。根据x进行预测。CTR预测任务中，取得良好性能的<font color="red">关键是学习有效的高阶特征交互</font>。</p><h5 id="高阶特征交互"><a class="header-anchor" href="#高阶特征交互">¶</a>高阶特征交互</h5><p>给定输入特征x={x1,x2,…,xm}，x的嵌入特征表示为{e1,e2,…,em}（向量降维）。</p><p>显示特征交互可以表示为</p><img src="/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/i1.png" alt="显示特征交互公式" style="zoom:50%;"><p>∅代表特征交互函数。</p><img src="/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/i2.png" alt="二阶特征交互公式" style="zoom:50%;"><p>（这两个公式还是比较好理解的）</p><h5 id="交互学习函数"><a class="header-anchor" href="#交互学习函数">¶</a>交互学习函数</h5><p><font color="red">特征交互学习函数</font>定义了计算<font color="red">特征间交互作用的方式</font>。不同的交互模型使用不同的交互学习函数。</p><ol><li><p>基本的内部交互学习函数。</p><p>现有研究中最常用的交互学习函数表述为：</p><img src="/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/i3.png" alt="基本的内部交互学习函数" style="zoom:75%;"><p>代表element-wise product（Hadamard product），含义是两个矩阵对应位置元素进行乘积。其实就是<font color="red">向量点积</font>。</p></li><li><p>加权的内部交互学习函数。</p><p>上述方法<font color="red">不能捕捉到不同场景的特征信息</font>（因为所有特征交互都一视同仁了），导致梯度耦合问题。为了解决这个问题，提出了许多<font color="red">场景感知的变体</font>，使用权重参数来模拟不同场景的特征交互作用。</p><img src="/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/i4.png" alt="加权的内部交互学习函数" style="zoom:60%;"><p>wi,j是i和j的权向量。</p></li><li><p>内核的交互学习函数。</p><p>通过扩展权重向量的维度，最近的研究提出了更为强大的交互学习函数：</p><img src="/2023/01/10/%E9%80%9A%E8%BF%87%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0DAGFM%E6%A8%A1%E5%9E%8B/i5.png" alt="内核的交互学习函数" style="zoom:60%;"><p>Wi,j是学习权重矩阵。</p></li></ol><p>纳入了交互权重之后，有了<font color="red">很大的改进</font>。但是模型的<font color="red">复杂度也大大增加</font>，列举所有不同场景权重的高阶特征交互是NP问题。大多数现有的高阶特征交互模型通过增加参数来提高模型能力，但是<font color="red">代价是极高的计算成本</font>，显然不太符合实际。</p><p>-------------手动分割线，去外婆家吃午饭</p>]]></content>
+    
+    
+    <summary type="html">为了科研实习，冲冲冲！</summary>
+    
+    
+    
+    <category term="科研" scheme="https://43.143.214.130/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+    <category term="RecBole" scheme="https://43.143.214.130/tags/RecBole/"/>
+    
+    <category term="科研实习" scheme="https://43.143.214.130/tags/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0/"/>
+    
+    <category term="推荐算法" scheme="https://43.143.214.130/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>近期读书笔记（22/1/5）</title>
@@ -449,31 +474,6 @@
     
     
     <category term="Hexo" scheme="https://43.143.214.130/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《用自监督的对比预测编码进行时间序列变化点检测》个人笔记</title>
-    <link href="https://43.143.214.130/2022/10/03/%E3%80%8A%E7%94%A8%E8%87%AA%E7%9B%91%E7%9D%A3%E7%9A%84%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81%E8%BF%9B%E8%A1%8C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/"/>
-    <id>https://43.143.214.130/2022/10/03/%E3%80%8A%E7%94%A8%E8%87%AA%E7%9B%91%E7%9D%A3%E7%9A%84%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81%E8%BF%9B%E8%A1%8C%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B%E3%80%8B%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/</id>
-    <published>2022-10-03T08:09:46.000Z</published>
-    <updated>2022-10-06T08:15:38.095Z</updated>
-    
-    <content type="html"><![CDATA[<p>该论文原名《Time Series Change Point Detection with Self-Supervised Contrastive Predictive Coding》，是CCF A类论文。译作《用自监督的对比预测编码进行时间序列变化点检测》。个人阅读主要是为了了解<strong>异常检测</strong>的相关方法。</p><p>由于担心侵权问题，不能展示原文，大家若有需要，直接利用Google学术搜索即可，很容易获取。</p><p>以下为个人笔记，欢迎交流和指正。</p><div class="row">    <embed src="./TSCPD.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
-    
-    
-    <summary type="html">分享该论文（CCF A类）的个人阅读笔记。</summary>
-    
-    
-    
-    <category term="科研" scheme="https://43.143.214.130/categories/%E7%A7%91%E7%A0%94/"/>
-    
-    
-    <category term="异常检测" scheme="https://43.143.214.130/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
-    
-    <category term="自监督" scheme="https://43.143.214.130/tags/%E8%87%AA%E7%9B%91%E7%9D%A3/"/>
-    
-    <category term="对比预测编码" scheme="https://43.143.214.130/tags/%E5%AF%B9%E6%AF%94%E9%A2%84%E6%B5%8B%E7%BC%96%E7%A0%81/"/>
     
   </entry>
   
