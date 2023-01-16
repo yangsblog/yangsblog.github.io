@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>在RecBole当中实现DAGFM模型 | Yangyy's Life</title><meta name="keywords" content="科研实习,RecBole,推荐算法"><meta name="author" content="yangyy"><meta name="copyright" content="yangyy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一些后续日子的规划&amp;向科研实习发起冲锋！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在RecBole当中实现DAGFM模型">
+<meta property="og:url" content="https://yangyy.top/posts/2907034089.html">
+<meta property="og:site_name" content="Yangyy&#39;s Life">
+<meta property="og:description" content="一些后续日子的规划&amp;向科研实习发起冲锋！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg">
+<meta property="article:published_time" content="2023-01-13T02:46:10.000Z">
+<meta property="article:modified_time" content="2023-01-16T14:56:33.032Z">
+<meta property="article:author" content="yangyy">
+<meta property="article:tag" content="科研实习">
+<meta property="article:tag" content="RecBole">
+<meta property="article:tag" content="推荐算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yangyy.top/posts/2907034089"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '在RecBole当中实现DAGFM模型',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-16 22:56:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Yangyy's Life" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/header2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/10/27/xhVEB6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Yangyy's Life</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在RecBole当中实现DAGFM模型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-13T02:46:10.000Z" title="发表于 2023-01-13 10:46:10">2023-01-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-16T14:56:33.032Z" title="更新于 2023-01-16 22:56:33">2023-01-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/2907034089.html" data-flag-title="在RecBole当中实现DAGFM模型"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/2907034089.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/2907034089.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4>
+<p>如愿地、顺利地完成了上一阶段的任务（课内的诸多结课作业），终于可以全力做RecBole的科研任务了。</p>
+<p>老师和师姐没有给我定ddl，说“大三事情也比较多，看自己安排就好”，但是尽快完成也能给老师留下好的印象，同时也可以早一点推进到后续的科研工作当中。</p>
+<p>暂时给自己定下春节前完成模型开发的ddl，时间刚好一周左右。春节之后就要开始做校内的科研任务和准备美赛以及复习开学考了，到时候四线交织想必会是非常痛苦的一段日子（让我想到了上个暑假末尾同时学车+复习五门课程的艰难）。如果把DAGFM模型的开发留到那个时候，恐怕会非常焦虑和痛苦。所以一定要争取在年前把这个阶段性的任务完成，一个阶段做一个阶段的事情。</p>
+<p>实现难度如何还是未知。看辅助开发人员列表，里面有三个月开发一个模型的，也有一个月开发三个模型的，恐怕还是看个人能力罢。我会用多久的时间呢，没有把握。按照这样算也就是十天左右。不过今天就回上海了，后续一个星期打算泡在上海图书馆，应该学习时间会蛮多的，其他事情我也不打算做。希望能快速攻克吧。</p>
+<p>在1.13、文章的开头立下了flag，希望1.21时回来再看已经达到目标了吧。</p>
+<p>前两天把DAGFM模型的论文读了一遍，应该算是看懂了。现在的规划就是先把作者用PyTorch实现的代码看懂，然后尝试用RecBole实现，再根据代码风格、注释规范等等进行修改，最后联系学姐尝试提交。</p>
+<p>本帖应该会是本站当前战线最长的帖子，计划是把知识相关和自己的感受都记录下来，可能会比较冗杂。</p>
+<p>那么，开始吧。</p>
+<h4 id="源码阅读"><a class="header-anchor" href="#源码阅读">¶</a>源码阅读</h4>
+<h5 id="先看最基础的DAGFM实现"><a class="header-anchor" href="#先看最基础的DAGFM实现">¶</a>先看最基础的DAGFM实现</h5>
+<p><font color="orange">1/14 16:08 现在的情况是已经弄明白DAGFM模型和KD_DAGFM模型的源码实现了，接下来尝试在RecBole当中开发这个模型吧。感觉主要还是数据接口和配置什么的会比较麻烦。</font></p>
+<p>现在非常痛苦的一点就是本机算力十分不足。</p>
+<h4 id="阅读开发RecBole的handbook《伯乐开发手册》"><a class="header-anchor" href="#阅读开发RecBole的handbook《伯乐开发手册》">¶</a>阅读开发RecBole的handbook《伯乐开发手册》</h4>
+<h5 id="开发环境的搭建："><a class="header-anchor" href="#开发环境的搭建：">¶</a>开发环境的搭建：</h5>
+<p>依托Linux系统、使用Python开发、根据requirements.txt进行依赖库的安装，建议用conda虚拟环境。</p>
+<h5 id="代码提交管理："><a class="header-anchor" href="#代码提交管理：">¶</a>代码提交管理：</h5>
+<p>基于GitHub平台</p>
+<h5 id="代码开发规范："><a class="header-anchor" href="#代码开发规范：">¶</a>代码开发规范：</h5>
+<p>PEP8</p>
+<p>（实际上后期好像有直接根据PEP8修整）</p>
+<h5 id="开发流程："><a class="header-anchor" href="#开发流程：">¶</a>开发流程：</h5>
+<h6 id="代码准备："><a class="header-anchor" href="#代码准备：">¶</a>代码准备：</h6>
+<p>fork主仓库到自己的仓库，在自己的仓库上进行开发。</p>
+<h6 id="代码文件header注释："><a class="header-anchor" href="#代码文件header注释：">¶</a>代码文件header注释：</h6>
+<p><font color="red">到时候再看就行</font></p>
+<h6 id="撰写注释："><a class="header-anchor" href="#撰写注释：">¶</a>撰写注释：</h6>
+<p>一定要用英文注释</p>
+<h6 id="代码检查："><a class="header-anchor" href="#代码检查：">¶</a>代码检查：</h6>
+<ol>
+<li>
+<p>代码风格检查：</p>
+<p>conda install yapf工具自动按照PEP8改变代码风格</p>
+</li>
+<li>
+<p>代码正确性检查：</p>
+<p>本地简单测试bash run_test.sh</p>
+</li>
+</ol>
+<h6 id="代码提交："><a class="header-anchor" href="#代码提交：">¶</a>代码提交：</h6>
+<p><font color="red">到时候再看</font></p>
+<h5 id="模型开发："><a class="header-anchor" href="#模型开发：">¶</a>模型开发：</h5>
+<h6 id="模型信息登记："><a class="header-anchor" href="#模型信息登记：">¶</a>模型信息登记：</h6>
+<p><font color="red">等快完成了再登记吧</font></p>
+<h6 id="模型开发：-v2"><a class="header-anchor" href="#模型开发：-v2">¶</a>模型开发：</h6>
+<p>a.模型文件创建：</p>
+<p>模型开发一般创建两个文件：</p>
+<p>。。。。。。。。。手动分割线</p>
+<p>1/14  17:52</p>
+<p>感觉handbook看的差不多了，现在打算上手复现了</p>
+<p>1/15  10:39</p>
+<p>目前复现卡住了一个很难解决的点，其他教师模型的复现当中没有embedding_layer，但是知识蒸馏要求共享embedding_layer。</p>
+<p>1/15  10:51</p>
+<p>似乎有出路，虽然教师模型都没有定义，但是所有教师模型的父类ContextRecommander里面有统一的embedding方法，这应该是出路。</p>
+<p>1/15  11:48</p>
+<p>不知道是机遇还是问题的点出现了。本论文的教师模型选择的是xDeepFM和DCNV2，但是实际上教师模型都不是完整的模型，而是其中的部分模型CrossNet和CIN，这两个模型都是简单的特征交互模型，因此比较简单，我觉得可以直接在我自己的模型文件当中实现，这样的话也解决了embedding_layer的问题。</p>
+<p>1/15  12:39</p>
+<p>embedding_layer的问题还是没有解决，因为参考源码里面的embedding是自己实现的，但是到底需要不需要自己实现这么麻烦呢？能不能直接用nn.Embedding？目前还是未知的。</p>
+<p>1/15  14:48</p>
+<p>目前随着引入的模型增加，整体代码量增大，又没有办法实时debug，目前有些混乱，估计最后形成框架跑起来debug会很痛苦</p>
+<p>1/15  14:57</p>
+<p>总体框架完成了，现在感觉最大的问题是数据集接口。归根结底还是对伯乐框架不够熟悉。</p>
+<p>1/15  15:38</p>
+<p>感觉脑子里一团浆糊，但是似乎也无从改善</p>
+<p>感觉眼前的主要问题就是数据接口和embedding_layer</p>
+<p>这两个解决应该会差不多</p>
+<p>1/15  18:00</p>
+<p>论文源代码的运行似乎还是有问题，在GitHub上提交了issue不知道什么时候会回复。</p>
+<p>其实train.py也是要认真看的，因为在源代码当中是模型和训练分离了，但是在recbole当中复现模型必须考虑train</p>
+<p>1/15  18:35</p>
+<p>对interaction的结构似乎更有了解了。</p>
+<p>interaction实际上就是一次取了batch_size个项目进来。</p>
+<p>而这个batch_size是可以作为超参数设置的。</p>
+<p>现阶段主要需要攻克的目标也很明确了，就是把DAGFM模型源码当中一次一次的特征交互改成一批一批的特征交互。</p>
+<p>1/16  10:22</p>
+<p>现在有了些许进展，但是似乎还差点。</p>
+<p>1/16  13:42</p>
+<p>似乎有了不错的进展，但是目前遇到的问题是config不是简单的字典，config[“teacher”]这样可以取到对应的键值，但是没有办法进行遍历，修改教师的配置参数"t_"</p>
+<p>1/16  19:00</p>
+<p>前面的问题得到了解决，现在的问题是，为什么ml-100k数据集的特征只有7个而不是8个</p>
+<p>1/16  19:48</p>
+<p>遇到了比较严重的问题，之前写代码都是用python库里面的代码作为参考，但是似乎python库里面的代码和GitHub有出入</p>
+<p>1/16  21:53</p>
+<p>现在似乎整体稍微能跑起来，但是还是tensor的维度处理的不是很好。</p>
+<p>现在需要处理的就是维度的问题，传入的是有batch_size的三维的数据，原本处理的是二维数据。</p>
+<p>1/16  22:55</p>
+<p>模型跑起来啦，教师模型的训练估计没什么太大的问题，后续就是完成学生模型的训练和细节的完善。然后就可以进行测试和交付啦！</p>
+<p>阶段性的胜利，更新到博客上。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yangyy.top">yangyy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangyy.top/posts/2907034089.html">https://yangyy.top/posts/2907034089.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangyy.top" target="_blank">Yangyy's Life</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0/">科研实习</a><a class="post-meta__tags" href="/tags/RecBole/">RecBole</a><a class="post-meta__tags" href="/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/">推荐算法</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/1347074556.html"><img class="next-cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">通过论文学习DAGFM模型</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1347074556.html" title="通过论文学习DAGFM模型"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-10</div><div class="title">通过论文学习DAGFM模型</div></div></a></div><div><a href="/posts/2997172935.html" title="利用RecBole框架复现DCN-V2模型"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-19</div><div class="title">利用RecBole框架复现DCN-V2模型</div></div></a></div><div><a href="/posts/465045716.html" title="学习DCN模型"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-19</div><div class="title">学习DCN模型</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/header2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yangyy</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB"><span class="toc-number">2.</span> <span class="toc-text">源码阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E6%9C%80%E5%9F%BA%E7%A1%80%E7%9A%84DAGFM%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">先看最基础的DAGFM实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E5%BC%80%E5%8F%91RecBole%E7%9A%84handbook%E3%80%8A%E4%BC%AF%E4%B9%90%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E3%80%8B"><span class="toc-number">3.</span> <span class="toc-text">阅读开发RecBole的handbook《伯乐开发手册》</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">开发环境的搭建：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E7%AE%A1%E7%90%86%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">代码提交管理：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%EF%BC%9A"><span class="toc-number">3.3.</span> <span class="toc-text">代码开发规范：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-number">3.4.</span> <span class="toc-text">开发流程：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%87%86%E5%A4%87%EF%BC%9A"><span class="toc-number">3.4.1.</span> <span class="toc-text">代码准备：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6header%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="toc-number">3.4.2.</span> <span class="toc-text">代码文件header注释：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%92%B0%E5%86%99%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="toc-number">3.4.3.</span> <span class="toc-text">撰写注释：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%EF%BC%9A"><span class="toc-number">3.4.4.</span> <span class="toc-text">代码检查：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%EF%BC%9A"><span class="toc-number">3.4.5.</span> <span class="toc-text">代码提交：</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%EF%BC%9A"><span class="toc-number">3.5.</span> <span class="toc-text">模型开发：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0%EF%BC%9A"><span class="toc-number">3.5.1.</span> <span class="toc-text">模型信息登记：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91%EF%BC%9A-v2"><span class="toc-number">3.5.2.</span> <span class="toc-text">模型开发：</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2907034089.html" title="在RecBole当中实现DAGFM模型">在RecBole当中实现DAGFM模型</a><time datetime="2023-01-13T02:46:10.000Z" title="发表于 2023-01-13 10:46:10">2023-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1347074556.html" title="通过论文学习DAGFM模型">通过论文学习DAGFM模型</a><time datetime="2023-01-10T00:56:02.000Z" title="发表于 2023-01-10 08:56:02">2023-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3620005199.html" title="近期读书笔记（22/1/5）">近期读书笔记（22/1/5）</a><time datetime="2023-01-05T08:44:16.000Z" title="发表于 2023-01-05 16:44:16">2023-01-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/536100284.html" title="2022年终总结">2022年终总结</a><time datetime="2022-12-31T14:59:45.000Z" title="发表于 2022-12-31 22:59:45">2022-12-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/465045716.html" title="学习DCN模型">学习DCN模型</a><time datetime="2022-12-19T08:49:44.000Z" title="发表于 2022-12-19 16:49:44">2022-12-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 <i style="color:#FF6A6A" class="fa fa-heartbeat"></i>yangyy</div><div class="footer_custom_text">那些看似不起波澜的日复一日，会突然在某一天让人看到坚持的意义</div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2022,07,14,11,07,28)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+31*24*3600*1000+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);	</script><img src="https://www.yiqiuwl.com/content/uploadfile/202208/cffa1659599066.png">
+<a href="http://beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">闽ICP备2022015544号</a></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Srx46WYtgI2COUqAi761ccR8-gzGzoHsz',
+      appKey: 'bNpdyeUlKIvb6bUb42mYvy0h',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

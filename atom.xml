@@ -6,7 +6,7 @@
   <link href="https://yangyy.top/atom.xml" rel="self"/>
   
   <link href="https://yangyy.top/"/>
-  <updated>2023-01-12T14:03:35.507Z</updated>
+  <updated>2023-01-16T14:56:33.032Z</updated>
   <id>https://yangyy.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在RecBole当中实现DAGFM模型</title>
+    <link href="https://yangyy.top/posts/2907034089.html"/>
+    <id>https://yangyy.top/posts/2907034089.html</id>
+    <published>2023-01-13T02:46:10.000Z</published>
+    <updated>2023-01-16T14:56:33.032Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h4><p>如愿地、顺利地完成了上一阶段的任务（课内的诸多结课作业），终于可以全力做RecBole的科研任务了。</p><p>老师和师姐没有给我定ddl，说“大三事情也比较多，看自己安排就好”，但是尽快完成也能给老师留下好的印象，同时也可以早一点推进到后续的科研工作当中。</p><p>暂时给自己定下春节前完成模型开发的ddl，时间刚好一周左右。春节之后就要开始做校内的科研任务和准备美赛以及复习开学考了，到时候四线交织想必会是非常痛苦的一段日子（让我想到了上个暑假末尾同时学车+复习五门课程的艰难）。如果把DAGFM模型的开发留到那个时候，恐怕会非常焦虑和痛苦。所以一定要争取在年前把这个阶段性的任务完成，一个阶段做一个阶段的事情。</p><p>实现难度如何还是未知。看辅助开发人员列表，里面有三个月开发一个模型的，也有一个月开发三个模型的，恐怕还是看个人能力罢。我会用多久的时间呢，没有把握。按照这样算也就是十天左右。不过今天就回上海了，后续一个星期打算泡在上海图书馆，应该学习时间会蛮多的，其他事情我也不打算做。希望能快速攻克吧。</p><p>在1.13、文章的开头立下了flag，希望1.21时回来再看已经达到目标了吧。</p><p>前两天把DAGFM模型的论文读了一遍，应该算是看懂了。现在的规划就是先把作者用PyTorch实现的代码看懂，然后尝试用RecBole实现，再根据代码风格、注释规范等等进行修改，最后联系学姐尝试提交。</p><p>本帖应该会是本站当前战线最长的帖子，计划是把知识相关和自己的感受都记录下来，可能会比较冗杂。</p><p>那么，开始吧。</p><h4 id="源码阅读"><a class="header-anchor" href="#源码阅读">¶</a>源码阅读</h4><h5 id="先看最基础的DAGFM实现"><a class="header-anchor" href="#先看最基础的DAGFM实现">¶</a>先看最基础的DAGFM实现</h5><p><font color="orange">1/14 16:08 现在的情况是已经弄明白DAGFM模型和KD_DAGFM模型的源码实现了，接下来尝试在RecBole当中开发这个模型吧。感觉主要还是数据接口和配置什么的会比较麻烦。</font></p><p>现在非常痛苦的一点就是本机算力十分不足。</p><h4 id="阅读开发RecBole的handbook《伯乐开发手册》"><a class="header-anchor" href="#阅读开发RecBole的handbook《伯乐开发手册》">¶</a>阅读开发RecBole的handbook《伯乐开发手册》</h4><h5 id="开发环境的搭建："><a class="header-anchor" href="#开发环境的搭建：">¶</a>开发环境的搭建：</h5><p>依托Linux系统、使用Python开发、根据requirements.txt进行依赖库的安装，建议用conda虚拟环境。</p><h5 id="代码提交管理："><a class="header-anchor" href="#代码提交管理：">¶</a>代码提交管理：</h5><p>基于GitHub平台</p><h5 id="代码开发规范："><a class="header-anchor" href="#代码开发规范：">¶</a>代码开发规范：</h5><p>PEP8</p><p>（实际上后期好像有直接根据PEP8修整）</p><h5 id="开发流程："><a class="header-anchor" href="#开发流程：">¶</a>开发流程：</h5><h6 id="代码准备："><a class="header-anchor" href="#代码准备：">¶</a>代码准备：</h6><p>fork主仓库到自己的仓库，在自己的仓库上进行开发。</p><h6 id="代码文件header注释："><a class="header-anchor" href="#代码文件header注释：">¶</a>代码文件header注释：</h6><p><font color="red">到时候再看就行</font></p><h6 id="撰写注释："><a class="header-anchor" href="#撰写注释：">¶</a>撰写注释：</h6><p>一定要用英文注释</p><h6 id="代码检查："><a class="header-anchor" href="#代码检查：">¶</a>代码检查：</h6><ol><li><p>代码风格检查：</p><p>conda install yapf工具自动按照PEP8改变代码风格</p></li><li><p>代码正确性检查：</p><p>本地简单测试bash run_test.sh</p></li></ol><h6 id="代码提交："><a class="header-anchor" href="#代码提交：">¶</a>代码提交：</h6><p><font color="red">到时候再看</font></p><h5 id="模型开发："><a class="header-anchor" href="#模型开发：">¶</a>模型开发：</h5><h6 id="模型信息登记："><a class="header-anchor" href="#模型信息登记：">¶</a>模型信息登记：</h6><p><font color="red">等快完成了再登记吧</font></p><h6 id="模型开发：-v2"><a class="header-anchor" href="#模型开发：-v2">¶</a>模型开发：</h6><p>a.模型文件创建：</p><p>模型开发一般创建两个文件：</p><p>。。。。。。。。。手动分割线</p><p>1/14  17:52</p><p>感觉handbook看的差不多了，现在打算上手复现了</p><p>1/15  10:39</p><p>目前复现卡住了一个很难解决的点，其他教师模型的复现当中没有embedding_layer，但是知识蒸馏要求共享embedding_layer。</p><p>1/15  10:51</p><p>似乎有出路，虽然教师模型都没有定义，但是所有教师模型的父类ContextRecommander里面有统一的embedding方法，这应该是出路。</p><p>1/15  11:48</p><p>不知道是机遇还是问题的点出现了。本论文的教师模型选择的是xDeepFM和DCNV2，但是实际上教师模型都不是完整的模型，而是其中的部分模型CrossNet和CIN，这两个模型都是简单的特征交互模型，因此比较简单，我觉得可以直接在我自己的模型文件当中实现，这样的话也解决了embedding_layer的问题。</p><p>1/15  12:39</p><p>embedding_layer的问题还是没有解决，因为参考源码里面的embedding是自己实现的，但是到底需要不需要自己实现这么麻烦呢？能不能直接用nn.Embedding？目前还是未知的。</p><p>1/15  14:48</p><p>目前随着引入的模型增加，整体代码量增大，又没有办法实时debug，目前有些混乱，估计最后形成框架跑起来debug会很痛苦</p><p>1/15  14:57</p><p>总体框架完成了，现在感觉最大的问题是数据集接口。归根结底还是对伯乐框架不够熟悉。</p><p>1/15  15:38</p><p>感觉脑子里一团浆糊，但是似乎也无从改善</p><p>感觉眼前的主要问题就是数据接口和embedding_layer</p><p>这两个解决应该会差不多</p><p>1/15  18:00</p><p>论文源代码的运行似乎还是有问题，在GitHub上提交了issue不知道什么时候会回复。</p><p>其实train.py也是要认真看的，因为在源代码当中是模型和训练分离了，但是在recbole当中复现模型必须考虑train</p><p>1/15  18:35</p><p>对interaction的结构似乎更有了解了。</p><p>interaction实际上就是一次取了batch_size个项目进来。</p><p>而这个batch_size是可以作为超参数设置的。</p><p>现阶段主要需要攻克的目标也很明确了，就是把DAGFM模型源码当中一次一次的特征交互改成一批一批的特征交互。</p><p>1/16  10:22</p><p>现在有了些许进展，但是似乎还差点。</p><p>1/16  13:42</p><p>似乎有了不错的进展，但是目前遇到的问题是config不是简单的字典，config[“teacher”]这样可以取到对应的键值，但是没有办法进行遍历，修改教师的配置参数"t_"</p><p>1/16  19:00</p><p>前面的问题得到了解决，现在的问题是，为什么ml-100k数据集的特征只有7个而不是8个</p><p>1/16  19:48</p><p>遇到了比较严重的问题，之前写代码都是用python库里面的代码作为参考，但是似乎python库里面的代码和GitHub有出入</p><p>1/16  21:53</p><p>现在似乎整体稍微能跑起来，但是还是tensor的维度处理的不是很好。</p><p>现在需要处理的就是维度的问题，传入的是有batch_size的三维的数据，原本处理的是二维数据。</p><p>1/16  22:55</p><p>模型跑起来啦，教师模型的训练估计没什么太大的问题，后续就是完成学生模型的训练和细节的完善。然后就可以进行测试和交付啦！</p><p>阶段性的胜利，更新到博客上。</p>]]></content>
+    
+    
+    <summary type="html">一些后续日子的规划&amp;向科研实习发起冲锋！</summary>
+    
+    
+    
+    <category term="科研" scheme="https://yangyy.top/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+    <category term="科研实习" scheme="https://yangyy.top/tags/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0/"/>
+    
+    <category term="RecBole" scheme="https://yangyy.top/tags/RecBole/"/>
+    
+    <category term="推荐算法" scheme="https://yangyy.top/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>通过论文学习DAGFM模型</title>
@@ -453,27 +478,6 @@
     
     
     <category term="异常检测" scheme="https://yangyy.top/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo的Next主题下为文章添加pdf文件</title>
-    <link href="https://yangyy.top/posts/3489905768.html"/>
-    <id>https://yangyy.top/posts/3489905768.html</id>
-    <published>2022-10-03T10:47:06.000Z</published>
-    <updated>2023-01-12T14:03:35.347Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="前言："><a class="header-anchor" href="#前言：">¶</a>前言：</h4><p>其实之前就有想过应该给自己的博客添加<strong>在文章中附带文件的功能</strong>，当时想过如果有一些笔记可以直接放到博客的文章里，不过一直没有刚需就没有动手。</p><p>最近刚参与的科研项目在文献调研阶段，读了一些论文记了一些笔记，想着可以分享到博客上来（不过这种行为是不是允许，后续还要问问实验室的师兄，不过暂时本博客也没有公开，所以先放着）。</p><p>其实添加这个功能很简单，网络上的教程也很多，但是热度高的基本都不完备，跟着做了很多遍都没成功，一度让我怀疑是不是我的Hexo版本不支持这个功能。不过后来改用Google搜索，看了很多篇帖子之后，完成了任务，在这里进行总结与梳理。</p><p><strong>注意：本人使用的是Hexo的Next主题，其他主题也许有不同，但是应该可以参考。</strong></p><h4 id="正文："><a class="header-anchor" href="#正文：">¶</a>正文：</h4><h5 id="1-下载相关插件"><a class="header-anchor" href="#1-下载相关插件">¶</a>1.下载相关插件</h5><figure class="highlight ada"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="comment">--save hexo-pdf</span></span><br></pre></td></tr></tbody></table></figure><p>有的方法这一步就告诉你可以使用这个插件的功能了</p><p>说是按照</p><figure class="highlight django"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">{% <span class="name">pdf</span> 本地文件地址/网页链接 %}</span></span><br></pre></td></tr></tbody></table></figure><p>这个格式就可以展示pdf了。</p><p>有的人可能会成功，但是从逻辑上来说，这样显然不对。</p><p>对于我使用的Next主题来说，默认的配置是禁用pdf，所以需要对主题文件配置进行修改。</p><h5 id="2-修改主题配置文件"><a class="header-anchor" href="#2-修改主题配置文件">¶</a>2.修改主题配置文件</h5><p>在根目录的themes文件夹下，打开你的主题文件夹，再打开_config.yml文件。</p><p>搜索pdf，找到如下图所示的位置：</p><p><img src="/posts/3489905768/i1.png" alt="i1"></p><p>这里的enable默认是false，也就是不支持显示pdf文件，需要改成true。不然再怎么设置都显示不了pdf文件。</p><p>还需要注意，<strong>我的配置文件当中默认只设置了height</strong>，即显示区域的高度。如果不做任何修改，那么我hexo s的时候显示还是正常的，但是hexo d之后显示区域宽度极小，非常奇怪。</p><p>所以在这里，<strong>建议大家添加一条宽度设置</strong>，如下图所示：</p><p><img src="/posts/3489905768/i2.png" alt="i2"></p><p>（这个高度和宽度的参数取决于个人喜好）</p><h5 id="3-顺便说一下便于文件管理的功能"><a class="header-anchor" href="#3-顺便说一下便于文件管理的功能">¶</a>3.顺便说一下便于文件管理的功能</h5><p>在我们写一篇文章的时候，可能需要调用各种各样的图片、文件等。</p><p>如果不进行这一步的设置，也许你写一篇文章，通常会先</p><figure class="highlight gauss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="built_in">title</span></span><br></pre></td></tr></tbody></table></figure><p>于是生成一个以title为名的md文件。</p><p>当然，这样你也可以调用图片、文件，按照制定格式输入图片、文件的路径即可，但是这样的文件管理显得杂乱无章。</p><p>所以，可以做如下修改。</p><p><strong>打开站点的配置文件（不是主题的配置文件）</strong>，找到post_asset_folder，设置为true。</p><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure><p>这一修改的意义就是，在你hexo new一篇文章的同时，在文章所在的文件夹同时创建一个与文章的同名的文件夹。你可以把该文章需要的图片、文件放在该文件夹中，再进行调用。（这样是不是就规整了很多呢）</p><h5 id="4-调用pdf文件的格式"><a class="header-anchor" href="#4-调用pdf文件的格式">¶</a>4.调用pdf文件的格式</h5><p>本地文件</p><figure class="highlight django"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">{% <span class="name">pdf</span> pdf文件路径 %}</span></span><br></pre></td></tr></tbody></table></figure><p>网络文件</p><figure class="highlight django"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">{% <span class="name">pdf</span> 网络文件url %}</span></span><br></pre></td></tr></tbody></table></figure><h5 id="5-效果显示"><a class="header-anchor" href="#5-效果显示">¶</a>5.效果显示</h5><p><img src="/posts/3489905768/i3.png" alt="i3"></p><h5 id="6-注："><a class="header-anchor" href="#6-注：">¶</a>6.注：</h5><p>有两点想提醒大家</p><p>（1）虽然有的朋友用的是Typora这种及时显示效果的编辑器，但是调用pdf文件并不会像调用图片一样，在编辑的时候就显示效果，你看到的只是一行代码。</p><p>（2）这种方法目前只支持PC端阅览，不支持手机端。（不过就这样将就吧）</p>]]></content>
-    
-    
-    <summary type="html">曲折的为文章添加pdf文件的历程。</summary>
-    
-    
-    
-    <category term="技术" scheme="https://yangyy.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="Hexo" scheme="https://yangyy.top/tags/Hexo/"/>
     
   </entry>
   
