@@ -907,13 +907,13 @@
   <entry>
     <title>二刷TSCP2论文</title>
     <url>/posts/4183696190.html</url>
-    <content><![CDATA[<h2 id="前言-v3"><a class="header-anchor" href="#前言-v3">¶</a>前言</h2>
+    <content><![CDATA[<h2 id="前言"><a class="header-anchor" href="#前言">¶</a>前言</h2>
 <p>TSCP2模型来自论文《Time Series Change Point Detection with Self-Supervised Contrastive Predictive Coding》，译作《用自监督的对比预测编码进行时间序列变化点检测》。</p>
 <p>其实这篇论文我已经阅读过，并且“复现”过。这篇论文是我接触科研的第一篇论文（已经是四个月之前的事了）。当时对科研工作的了解几乎为零，所以实际上阅读和复现都不甚规范，了解异常检测及其方法的目的倒是达到了。</p>
 <p>四个月后虽然我科研能力并没有提升多少，了解也并没有增加很多，但是好歹比此前进步了。主要也是课题组需要复现一些MTS AD的方法，进行效果的对比。此前由于没有GPU资源，只是简单地跑了一下。这次实实在在地复现一次，记录一下效果。</p>
-<h2 id="正文-v2"><a class="header-anchor" href="#正文-v2">¶</a>正文</h2>
+<h2 id="正文"><a class="header-anchor" href="#正文">¶</a>正文</h2>
 <h3 id="二刷论文"><a class="header-anchor" href="#二刷论文">¶</a>二刷论文</h3>
-<h4 id="摘要-v2"><a class="header-anchor" href="#摘要-v2">¶</a>摘要</h4>
+<h4 id="摘要"><a class="header-anchor" href="#摘要">¶</a>摘要</h4>
 <p><strong>CPD</strong>识别与时间序列数据的趋势和属性变化相关的时间以描述系统的基本行为。</p>
 <p>提出一种基于对比预测编码的自监督的时间序列变化点检测方法——<strong>TS-CP2</strong>。</p>
 <p>TS-CP2是第一个在CPD中使用<strong>对比学习策略</strong>的方法，通过将<strong>相邻</strong>的时间区间与<strong>跨时间</strong>区间的嵌入表征的对比实现。</p>
@@ -955,6 +955,76 @@
 <h5 id="表征学习"><a class="header-anchor" href="#表征学习">¶</a>表征学习</h5>
 <p><strong><font color="red">TS-CP2方法的核心就是编码器</font></strong>，将连续的时间窗口转换成紧凑的嵌入表征。通过最大化<font color="red">相邻时间窗口的交互信息</font>训练该表征以学习短时间尺度上的相似性。</p>
 <p>使用WaveNet而不使用LSTM。</p>
+<p>具体的编码器的架构就不复述了，主要就是将时间窗口映射到低维度空间。</p>
+<p>其实<font color="red">最主要的是如何训练编码器</font>，我们输入<font color="red">一对正样本和一组负样本</font>，关键还是设计好成本函数。</p>
+<h6 id="成本函数"><a class="header-anchor" href="#成本函数">¶</a>成本函数</h6>
+<p>采用**<font color="red">InfoNCE loss function</font>**。</p>
+<p>计算每个批次的阳性样本对概率：</p>
+<img src="/posts/4183696190/p1.png" alt="计算ρi" style="zoom:50%;">
+<p>Sim代表计算余弦相似度。t是缩放参数。</p>
+<p>损失函数：</p>
+<img src="/posts/4183696190/p2.png" alt="损失函数" style="zoom:50%;">
+<h6 id="负向采样"><a class="header-anchor" href="#负向采样">¶</a>负向采样</h6>
+<p>随机抽出阳性样本对，用于构建每个批次的阴性样本对。</p>
+<p>基本原理如下图所示：</p>
+<img src="/posts/4183696190/p3.png" alt="负向采样" style="zoom:40%;">
+<p><font color="red">个人理解</font>：</p>
+<p>选出K个相邻的时间窗口对(x1, y1)、(x2, y2)、…、(xk, yk)，但是每一对时间窗口之间的时间间隔要足够长。这样一来:</p>
+<p>x1和y1构成正样本对，(x1, y2)、(x1, y3)、…、(x1, yk)就构成一组k-1个负样本对。</p>
+<p>因此k个连续时间窗口，实际上生成了k组训练实例。</p>
+<p><font color="red"><strong>简单又巧妙！</strong></font></p>
+<h5 id="变化点检测模块"><a class="header-anchor" href="#变化点检测模块">¶</a>变化点检测模块</h5>
+<p><strong>现在已经完成了编码器的构建以及训练的设计，理论上编码器已经能够实现较好的自监督效果了，接下来的问题就是如何检测变化点了。</strong></p>
+<p>将成对的历史和未来窗口转换为嵌入表征，计算余弦相似度；和平均值做差；用寻峰算法寻找差值函数的局部最大值，与之相关的点通常被认为是变化点。</p>
+<h4 id="实验"><a class="header-anchor" href="#实验">¶</a>实验</h4>
+<p>（来到了最重要的实验阶段。一方面实验才是真正的任务需求(作为基线方法对比；另一方面实验能使得我更好地理解论文idea的真正落实)</p>
+<h5 id="数据集"><a class="header-anchor" href="#数据集">¶</a>数据集</h5>
+<p>分析方法在各种应用中的有效性：网络服务流量分析、人类活动识别和移动应用程序使用分析。</p>
+<ul>
+<li>雅虎基准数据集是最广泛引用的异常检测基准之一。（网络服务流量分析）</li>
+<li>HASC挑战赛的数据集。（多个传感器收集的人类活动数据集）</li>
+<li>USC-HAD。也是收集人类活动的数据集。</li>
+</ul>
+<img src="/posts/4183696190/p4.png" alt="数据集属性" style="zoom:50%;">
+<h5 id="Baseline方法"><a class="header-anchor" href="#Baseline方法">¶</a>Baseline方法</h5>
+<p>提出的TS-CP2方法的性能与五种最先进的**<font color="red">无监督</font>**变化点检测技术进行比较。</p>
+<ul>
+<li>ESPRESSO</li>
+<li>FLOSS</li>
+<li>aHSIC</li>
+<li>RuLSIF</li>
+<li>KL-CPD</li>
+</ul>
+<h5 id="评价指标"><a class="header-anchor" href="#评价指标">¶</a>评价指标</h5>
+<p>模型性能以F1 Score来评价。</p>
+<p>注意！注意！变化点的检测是有误差范围的，而不是直接对比标签和预测结果的。比如t1是变化点，t2不是；预测的结果是t1不是，t2是；不一定是预测错了两次，如果t1和t2间隔在允许的误差范围内，那么我们会认为这次预测是正确的。</p>
+<h5 id="微调和敏感度分析"><a class="header-anchor" href="#微调和敏感度分析">¶</a>微调和敏感度分析</h5>
+<p>主要分析TS-CP2对以下方面的敏感性：</p>
+<ul>
+<li>
+<p>Window size。窗口大小，也就是历史和未来间隔的长度。这个数值不宜大也不宜小，并且通常由数据集决定。</p>
+<p><font color="red">较长的时间窗口拥有最高的F1分数</font>。</p>
+</li>
+<li>
+<p>Batch size。也就是前面提到的数值K。在4~128之间。</p>
+<p><font color="red">通常情况下，批量大小和检测性能之间有一个单调的递增关系。</font></p>
+</li>
+<li>
+<p>Code size。编码长度。就是输出的嵌入表征的维度，在4~20之间。</p>
+<p>最佳代码大小取决于窗口大小和批大小</p>
+</li>
+</ul>
+<h5 id="Baseline-Comparison"><a class="header-anchor" href="#Baseline-Comparison">¶</a>Baseline Comparison</h5>
+<img src="/posts/4183696190/p5.png" alt="Baseline Comparison" style="zoom:50%;">
+<p><strong>非常非常重要的一个优势在于</strong>：</p>
+<p><font color="red">TS-CP2模型一旦训练出来，CPD的实现就非常简单，只涉及到历史和未来窗口的学习表征之间的比较（余弦相似度的计算），很可能在低资源设备上实现在线操作。基准方法不能在线应用。</font></p>
+<h4 id="复述论文核心思想"><a class="header-anchor" href="#复述论文核心思想">¶</a>复述论文核心思想</h4>
+<p>本文的名字叫用于时间序列变化点检测的自监督对比预测编码，我认为核心就是两个点：**<font color="red">自监督</font>**和<font color="red"><strong>对比</strong></font>。</p>
+<p>实际上时间序列异常检测如果有充足的成本进行异常点的标注（也就是标签的生成），那么用监督学习的方法效果会非常好（之前看的论文当中提到的）。但是由于这个成本太大了，不现实，所以大家被迫探索统计方法和无监督学习的方法。</p>
+<p>本论文说的自监督就是自我生成表征（类似标签的作用），因此需要一个编码器。但是由于缺乏标签，我们没有实际值来验证编码的效果。所以引入了第二个重要的点，对比学习。也就是通过相邻的时间窗口和远隔的时间窗口学习正面和负面的信息（生成样本的负向采样方法也十分有趣）。因此采用了InfoNCE计算损失函数进行学习。学习得到一个良好的编码器之后，可以通过计算相邻时间点的余弦相似度进行变化点的检测。</p>
+<p>最终变化点的验证还会涉及到误差范围的设置。</p>
+<p><strong>以上完成了论文的阅读，接下来开始复现模型效果。</strong></p>
+<h3 id="复现模型效果"><a class="header-anchor" href="#复现模型效果">¶</a>复现模型效果</h3>
 ]]></content>
       <categories>
         <category>科研</category>
@@ -2412,6 +2482,57 @@
       </categories>
       <tags>
         <tag>反思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分享新概念——Yak Shaving</title>
+    <url>/posts/2551240651.html</url>
+    <content><![CDATA[<h2 id="注："><a class="header-anchor" href="#注：">¶</a>注：</h2>
+<p>原文链接：</p>
+<h2 id="正文："><a class="header-anchor" href="#正文：">¶</a>正文：</h2>
+<p>休息时漫无目的地翻阅其他人的博客，看到了这篇文章，其中提到的Yak Shaving这个概念我觉得非常有趣。</p>
+<p>原文写到：</p>
+<p><a href="https://americanexpress.io/yak-shaving">Yak Shaving</a> 的字面意思是为剪牦牛毛，而引申出来的意思是，当你在进行一个工作时，发现另一个工作还没有完成，你便先去解决那个工作，在进行那个工作时，你又发现另一个工作… 如此往复，让你偏离了原本本该完成的工作，最终却也什么都没有完成。一个实际的例子：</p>
+<blockquote>
+<p>You want to bake an apple pie, so you head to the kitchen.<br>
+In the hallway, you notice some paint chipping on the wall.<br>
+So you walk to the hardware store for some paint.<br>
+On the way, you pass a bakery and stop in for a cupcake.<br>
+While eating the cupcake, you feel a pain in your mouth. It’s that cavity that you’ve been putting off.<br>
+You pick up your phone to call the dentist to make an appointment, but you see a notification from your friend Cher, who’s having a party.<br>
+You don’t want to show up empty-handed, so you stop for a bottle of wine…</p>
+</blockquote>
+<blockquote>
+<p>你想烤一个苹果派，所以你去了厨房。<br>
+在走廊里，你注意到墙上有一些油漆剥落。<br>
+于是你走去五金店去买一些油漆。<br>
+在路上，你经过一家面包店，停下来吃了一个小蛋糕。<br>
+在吃蛋糕时，你感到嘴里很痛。这是你一直在拖延的蛀牙。<br>
+当你拿起手机想给预约牙医时，你看到了你朋友 Cher 正在举行一个聚会的通知。<br>
+你不想空手去参加聚会，所以你停下来买了一瓶酒…</p>
+</blockquote>
+<p>其实Yak Shaving本身应该是一种负面的例子，喻指做事情没有坚定的方向，总是被其他的事情所干扰，最终一事无成。就像上面的例子，“你”没有烤出苹果派、也没有补好家里的漆、“你”没有解决拖延的蛀牙，可能也耽误了朋友的聚会。这么看倒是非常不值得提倡了。</p>
+<p>但是实际上原文的作者是在推崇Yak Shaving的思想。他以自己的亲身经历从另一个角度理解了这个概念。</p>
+<blockquote>
+<p>作者想做一款关于换汇与记账的APP，所以他找了学外语的同学<br>
+学外语的同学不会用JSON，所以他找到了 <a href="https://github.com/think2011/vscode-vue-i18n"><code>think2011/vscode-vue-i18n</code></a><br>
+这个项目缺少一些需要的功能，他基于此做出了i18in Ally<br>
+开发中发现常用的通用函数，他借由 <a href="https://github.com/streamich/react-use"><code>react-use</code></a> 的思想，做出了<a href="https://github.com/vueuse/vueuse">VueUse</a><br>
+…</p>
+</blockquote>
+<p>作者也是在解决一个目标问题时发现了一个新的问题，从而去解决新的问题的反复过程中。但是不同的地方在于，他发现了新的问题并且把新的问题解决了甚至在解决的基础上做了完善。</p>
+<p>所以本质的差别还是在于是否有在解决问题。两个角度的Yak Shaving实际都是在解决一个问题的过程中不断发现新的问题的过程。对于原本语义中的人，新的问题打断了他解决原有问题的过程，并且他也没有解决新的问题，因此问题的产生是负面的；对于该作者而言，他不断遇到问题，并不断地解决问题、完善解决方案，成就了更好的自己。不断发现问题对于一个执着的问题解决者应该算是一件好事。</p>
+<p>之前在汪定老师在分享科研经历的讲座当中提到，（大意）不应该等到做好所有的准备之后再开始做科研，因为“准备好”这个状态是不太现实的，应该做的是在确定一个方向之后，缺什么补什么，需要学什么再去学什么。我想这二者应该有异曲同工之妙。</p>
+<p>简单来说，坏的Yak Shaving是从1个问题出发，解决过程中遇到了99个问题，但是最终100个问题的解决进度可能都是50%，所以什么都没有解决；好的Yak Shaving是从1个问题出发，解决过程中遇到了99个问题，但是最终100个问题中绝大多数问题的解决进度都是100%或者100+%。</p>
+<p><strong>遇到</strong>问题不一定是坏事，<strong>发现</strong>问题也不一定是好事。问题的出现是好是坏，恐怕最终还是取决于我们是问题的解决者还是问题是我们的解决者。</p>
+<p>解决一个目标问题时遇到了其他的问题，有时候可以忽视突然出现的问题（比如去厨房烤苹果派时，不要在乎油漆的脱落），这样至少我们解决了目标问题；当然如果补完了油漆也吃上了苹果派自然更好；但有的时候必须解决后期出现的问题才能解决目标问题（比如某个工具出现了问题或者需要新增什么功能）；还有时候可能在解决一个又一个的问题时，丢掉了最初的问题（像作者最终没有去开发那款APP），这也不一定是坏事，毕竟后期出现的问题也可能更具价值又或者最初的问题已经被颠覆了。</p>
+<p>Yak Shaving的情况有很多。<strong>所以或许可以说，成功并不源自Yak Shaving，最终还是取决于解决问题的态度、能力，以及对形式和自身的判断和把握。</strong></p>
+]]></content>
+      <categories>
+        <category>来自互联网的收获</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
       </tags>
   </entry>
 </search>
