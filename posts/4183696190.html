@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>二刷TSCP2论文 | Yangyy's Life</title><meta name="keywords" content="异常检测,论文复现"><meta name="author" content="yangyy"><meta name="copyright" content="yangyy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="经验相对丰富之后，二刷TSCP2。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二刷TSCP2论文">
+<meta property="og:url" content="https://yangyy.top/posts/4183696190.html">
+<meta property="og:site_name" content="Yangyy&#39;s Life">
+<meta property="og:description" content="经验相对丰富之后，二刷TSCP2。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg">
+<meta property="article:published_time" content="2023-01-27T03:13:13.000Z">
+<meta property="article:modified_time" content="2023-02-03T08:40:29.276Z">
+<meta property="article:author" content="yangyy">
+<meta property="article:tag" content="异常检测">
+<meta property="article:tag" content="论文复现">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yangyy.top/posts/4183696190"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '二刷TSCP2论文',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-03 16:40:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Yangyy's Life" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/header2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ExcellentBlog/"><i class="fa-fw fa fa-thumbs-up"></i><span> 优秀博客</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/10/27/xhVEB6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Yangyy's Life</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ExcellentBlog/"><i class="fa-fw fa fa-thumbs-up"></i><span> 优秀博客</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">二刷TSCP2论文</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-27T03:13:13.000Z" title="发表于 2023-01-27 11:13:13">2023-01-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-03T08:40:29.276Z" title="更新于 2023-02-03 16:40:29">2023-02-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/">科研</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/4183696190.html" data-flag-title="二刷TSCP2论文"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/4183696190.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/4183696190.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言-v3"><a class="header-anchor" href="#前言-v3">¶</a>前言</h2>
+<p>TSCP2模型来自论文《Time Series Change Point Detection with Self-Supervised Contrastive Predictive Coding》，译作《用自监督的对比预测编码进行时间序列变化点检测》。</p>
+<p>其实这篇论文我已经阅读过，并且“复现”过。这篇论文是我接触科研的第一篇论文（已经是四个月之前的事了）。当时对科研工作的了解几乎为零，所以实际上阅读和复现都不甚规范，了解异常检测及其方法的目的倒是达到了。</p>
+<p>四个月后虽然我科研能力并没有提升多少，了解也并没有增加很多，但是好歹比此前进步了。主要也是课题组需要复现一些MTS AD的方法，进行效果的对比。此前由于没有GPU资源，只是简单地跑了一下。这次实实在在地复现一次，记录一下效果。</p>
+<h2 id="正文-v2"><a class="header-anchor" href="#正文-v2">¶</a>正文</h2>
+<h3 id="二刷论文"><a class="header-anchor" href="#二刷论文">¶</a>二刷论文</h3>
+<h4 id="摘要-v2"><a class="header-anchor" href="#摘要-v2">¶</a>摘要</h4>
+<p><strong>CPD</strong>识别与时间序列数据的趋势和属性变化相关的时间以描述系统的基本行为。</p>
+<p>提出一种基于对比预测编码的自监督的时间序列变化点检测方法——<strong>TS-CP2</strong>。</p>
+<p>TS-CP2是第一个在CPD中使用<strong>对比学习策略</strong>的方法，通过将<strong>相邻</strong>的时间区间与<strong>跨时间</strong>区间的嵌入表征的对比实现。</p>
+<p>证明优于五个最先进的CPD方法（包括无监督和半监督）。</p>
+<h4 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h4>
+<p>大量处理能力和存储容量的提供意味着我们目前拥有前所未有的<font color="red">访问和分析数据的能力</font>。数据存储和共享的规模、速度意味着缺乏数据整理。数据注释昂贵。因此自监督和无监督学习很火热。</p>
+<p>CPD是一种识别突变的时间点的方法。</p>
+<p>变化点可以为系统基本行为提供重要理解，比如变化点代表系统状态的改变和故障或者紧急情况的发生。</p>
+<p>CPD被广泛应用于多变量时间序列数据，以及其他具有时间特征的数据模式。</p>
+<p>变化点通常是从时间序列的不同属性中的一个来估计的，包括时间连续性、分布或形状。<font color="red">无监督的CPD</font>方法通常是为了<font color="red">识别某一个特定属性</font>的变化而开发的。</p>
+<p>目前CPD方法未能有效推广，因为<font color="red">不同应用的语义边界通常与不同的事件序列属性相关</font>。比如心电图的时间形状模式体现心脏节律异常、统计特征的突然变化可以体现人类姿势的变化。用统计学的CPD检测心电图，性能就会下降。</p>
+<p>缓慢变化的时间形状和统计属性也是一个挑战。</p>
+<p>因此提出了TS-CP2。提出问题：<strong>自我监督学习</strong>是否可以为CPD提供一个有效的、通用的表示。直觉是<font color="red">利用时间序列的局部相关性</font>，学习一个表征，使连续时间区间共享信息最大化，使分离的时间区间共享信息最小化。相邻时间区间学习到的<font color="red">表征有明显不同</font>就可能出现变化点。</p>
+<h4 id="相关工作和背景"><a class="header-anchor" href="#相关工作和背景">¶</a>相关工作和背景</h4>
+<h5 id="时间序列变化点检测"><a class="header-anchor" href="#时间序列变化点检测">¶</a>时间序列变化点检测</h5>
+<p>目前CPD的方法<font color="red">大多是基于非深度学习方法</font>。现有的方法可以根据变化点检测考虑的<font color="red">时间序列的特征</font>来分类。</p>
+<p>1、统计学方法通常在确定的时间序列中<font color="red">相邻短区间的统计差异</font>的基础上计算变化点。区间之间的<font color="red">统计差异</font>通常用参数或者非参数的方法测量。</p>
+<p>2、还有一类统计学的CPD方法，将<font color="red">变化点确定为分段边界</font>，通过动态编程、贪婪搜索等方法<font color="red">使得统计学成本函数最优化</font>。</p>
+<p>3、利用时间序列的时间形状模式，通过识别<font color="red">时间序列中与形状模式突出变化</font>相关的未知检测变化点。</p>
+<p>4、<font color="red">混合的CPD方法</font>，利用时间序列的时间形状模式和统计分布。</p>
+<p>5、基于深度学习的CPD方法最近也被提出来了。</p>
+<p>6、CPD在视频处理应用也非常实用。</p>
+<h5 id="表征学习（自监督表征学习）"><a class="header-anchor" href="#表征学习（自监督表征学习）">¶</a>表征学习（自监督表征学习）</h5>
+<h6 id="对比学习"><a class="header-anchor" href="#对比学习">¶</a>对比学习</h6>
+<p>对比学习是一种使用一组由<font color="red">正面样本对</font>和<font color="red">负面样本对</font>组成的训练实例来制定数据集中样本相似或不相似的原因。</p>
+<h6 id="基于对比的表征学习"><a class="header-anchor" href="#基于对比的表征学习">¶</a>基于对比的表征学习</h6>
+<p>前面这些都属于比较宽泛的概括性知识，建立起对CPD领域的大致了解即可。</p>
+<p>主要还是学习TS-CP2模型的具体方法论。</p>
+<hr>
+<h4 id="方法论"><a class="header-anchor" href="#方法论">¶</a>方法论</h4>
+<h5 id="问题定义"><a class="header-anchor" href="#问题定义">¶</a>问题定义</h5>
+<p>给定多变量时间序列**{X1,X2,…,XT}有T个观测值，Xi∈Rd**。试图估计与时间序列属性变化相关的时间t。<font color="red">未来表征和预期表征的异同</font>可以看作过渡到下一个片段的措施。</p>
+<h5 id="TS-CP2概述"><a class="header-anchor" href="#TS-CP2概述">¶</a>TS-CP2概述</h5>
+<p>有一些异常检测方法使用<font color="red">自动回归模型进行预测</font>，在这些方法中，变化点是在与<font color="red">预测误差显著增加</font>相关的样本中检测出来的。</p>
+<p>建议使用表征学习提取紧凑的潜在表征，其对原始数据分布不变。</p>
+<p>论文采用类似CPC的方法来学习<font color="red">使连续时间窗口之间相互信息最大化</font>的表示方法。</p>
+<p>首先，一个自动回归的深度卷积网络<font color="red">WaveNet</font>被用来对<font color="red">每个时间序列窗口进行编码</font>；其次，在编码的基础上采用一个3层的全连接网络产生更紧凑的嵌入表征。连续时间窗口的嵌入表征之间的余弦相似度被计算出来以估计变化点。</p>
+<p><strong><font color="red">对比学习的方法被用来训练编码器</font></strong>，in each batch用<strong>一对</strong>连续的时间窗口和<strong>一组</strong>跨越时间的窗口对。</p>
+<h5 id="表征学习"><a class="header-anchor" href="#表征学习">¶</a>表征学习</h5>
+<p><strong><font color="red">TS-CP2方法的核心就是编码器</font></strong>，将连续的时间窗口转换成紧凑的嵌入表征。通过最大化<font color="red">相邻时间窗口的交互信息</font>训练该表征以学习短时间尺度上的相似性。</p>
+<p>使用WaveNet而不使用LSTM。</p>
+<p>具体的编码器的架构就不复述了，主要就是将时间窗口映射到低维度空间。</p>
+<p>其实<font color="red">最主要的是如何训练编码器</font>，我们输入<font color="red">一对正样本和一组负样本</font>，关键还是设计好成本函数。</p>
+<h6 id="成本函数"><a class="header-anchor" href="#成本函数">¶</a>成本函数</h6>
+<p>采用**<font color="red">InfoNCE loss function</font>**。</p>
+<p>计算每个批次的阳性样本对概率：</p>
+<img src="/posts/4183696190/p1.png" alt="计算ρi" style="zoom:50%;">
+<p>Sim代表计算余弦相似度。t是缩放参数。</p>
+<p>损失函数：</p>
+<img src="/posts/4183696190/p2.png" alt="损失函数" style="zoom:50%;">
+<h6 id="负向采样"><a class="header-anchor" href="#负向采样">¶</a>负向采样</h6>
+<p>随机抽出阳性样本对，用于构建每个批次的阴性样本对。</p>
+<p>基本原理如下图所示：</p>
+<img src="/posts/4183696190/p3.png" alt="负向采样" style="zoom:40%;">
+<p><font color="red">个人理解</font>：</p>
+<p>选出K个相邻的时间窗口对(x1, y1)、(x2, y2)、…、(xk, yk)，但是每一对时间窗口之间的时间间隔要足够长。这样一来:</p>
+<p>x1和y1构成正样本对，(x1, y2)、(x1, y3)、…、(x1, yk)就构成一组k-1个负样本对。</p>
+<p>因此k个连续时间窗口，实际上生成了k组训练实例。</p>
+<p><font color="red"><strong>简单又巧妙！</strong></font></p>
+<h5 id="变化点检测模块"><a class="header-anchor" href="#变化点检测模块">¶</a>变化点检测模块</h5>
+<p><strong>现在已经完成了编码器的构建以及训练的设计，理论上编码器已经能够实现较好的自监督效果了，接下来的问题就是如何检测变化点了。</strong></p>
+<p>将成对的历史和未来窗口转换为嵌入表征，计算余弦相似度；和平均值做差；用寻峰算法寻找差值函数的局部最大值，与之相关的点通常被认为是变化点。</p>
+<h4 id="实验"><a class="header-anchor" href="#实验">¶</a>实验</h4>
+<p>（来到了最重要的实验阶段。一方面实验才是真正的任务需求(作为基线方法对比；另一方面实验能使得我更好地理解论文idea的真正落实)</p>
+<h5 id="数据集"><a class="header-anchor" href="#数据集">¶</a>数据集</h5>
+<p>分析方法在各种应用中的有效性：网络服务流量分析、人类活动识别和移动应用程序使用分析。</p>
+<ul>
+<li>雅虎基准数据集是最广泛引用的异常检测基准之一。（网络服务流量分析）</li>
+<li>HASC挑战赛的数据集。（多个传感器收集的人类活动数据集）</li>
+<li>USC-HAD。也是收集人类活动的数据集。</li>
+</ul>
+<img src="/posts/4183696190/p4.png" alt="数据集属性" style="zoom:50%;">
+<h5 id="Baseline方法"><a class="header-anchor" href="#Baseline方法">¶</a>Baseline方法</h5>
+<p>提出的TS-CP2方法的性能与五种最先进的**<font color="red">无监督</font>**变化点检测技术进行比较。</p>
+<ul>
+<li>ESPRESSO</li>
+<li>FLOSS</li>
+<li>aHSIC</li>
+<li>RuLSIF</li>
+<li>KL-CPD</li>
+</ul>
+<h5 id="评价指标"><a class="header-anchor" href="#评价指标">¶</a>评价指标</h5>
+<p>模型性能以F1 Score来评价。</p>
+<p>注意！注意！变化点的检测是有误差范围的，而不是直接对比标签和预测结果的。比如t1是变化点，t2不是；预测的结果是t1不是，t2是；不一定是预测错了两次，如果t1和t2间隔在允许的误差范围内，那么我们会认为这次预测是正确的。</p>
+<h5 id="微调和敏感度分析"><a class="header-anchor" href="#微调和敏感度分析">¶</a>微调和敏感度分析</h5>
+<p>主要分析TS-CP2对以下方面的敏感性：</p>
+<ul>
+<li>
+<p>Window size。窗口大小，也就是历史和未来间隔的长度。这个数值不宜大也不宜小，并且通常由数据集决定。</p>
+<p><font color="red">较长的时间窗口拥有最高的F1分数</font>。</p>
+</li>
+<li>
+<p>Batch size。也就是前面提到的数值K。在4~128之间。</p>
+<p><font color="red">通常情况下，批量大小和检测性能之间有一个单调的递增关系。</font></p>
+</li>
+<li>
+<p>Code size。编码长度。就是输出的嵌入表征的维度，在4~20之间。</p>
+<p>最佳代码大小取决于窗口大小和批大小</p>
+</li>
+</ul>
+<h5 id="Baseline-Comparison"><a class="header-anchor" href="#Baseline-Comparison">¶</a>Baseline Comparison</h5>
+<img src="/posts/4183696190/p5.png" alt="Baseline Comparison" style="zoom:50%;">
+<p><strong>非常非常重要的一个优势在于</strong>：</p>
+<p><font color="red">TS-CP2模型一旦训练出来，CPD的实现就非常简单，只涉及到历史和未来窗口的学习表征之间的比较（余弦相似度的计算），很可能在低资源设备上实现在线操作。基准方法不能在线应用。</font></p>
+<h4 id="复述论文核心思想"><a class="header-anchor" href="#复述论文核心思想">¶</a>复述论文核心思想</h4>
+<p>本文的名字叫用于时间序列变化点检测的自监督对比预测编码，我认为核心就是两个点：**<font color="red">自监督</font>**和<font color="red"><strong>对比</strong></font>。</p>
+<p>实际上时间序列异常检测如果有充足的成本进行异常点的标注（也就是标签的生成），那么用监督学习的方法效果会非常好（之前看的论文当中提到的）。但是由于这个成本太大了，不现实，所以大家被迫探索统计方法和无监督学习的方法。</p>
+<p>本论文说的自监督就是自我生成表征（类似标签的作用），因此需要一个编码器。但是由于缺乏标签，我们没有实际值来验证编码的效果。所以引入了第二个重要的点，对比学习。也就是通过相邻的时间窗口和远隔的时间窗口学习正面和负面的信息（生成样本的负向采样方法也十分有趣）。因此采用了InfoNCE计算损失函数进行学习。学习得到一个良好的编码器之后，可以通过计算相邻时间点的余弦相似度进行变化点的检测。</p>
+<p>最终变化点的验证还会涉及到误差范围的设置。</p>
+<p><strong>以上完成了论文的阅读，接下来开始复现模型效果。</strong></p>
+<h3 id="复现模型效果"><a class="header-anchor" href="#复现模型效果">¶</a>复现模型效果</h3>
+<img src="/posts/4183696190/p6.png" alt="GPU利用率" style="zoom:50%;">
+<img src="/posts/4183696190/p7.png" alt="显存利用率" style="zoom:50%;">
+<p>可以发现，在训练的过程中：显存的利用率非常大，但是GPU的利用率却不到10%，非常奇怪。</p>
+<p>看到一种说法是“如果图片的分辨率太大，即使一张图片（batch_size为1）放入显存，也直接爆了，GPU利用率当然也无从谈起，外在表现就是显存几乎占满，但同时GPU等不到数据，一直空闲。解决方法是将图片分辨率改小就OK了。”</p>
+<p>我把batch_size从64调整为16，显存还是撑满，GPU使用率降低了</p>
+<img src="/posts/4183696190/p8.png" alt="GPU使用率" style="zoom:50%;">
+<p>利用率反而只有一半了。</p>
+<p>再把batch_size从16调到256</p>
+<img src="/posts/4183696190/p10.png" alt="GPU使用率" style="zoom:50%;">
+<p>GPU使用率大幅度提高。但是预计训练用时没怎么变化（还是需要20小时左右，CPU是621个小时😥）属实离谱。</p>
+<img src="/posts/4183696190/p11.png" alt="GPU使用率" style="zoom:50%;">
+<p>果然batch_size越大使用率越高，1024的时候已经到了60%左右了，提升了10倍，反正显存都是撑爆。但是总时间还是19小时啊。</p>
+<p>总共时间点的数量就是T，不会反复训练，大抵是epoch = batch /4，然后会随机在一定时候停止一下训练，进行验证。验证之后会存储模型。</p>
+<p>修改了一处代码错误：</p>
+<p>原代码：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">history = prep_model(x_test[:, <span class="number">0</span>:WIN].reshape((num, <span class="number">1</span>, WIN)))</span><br><span class="line">future = prep_model(x_test[:, WIN:].reshape((num, <span class="number">1</span>, WIN)))</span><br></pre></td></tr></tbody></table></figure>
+<p>但是这样会报错</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"main.py"</span>, line 127, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">history</span> = prep_model(x_test[:, 0:WIN].reshape((num, 1, WIN)))</span><br><span class="line">  File <span class="string">"/root/miniconda3/lib/python3.8/site-packages/keras/utils/traceback_utils.py"</span>, line 67, <span class="keyword">in</span> error_handler</span><br><span class="line">    raise e.with_traceback(filtered_tb) from None</span><br><span class="line">  File <span class="string">"/root/miniconda3/lib/python3.8/site-packages/keras/engine/input_spec.py"</span>, line 264, <span class="keyword">in</span> assert_input_compatibility</span><br><span class="line">    raise ValueError(f<span class="string">'Input {input_index} of layer "{layer_name}" is '</span></span><br><span class="line">ValueError: Input 0 of layer <span class="string">"model"</span> is incompatible with the layer: expected shape=(None, 100, 1), found shape=(3738, 1, 100)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>所以按照提示，我将代码修改为</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">history = prep_model(x_test[:, <span class="number">0</span>:WIN].reshape((num, WIN, <span class="number">1</span>)))</span><br><span class="line">future = prep_model(x_test[:, WIN:].reshape((num, WIN, <span class="number">1</span>)))</span><br></pre></td></tr></tbody></table></figure>
+<p>​	这样代码就可以跑通了。</p>
+<p><font color="red"><strong>可是我是原封不动地clone整个项目的呀，为什么会出现这样的问题，原作者没有遇到吗？</strong></font></p>
+<p>但是因为训练非常短暂，所以</p>
+<h4 id="终于知道为什么训练会提前终止了"><a class="header-anchor" href="#终于知道为什么训练会提前终止了">¶</a>终于知道为什么训练会提前终止了</h4>
+<p>因为它设置了提前终止条件</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> epoch &gt; <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">if</span> np.<span class="built_in">abs</span>(epoch_wise_loss[-<span class="number">1</span>] - epoch_wise_loss[-<span class="number">2</span>]) &lt; <span class="number">0.0001</span> <span class="keyword">or</span> epoch_wise_loss[-<span class="number">2</span>] &lt; epoch_wise_loss[-<span class="number">1</span>]:</span><br><span class="line">                end_condition += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end_condition = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> end_condition == <span class="number">4</span>:</span><br><span class="line">                <span class="keyword">return</span> epoch_wise_loss, epoch_wise_sim, epoch_wise_neg, model</span><br></pre></td></tr></tbody></table></figure>
+<p>就是训练五轮以上时，<font color="red"><strong>连续出现四次以上</strong></font>的loss没有明显变化或者loss反而增大了，那么就会停止训练。</p>
+<img src="/posts/4183696190/p12.png" alt="GPU使用率" style="zoom:60%;">
+<p>看训练过程中存储的Loss曲线，确实一下子降下来之后就不怎么变化了，所以很早就终止了。</p>
+<p>但是目前的F1 score非常低，只有0.4，不知道为什么。</p>
+<p><font color="red">主要是不能按照论文的batch_size跑，那样要很久（毕竟是自己花钱租服务器），为了提高GPU利用率，我只能提高batch_size，但是这样可能就没法复现效果。</font></p>
+<p>loss确实是很快就降下来了。</p>
+<p>论文中最佳效果对应的batch_size是8，但是这样的话GPU利用率只有3%左右，训练非常慢，不知道效果怎么样。</p>
+<p>但是训练中loss很低，sim很高，neg也比较低，看起来效果是不错的，为什么F1就不好看。</p>
+<h4 id="2-1的收获："><a class="header-anchor" href="#2-1的收获：">¶</a>2/1的收获：</h4>
+<p>今天主要是改了两个bug，模型可以正常运行了</p>
+<p>也发现了batch_size和GPU利用率的规律</p>
+<p>但是没法达到论文中说明的效果。</p>
+<h4 id="2023-2-2-总结一下当前的进度以及遇到的问题"><a class="header-anchor" href="#2023-2-2-总结一下当前的进度以及遇到的问题">¶</a>2023/2/2  总结一下当前的进度以及遇到的问题</h4>
+<p>阅读论文熟悉TS-CP2模型。</p>
+<p>找到官方源代码尝试实现论文中描述的效果。</p>
+<p>clone的官方源代码会报错，进行了修改，目前模型可以正常运行。</p>
+<p>问题：</p>
+<p>现在复现的方法是不是之后论文中对比实验的基线方法？我自己随便选的会不会不合适。</p>
+<p>目前没有达到论文中提到的效果有两方面原因：</p>
+<p>1、利用的数据集是比较小的简化数据集（为了节省实验时间）</p>
+<p>2、论文中最佳实验效果的batch_size大小是8这样的较小数字，而GPU的使用率和batch_size之间有类似单增的关系，batch_size=8是GPU的使用率只有3%左右，训练模型的预计时间很长。如果提高batch_size，GPU的使用率能得到提升，但是训练的效果不太理想。</p>
+<h4 id="学长对问题的回答"><a class="header-anchor" href="#学长对问题的回答">¶</a>学长对问题的回答</h4>
+<p>1、复现的方法不一定需要很高大上，主要是能通过对比实验看出我们的方法的效果是不是更好，可能在其中再挑一些方法作为baseline methods，所以自己找比较top的会议当中提出的论文进行复现就好了，最后就是要能转换到我们自己的数据集上。<font color="red">复现论文最重要的是要能把模型转换到我们自己的数据集上！！！</font></p>
+<p>2、模型效果调不到理想也是十分正常的，基本上都很难调试到论文中描述的效果。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yangyy.top">yangyy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangyy.top/posts/4183696190.html">https://yangyy.top/posts/4183696190.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangyy.top" target="_blank">Yangyy's Life</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/">异常检测</a><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0/">论文复现</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/2551240651.html"><img class="prev-cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">分享新概念——Yak Shaving</div></div></a></div><div class="next-post pull-right"><a href="/posts/1726264158.html"><img class="next-cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">保研准备工作梳理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/426886319.html" title="《自监督对比预测编码》论文复现"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-17</div><div class="title">《自监督对比预测编码》论文复现</div></div></a></div><div><a href="/posts/38813817.html" title="GraphStructures01阅读笔记"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">GraphStructures01阅读笔记</div></div></a></div><div><a href="/posts/4264007857.html" title="《云系统的跨数据集时间序列异常检测》个人笔记"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-06</div><div class="title">《云系统的跨数据集时间序列异常检测》个人笔记</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/header2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yangyy</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wending0417"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80-v3"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87-v2"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%B7%E8%AE%BA%E6%96%87"><span class="toc-number">2.1.</span> <span class="toc-text">二刷论文</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%91%98%E8%A6%81-v2"><span class="toc-number">2.1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.1.2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%E5%92%8C%E8%83%8C%E6%99%AF"><span class="toc-number">2.1.3.</span> <span class="toc-text">相关工作和背景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">时间序列变化点检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0%EF%BC%88%E8%87%AA%E7%9B%91%E7%9D%A3%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0%EF%BC%89"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">表征学习（自监督表征学习）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.1.3.2.1.</span> <span class="toc-text">对比学习</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%AF%B9%E6%AF%94%E7%9A%84%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.1.3.2.2.</span> <span class="toc-text">基于对比的表征学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.1.4.</span> <span class="toc-text">方法论</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#TS-CP2%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">TS-CP2概述</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.1.4.3.</span> <span class="toc-text">表征学习</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%88%90%E6%9C%AC%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.4.3.1.</span> <span class="toc-text">成本函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%B4%9F%E5%90%91%E9%87%87%E6%A0%B7"><span class="toc-number">2.1.4.3.2.</span> <span class="toc-text">负向采样</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E5%8C%96%E7%82%B9%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9D%97"><span class="toc-number">2.1.4.4.</span> <span class="toc-text">变化点检测模块</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">2.1.5.</span> <span class="toc-text">实验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">2.1.5.1.</span> <span class="toc-text">数据集</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Baseline%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.5.2.</span> <span class="toc-text">Baseline方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">2.1.5.3.</span> <span class="toc-text">评价指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BE%AE%E8%B0%83%E5%92%8C%E6%95%8F%E6%84%9F%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">2.1.5.4.</span> <span class="toc-text">微调和敏感度分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Baseline-Comparison"><span class="toc-number">2.1.5.5.</span> <span class="toc-text">Baseline Comparison</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E8%BF%B0%E8%AE%BA%E6%96%87%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-number">2.1.6.</span> <span class="toc-text">复述论文核心思想</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0%E6%A8%A1%E5%9E%8B%E6%95%88%E6%9E%9C"><span class="toc-number">2.2.</span> <span class="toc-text">复现模型效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%88%E4%BA%8E%E7%9F%A5%E9%81%93%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%AD%E7%BB%83%E4%BC%9A%E6%8F%90%E5%89%8D%E7%BB%88%E6%AD%A2%E4%BA%86"><span class="toc-number">2.2.1.</span> <span class="toc-text">终于知道为什么训练会提前终止了</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E7%9A%84%E6%94%B6%E8%8E%B7%EF%BC%9A"><span class="toc-number">2.2.2.</span> <span class="toc-text">2&#x2F;1的收获：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2023-2-2-%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B%E5%BD%93%E5%89%8D%E7%9A%84%E8%BF%9B%E5%BA%A6%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.3.</span> <span class="toc-text">2023&#x2F;2&#x2F;2  总结一下当前的进度以及遇到的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A6%E9%95%BF%E5%AF%B9%E9%97%AE%E9%A2%98%E7%9A%84%E5%9B%9E%E7%AD%94"><span class="toc-number">2.2.4.</span> <span class="toc-text">学长对问题的回答</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2288749829.html" title="好久没做这样精彩的梦了">好久没做这样精彩的梦了</a><time datetime="2023-03-29T00:42:19.000Z" title="发表于 2023-03-29 08:42:19">2023-03-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2272983347.html" title="我为什么要在校区间往返">我为什么要在校区间往返</a><time datetime="2023-03-03T13:32:32.000Z" title="发表于 2023-03-03 21:32:32">2023-03-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3747160458.html" title="推荐系统论文调研（SIGKDD、SIGIR）">推荐系统论文调研（SIGKDD、SIGIR）</a><time datetime="2023-02-09T05:39:04.000Z" title="发表于 2023-02-09 13:39:04">2023-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1289748485.html" title="微服务相关知识学习">微服务相关知识学习</a><time datetime="2023-02-08T10:51:53.000Z" title="发表于 2023-02-08 18:51:53">2023-02-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1979743824.html" title="回顾在RecBole复现模型的这段经历">回顾在RecBole复现模型的这段经历</a><time datetime="2023-02-05T14:50:13.000Z" title="发表于 2023-02-05 22:50:13">2023-02-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023  yangyy</div><div class="footer_custom_text">那些看似不起波澜的日复一日，会突然在某一天让人看到坚持的意义</div><i style="color:#FF6A6A" class="fa fa-heartbeat"></i>
+<p> hello </p><div id="loving-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2014,10,17,17,30,00)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+31*24*3600*1000+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='Been spending my life with Zhangyao for '+time[0]+' years '+time[1]+' days '+time[2]+' hours '+time[3]+' minutes '+time[4]+' seconds';document.getElementById("loving-time").innerHTML=currentTimeHtml;},1000);	</script><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2022,07,14,11,07,28)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+31*24*3600*1000+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);	</script><img src="https://www.yiqiuwl.com/content/uploadfile/202208/cffa1659599066.png">
+<a href="http://beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">闽ICP备2022015544号</a></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Srx46WYtgI2COUqAi761ccR8-gzGzoHsz',
+      appKey: 'bNpdyeUlKIvb6bUb42mYvy0h',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
