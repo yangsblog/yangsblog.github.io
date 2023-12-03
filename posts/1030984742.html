@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>实验室服务器管理笔记 | Yangyy's Life</title><meta name="keywords" content="Linux,学习笔记"><meta name="author" content="yangyy"><meta name="copyright" content="yangyy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="整理总结管理实验室服务器需要做的事情和具体方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验室服务器管理笔记">
+<meta property="og:url" content="https://yangyy.top/posts/1030984742.html">
+<meta property="og:site_name" content="Yangyy&#39;s Life">
+<meta property="og:description" content="整理总结管理实验室服务器需要做的事情和具体方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg">
+<meta property="article:published_time" content="2023-12-03T11:13:49.000Z">
+<meta property="article:modified_time" content="2023-12-03T12:34:39.447Z">
+<meta property="article:author" content="yangyy">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yangyy.top/posts/1030984742"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '实验室服务器管理笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-03 20:34:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Yangyy's Life" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/header2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ExcellentBlog/"><i class="fa-fw fa fa-thumbs-up"></i><span> 优秀博客</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/10/27/xhVEB6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Yangyy's Life</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/ExcellentBlog/"><i class="fa-fw fa fa-thumbs-up"></i><span> 优秀博客</span></a></div><div class="menus_item"><a class="site-page" href="/artitalk/"><i class="fa-fw fas fa-commenting"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于作者</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">实验室服务器管理笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-03T11:13:49.000Z" title="发表于 2023-12-03 19:13:49">2023-12-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-03T12:34:39.447Z" title="更新于 2023-12-03 20:34:39">2023-12-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="leancloud_visitors" id="/posts/1030984742.html" data-flag-title="实验室服务器管理笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span class="leancloud-visitors-count"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/1030984742.html#post-comment" itemprop="discussionUrl"><span class="valine-comment-count" data-xid="/posts/1030984742.html" itemprop="commentCount"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言-v8"><a class="header-anchor" href="#前言-v8">¶</a>前言</h2>
+<p>博客的最近一次更新已经是一个多月以前了，最近一次文章的发布还是在四个月以前，我必须承认荒废了对博客的经营。</p>
+<p>最近开始慢慢从wyf师兄手中接过实验室服务器管理的担子，说实在的有些惶恐。我对Linux系统的熟悉程度恐怕仅局限于在自己的普通权限账号上跑实验不遇到问题罢了，要管理整个服务器还是压力颇大，和wyf师兄对服务器的玩转程度更是相差甚远。</p>
+<p>不过既然做了就还是踏踏实实做好，所以就记录一下应该干什么、怎么干。计划慢慢补充这篇笔记，供自己回忆使用。</p>
+<p>（本人才疏学浅，若有理解不当之处烦请指正）</p>
+<h2 id="正文-v5"><a class="header-anchor" href="#正文-v5">¶</a>正文</h2>
+<h3 id="更新内核"><a class="header-anchor" href="#更新内核">¶</a>更新内核</h3>
+<p>如果接手的服务器内核版本比较落后就需要更新了：</p>
+<ul>
+<li>
+<p>首先可以通过<code>uname -a</code>获取内核版本和发布时间的信息；</p>
+</li>
+<li>
+<p>其次运行<code>sudo yum update</code>进行更新，这个过程可能比较长；</p>
+</li>
+<li>
+<p>更新内核之后，可能并不会直接用新版的内核，通过<code>sudo awk -F\' '$1=="menuentry " {print $2}' /etc/grub2.cfg</code>查看现有内核的启动顺序，可能得到如下输出（从0开始编号）</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CentOS Linux (3.10.0-1160.102.1.el7.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (3.10.0-957.el7.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (0-rescue-ec876c21f6b0491a85e304065e59a6f7) 7 (Core)</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>通过<code>sudo grub2-set-default x</code>指定默认启动项</p>
+</li>
+<li>
+<p><code>sudo reboot</code>重启</p>
+</li>
+<li>
+<p><code>uname -a</code>查看内核是否更新</p>
+</li>
+</ul>
+<h3 id="更新显卡驱动"><a class="header-anchor" href="#更新显卡驱动">¶</a>更新显卡驱动</h3>
+<p>如果机器上的nVidia驱动版本也比较落后了同样需要更新：</p>
+<ul>
+<li>访问<a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx?lang=cn">nVidia驱动下载网址</a>输入机器信息获取nVidia驱动下载连接，下载得到.run文件</li>
+<li><code>sh xxx.run</code>安装驱动，会提示你卸载旧版的驱动，很方便就安装好新版驱动了</li>
+</ul>
+<h3 id="设置密码强度"><a class="header-anchor" href="#设置密码强度">¶</a>设置密码强度</h3>
+<ul>
+<li>
+<p>安装 pwquality 模块（如果尚未安装）</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libpam-pwquality    <span class="comment"># 对于基于 Debian 的系统</span></span><br><span class="line">sudo yum install libpwquality            <span class="comment"># 对于基于 Red Hat 的系统</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>编辑 pwquality.conf 文件：<code>sudo vim /etc/security/pwquality.conf</code>，添加或修改参数，如：</p>
+<figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">minlen</span> = <span class="number">12</span></span><br><span class="line"><span class="attr">minclass</span> = <span class="number">3</span></span><br><span class="line"><span class="attr">maxrepeat</span> = <span class="number">3</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>配置 PAM 使用 pwquality：</p>
+<p>编辑 <code>/etc/security/pam_common-password</code> 文件，确保使用 pwquality 模块。找到或添加类似的行：</p>
+<figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password requisite pam_pwquality.so <span class="attribute">retry</span>=3</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h3 id="设置密码更新时间"><a class="header-anchor" href="#设置密码更新时间">¶</a>设置密码更新时间</h3>
+<ul>
+<li>
+<p><code>sudo vim /etc/login.defs</code></p>
+</li>
+<li>
+<p>配置参数：</p>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 密码的最大有效期</span></span><br><span class="line"><span class="attribute">PASS_MAX_DAYS</span>   <span class="number">90</span></span><br><span class="line"><span class="comment"># 是否可修改密码，多少天后可修改</span></span><br><span class="line"><span class="attribute">PASS_MIN_DAYS</span>   <span class="number">0</span></span><br><span class="line"><span class="comment"># 密码最小长度，pam_pwquality设置优先</span></span><br><span class="line"><span class="attribute">PASS_MIN_LEN</span>    <span class="number">8</span></span><br><span class="line"><span class="comment"># 密码失效前多少天在用户登录时通知用户修改密码</span></span><br><span class="line"><span class="attribute">PASS_WARN_AGE</span>   <span class="number">15</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h3 id="禁止root远程登录"><a class="header-anchor" href="#禁止root远程登录">¶</a>禁止root远程登录</h3>
+<ul>
+<li><code>sudo vim /etc/ssh/sshd_config</code></li>
+<li>找到<code>#PermitRootLogin yes</code></li>
+<li>改成<code>PermitRootLogin no</code></li>
+<li>重启ssh服务使更改生效：<code>sudo systemctl restart sshd</code></li>
+</ul>
+<h3 id="安装fail2ban防止ssh暴力破解密码"><a class="header-anchor" href="#安装fail2ban防止ssh暴力破解密码">¶</a>安装fail2ban防止ssh暴力破解密码</h3>
+<p>fail2ban的主要功能就是检测是否有ip在短时间内有大量尝试登录服务器而失败的行为，如果检测到就禁止ip近期访问，起到防止服务器被暴力破解密码的作用。（我在Ubuntu系统上装fail2ban挺顺利的，但是在CentOS上踩坑了，记录一下）</p>
+<ul>
+<li>
+<p>首先我们需要在CentOS上安装fail2ban（fail2ban 可通过 EPEL yum 存储库获得，因此，我们必须<strong>安装 epel-release</strong> 才能访问 EPEL yum 存储库）：<code>sudo yum install -y epel-release</code></p>
+</li>
+<li>
+<p>为 yum 存储库构建缓存：<code>sudo yum makecache fast</code></p>
+<p>这时候就报错了，大概是这样</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">One of the configured repositories failed (Unknown),</span><br><span class="line"> and yum doesn<span class="string">'t have enough cached data to continue. At this point the only</span></span><br><span class="line"><span class="string"> safe thing yum can do is fail. There are a few ways to work "fix" this:</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">     1. Contact the upstream for the repository and get them to fix the problem.</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">     2. Reconfigure the baseurl/etc. for the repository, to point to a working</span></span><br><span class="line"><span class="string">        upstream. This is most often useful if you are using a newer</span></span><br><span class="line"><span class="string">        distribution release than is supported by the repository (and the</span></span><br><span class="line"><span class="string">        packages for the previous distribution release still work).</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">     3. Disable the repository, so yum won'</span>t use it by default. Yum will <span class="keyword">then</span></span><br><span class="line">        just ignore the repository until you permanently <span class="built_in">enable</span> it again or use</span><br><span class="line">        --enablerepo <span class="keyword">for</span> temporary usage:</span><br><span class="line"> </span><br><span class="line">            yum-config-manager --<span class="built_in">disable</span> &lt;repoid&gt;</span><br><span class="line"> </span><br><span class="line">     4. Configure the failing repository to be skipped, <span class="keyword">if</span> it is unavailable.</span><br><span class="line">        Note that yum will try to contact the repo. when it runs most commands,</span><br><span class="line">        so will have to try and fail each time (and thus. yum will be be much</span><br><span class="line">        slower). If it is a very temporary problem though, this is often a nice</span><br><span class="line">        compromise:</span><br><span class="line"> </span><br><span class="line">            yum-config-manager --save --<span class="built_in">setopt</span>=&lt;repoid&gt;.skip_if_unavailable=<span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">Cannot retrieve metalink <span class="keyword">for</span> repository: epel/x86_64. Please verify its path and try again</span><br></pre></td></tr></tbody></table></figure>
+<p>这时候去网络上搜，帖子都很老了，都是201x年的，很多会让你检查DNS配置、修改<code>/etc/yum.repos.d/CentOS-Base.repo</code>里面的网址配置，建议最好不要乱改。</p>
+<p>我们是下载了epel-release之后才报错的，报错的信息也是<code>epel/x86_64</code>找不到，其实就是访问不到epel yum存储库，尝试用代理也不行。解决方法很简单：</p>
+<ul>
+<li><code>/etc/yum.repos.d</code>目录下面决定yum下载的路径</li>
+<li><code>CentOS-Base.repo</code>决定基础的库</li>
+<li><code>epel.repo</code>决定epel的库</li>
+<li>可以到阿里云的镜像站：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/repo/">repo安装包下载_开源镜像站-阿里云 (aliyun.com)</a>，里面有对应的配置文件，直接照着改，就可以访问阿里云的资源进行yum的下载了</li>
+<li>我把<code>CentOS-Base.repo</code>和<code>epel.repo</code>都改了</li>
+<li>记得<code>sudo yum clean all</code>和<code>sudo yum makecache fast</code></li>
+</ul>
+</li>
+<li>
+<p>下载相关安装包：<code>sudo yum install -y fail2ban fail2ban-firewalld fail2ban-systemd</code></p>
+</li>
+<li>
+<p>启用并启动 fail2ban.service 。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@fail2ban-01 ~] systemctl <span class="built_in">enable</span> fail2ban.service</span><br><span class="line">[root@fail2ban-01 ~] systemctl start fail2ban.service</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>了解 fail2ban 配置文件：</p>
+<p>fail2ban 配置存在于 <code>/etc/fail2ban/</code> 和 <code>/etc/fail2ban/jail.d/</code> 中</p>
+<p>**fail2ban 首先读取 <em>.conf 文件，然后读取 <em>.local 文件</em></em><br>
+*<em>因此，*.conf 文件中的所有设置都被 <em>.local 文件中的设置覆盖</em></em></p>
+<p>因此，最好的做法是创建一个自定义的 jail.local 文件，而不是编辑默认的 jail.conf 文件。</p>
+<p>将默认的 jail.conf 文件复制为 jail.local，并编辑</p>
+<p><code>sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local</code></p>
+</li>
+<li>
+<p>编辑基础配置参数：</p>
+<p>简单来讲就是如果某个ip在findtime时间内访问失败了maxretry次，就会被禁止bantime时间</p>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">bantime</span> 它是禁止主机的时间（以秒为单位）。</span><br><span class="line"><span class="attribute">findtime</span> 它是fail<span class="number">2</span>ban 必须捕获maxretry 失败以禁止主机的时间跨度。</span><br><span class="line"><span class="attribute">maxretry</span> 它是主机被禁止之前的失败次数。</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>配置 fail2ban 以保护 SSH 服务：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@fail2ban-01 ~] sed -i <span class="string">"/^\[sshd\]/a\enabled=true"</span> /etc/fail2ban/jail.local</span><br><span class="line">[root@fail2ban-01 ~] systemctl restart fail2ban.service  <span class="comment"># 重启服务</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>检查fail2ban服务状态：<code>sudo systemctl status fail2ban</code></p>
+</li>
+</ul>
+<h3 id="防火墙管理"><a class="header-anchor" href="#防火墙管理">¶</a>防火墙管理</h3>
+<p>Ubuntu系统的防火墙是ufw，CentOS系统的防护墙是firewalld，管理服务器需要关闭22以外的非必要端口，对于需要开端口监听服务的同学再额外开</p>
+<h3 id="登录欢迎信息管理"><a class="header-anchor" href="#登录欢迎信息管理">¶</a>登录欢迎信息管理</h3>
+<p>编辑/etc/motd即可</p>
+<h3 id="开账号"><a class="header-anchor" href="#开账号">¶</a>开账号</h3>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -m xxx  <span class="comment"># 添加用户并创建对应目录</span></span><br><span class="line">sudo passwd xxx  <span class="comment"># 设置密码</span></span><br><span class="line">sudo chmod 700 /home/xxx  <span class="comment"># 设置用户目录仅自己可见</span></span><br></pre></td></tr></tbody></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yangyy.top">yangyy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangyy.top/posts/1030984742.html">https://yangyy.top/posts/1030984742.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangyy.top" target="_blank">Yangyy's Life</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/364684684.html"><img class="next-cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我创建了一个南开软件学院信息共享网站</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1325211420.html" title="Linux当中判断两个文件夹是否相同"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-24</div><div class="title">Linux当中判断两个文件夹是否相同</div></div></a></div><div><a href="/posts/487654844.html" title="调整Ubuntu显示界面"><img class="cover" src="https://s1.ax1x.com/2022/10/27/xhVEB6.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-24</div><div class="title">调整Ubuntu显示界面</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/header2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yangyy</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wending0417"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80-v8"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87-v5"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8"><span class="toc-number">2.1.</span> <span class="toc-text">更新内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="toc-number">2.2.</span> <span class="toc-text">更新显卡驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%E5%BC%BA%E5%BA%A6"><span class="toc-number">2.3.</span> <span class="toc-text">设置密码强度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4"><span class="toc-number">2.4.</span> <span class="toc-text">设置密码更新时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2root%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="toc-number">2.5.</span> <span class="toc-text">禁止root远程登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85fail2ban%E9%98%B2%E6%AD%A2ssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%AF%86%E7%A0%81"><span class="toc-number">2.6.</span> <span class="toc-text">安装fail2ban防止ssh暴力破解密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E7%AE%A1%E7%90%86"><span class="toc-number">2.7.</span> <span class="toc-text">防火墙管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%AC%A2%E8%BF%8E%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86"><span class="toc-number">2.8.</span> <span class="toc-text">登录欢迎信息管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E8%B4%A6%E5%8F%B7"><span class="toc-number">2.9.</span> <span class="toc-text">开账号</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/1030984742.html" title="实验室服务器管理笔记">实验室服务器管理笔记</a><time datetime="2023-12-03T11:13:49.000Z" title="发表于 2023-12-03 19:13:49">2023-12-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/364684684.html" title="我创建了一个南开软件学院信息共享网站">我创建了一个南开软件学院信息共享网站</a><time datetime="2023-07-30T12:46:43.000Z" title="发表于 2023-07-30 20:46:43">2023-07-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2773019278.html" title="我上岸了，虽然还不确定是哪个岸">我上岸了，虽然还不确定是哪个岸</a><time datetime="2023-07-23T11:41:35.000Z" title="发表于 2023-07-23 19:41:35">2023-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2288749829.html" title="好久没做这样精彩的梦了">好久没做这样精彩的梦了</a><time datetime="2023-03-29T00:42:19.000Z" title="发表于 2023-03-29 08:42:19">2023-03-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2272983347.html" title="我为什么要在校区间往返">我为什么要在校区间往返</a><time datetime="2023-03-03T13:32:32.000Z" title="发表于 2023-03-03 21:32:32">2023-03-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023  yangyy</div><div class="footer_custom_text">那些看似不起波澜的日复一日，会突然在某一天让人看到坚持的意义</div><div id="loving-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2014,10,17,17,30,00)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+31*24*3600*1000+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='Been spending my life with Zhangyao for '+time[0]+' years '+time[1]+' days '+time[2]+' hours '+time[3]+' minutes '+time[4]+' seconds ♥ ';document.getElementById("loving-time").innerHTML=currentTimeHtml;},1000);	</script><!--<i style="color:#FF6A6A" class="fa fa-heartbeat"></i>--><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2022,07,14,11,07,28)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+31*24*3600*1000+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);	</script><img src="https://www.yiqiuwl.com/content/uploadfile/202208/cffa1659599066.png">
+<a href="http://beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">闽ICP备2022015544号</a></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Srx46WYtgI2COUqAi761ccR8-gzGzoHsz',
+      appKey: 'bNpdyeUlKIvb6bUb42mYvy0h',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
